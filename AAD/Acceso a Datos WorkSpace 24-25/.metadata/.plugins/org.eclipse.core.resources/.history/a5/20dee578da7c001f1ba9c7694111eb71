@@ -1,0 +1,112 @@
+package file;
+
+import java.io.File;
+import java.util.Scanner;
+
+public class EjercicioCrearBorrardirectoriosficheros 
+{
+
+	public static void mostrarMenu() 
+	{
+		int menu=0;
+		do {
+			Scanner entrada=new Scanner(System.in);
+			
+		System.out.println("Ingresa una opcion [1-5]" );
+		System.out.println("1.- Crear un fichero nuevo ");
+		System.out.println("2.- Borrar un fichero");
+		System.out.println("3.- Crear un directorio ");
+		System.out.println("4.- Borrar un directorio ");
+		System.out.println("5.- Salir ");
+		 menu=entrada.nextInt();
+
+		}while(menu<5);
+		
+	}
+	
+	public static void crearFichero() 
+	{
+		try 
+		{
+			Scanner entrada=new Scanner(System.in);
+			System.out.println("Introduzca la ruta del nuevo fichero y su nombre");
+			String ficheros=entrada.nextLine();
+			
+			File fichero=new File(ficheros);
+			
+			if(fichero.createNewFile()) 
+			{
+				System.out.println("El fichero se ha creado correctamente ");
+			}else
+				System.out.println("No se ha podido crear el fichero ");
+		}catch(Exception e) 
+		{
+			System.out.println("Error: "+e.getMessage());
+		}
+	}
+	
+	public static void borrarFichero() 
+	{
+		Scanner entrada=new Scanner(System.in);
+		System.out.println("Introduzca la ruta del fichero a borrar y su nombre");
+		String ficheros=entrada.nextLine();
+		File fichero=new File(ficheros);
+		if(fichero.exists())
+		{fichero.delete();
+		
+		}
+	}
+	
+	public static void crearDirectorio() 
+	{
+		try 
+		{
+			Scanner entrada=new Scanner(System.in);
+			System.out.println("Introduzca la ruta del directorio a crear y su nombre");
+			String carpeta=entrada.nextLine();
+			
+			
+			boolean exito=(new File(carpeta)).mkdir();
+			if(exito)
+			{
+				System.out.println("Directorio: "+carpeta+" creado");
+				
+			}else
+				System.out.println("Directorio: "+carpeta+" no creado");
+		}catch(Exception e) 
+		{
+			System.out.println("Error: "+e.getMessage());
+
+		}
+	}
+	
+	public static void borrarDirectorio() 
+	{
+		Scanner entrada=new Scanner(System.in);
+		System.out.println("Introduzca la ruta del directorio a borrar y su nombre");
+		String carpeta=entrada.nextLine();
+		
+	}
+		
+	
+
+	public static void main(String[] args)
+	{
+		int opcion=0;
+		Scanner entrada=new Scanner(System.in);
+		mostrarMenu();
+		opcion=entrada.nextInt();
+		switch(opcion) {
+		
+		case 1-> {crearFichero();}
+		case 2-> {borrarFichero();}
+		case 3->{crearDirectorio();}
+		case 4->{borrarDirectorio();}
+		
+		}
+		
+		// TODO Auto-generated method stub
+
+	}
+
+}
