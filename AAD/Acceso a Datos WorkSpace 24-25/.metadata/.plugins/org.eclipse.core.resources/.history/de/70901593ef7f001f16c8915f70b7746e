@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.text.DecimalFormat;
 
 public class GeneradorNotas {
     public static void main(String[] args) {
@@ -15,8 +15,9 @@ public class GeneradorNotas {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath));
              BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath)))
         {
-        	 
+        	// Formato para dos decimales
             String line;
+            DecimalFormat decimal = new DecimalFormat("#.00"); 
             // Comprobar si la línea no está vacía
             while ((line = br.readLine()) != null) {
                 
@@ -45,10 +46,12 @@ public class GeneradorNotas {
                 // Calcular la media
                 double media = suma / contador;
                 // condicion si la media es igual o mayor que 4,5 y menor que 5 sera la media 5
-                int mediaRedondeada = (int) Math.round(media);
+                if(media>=4.5 && media<5.0) 
+                	media=5;
+               
                 	
                 // Escribir el resultado en el archivo de salida
-                bw.write(nombre + ": " + mediaRedondeada); // Formatear la media
+                bw.write(nombre + ": " + decimal.format(media)); // Formatear la media
                 bw.newLine();
             }
 
