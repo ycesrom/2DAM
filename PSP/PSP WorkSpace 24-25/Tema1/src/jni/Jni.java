@@ -1,19 +1,17 @@
 package jni;
 
 public class Jni {
-	
-	static {
-        System.loadLibrary("jni_Jni"); // Cargar la biblioteca nativa sin la extensión
+    // Declaramos el método nativo
+    public native int sumar(int a, int b);
+
+    // Cargar la librería nativa (libsumador)
+    static {
+        System.loadLibrary("sumador");
     }
-	
 
-	    public native int sum(int a, int b);
-
-	    public native int multiply(int a, int b);
-	    
-	    public static void main(String [] args) 
-	    {
-	    	new Jni().sum(10, 20);
-	    }
-	       
+    public static void main(String[] args) {
+        Jni sumador = new Jni();
+        int resultado = sumador.sumar(5, 3);
+        System.out.println("Resultado de la suma: " + resultado);
+    }
 }
