@@ -14,8 +14,62 @@ public class ScrollPaneExample extends Application {
     public void start(Stage primaryStage) {
         // Crear un VBox con contenido
         VBox content = new VBox();
-        for (int i = 1; i <= 50; i++) {
-            Text text = new Text("Línea de texto " + i);
+
+
+
+        String partidos[] = {
+                "17/8 Racing Club Ferrol 2-2 Málaga CF",
+                "24/8 Málaga 1-1 Mirandés",
+                "31/8 Málaga 2-1 Albacete",
+                "7/9 Córdoba 0-0 Málaga",
+                "14/9 Málaga 1-0 S. D. Huesca",
+                "20/9 Granada 2-2 Málaga",
+                "28/9 Málaga 0-3 Elche C.F.",
+                "6/10 Deportivo vs Málaga",  // No hay resultado, solo el partido programado
+                "12/10 Cádiz vs Málaga",
+                "19/10 Málaga vs Real Oviedo",
+                "24/10 Tenerife vs Málaga",
+                "27/10 Málaga vs Eibar",
+                "4/11 Levante vs Málaga",
+                "10/11 Málaga vs Cartagena",
+                "17/11 Real Zaragoza vs Málaga",
+                "24/11 Málaga vs Racing de Santander",
+                "1/12 Castellón vs Málaga",
+                "8/12 Málaga vs Almería",
+                "15/12 Burgos vs Málaga",
+                "18/12 Málaga vs CD Eldense",
+                "22/12 Sporting Gijón vs Málaga",
+                "11/1/25 Málaga vs Deportivo",
+                "19/1/25 Mirandés vs Málaga",
+                "26/1/25 Málaga vs Real Zaragoza",
+                "2/2/25 Racing de Santander vs Málaga",
+                "9/2/25 Málaga vs Levante",
+                "16/2/25 Cartagena vs Málaga",
+                "23/2/25 Málaga vs Tenerife",
+                "2/3/25 Almería vs Málaga",
+                "9/3/25 Málaga vs Cádiz",
+                "16/3/25 Albacete vs Málaga",
+                "23/3/25 Málaga vs Racing Ferrol",
+                "30/3/25 Real Oviedo vs Málaga",
+                "6/4/25 Málaga vs Córdoba",
+                "13/4/25 S. D. Huesca vs Málaga",
+                "20/4/25 Eibar vs Málaga",
+                "27/4/25 Málaga vs Castellón",
+                "4/5/25 Málaga vs Granada",
+                "11/5/25 CD Eldense vs Málaga",
+                "18/5/25 Málaga vs Sporting Gijón",
+                "25/5/25 Elche C.F. vs Málaga",
+                "1/6/25 Málaga vs Burgos"
+        };
+
+
+        for (int i = 0; i <= 41; i++) {
+                    // Usar un valor por defecto si no hay un partido disponible en el array
+                    String partido = i < partidos.length ? partidos[i] : "Resultado no disponible";
+            Text text = new Text("Jornada " +(i+1) + ": " + partido +"\n");
+
+
+
 
             // Evento de clic en cada línea de texto
             text.setOnMouseClicked(e -> handleClick(e, text));
