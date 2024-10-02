@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 
-<ScrollPane fx:id="scrollPane" prefWidth="300" prefHeight="200" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" fitToWidth="true" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.Controller">
+<ScrollPane fx:id="scrollPane" prefWidth="300" prefHeight="200" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" fitToWidth="true" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.scrollpane.ScrollPaneExample">
   <content>
     <VBox>
       <children>

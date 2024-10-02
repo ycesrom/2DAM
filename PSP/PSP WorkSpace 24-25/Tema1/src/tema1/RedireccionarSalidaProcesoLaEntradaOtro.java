@@ -14,7 +14,7 @@ public class RedireccionarSalidaProcesoLaEntradaOtro {
 		Process p1, p2;
 		int retorno=-1;
 		try {
-			p1 = new ProcessBuilder("CMD", "/C", "date", "/t").start();
+			p1 = new ProcessBuilder("CMD", "/C", "time", "/t").start();
 			InputStream is = p1.getInputStream();//stdout del hijo
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		
@@ -37,10 +37,9 @@ public class RedireccionarSalidaProcesoLaEntradaOtro {
 		}
 
 		try {
-			p2 = new ProcessBuilder("CMD", "/C", "date").start();
+			p2 = new ProcessBuilder("CMD", "/C", "time").start();
 			OutputStream os = p2.getOutputStream();//stdin del hijo
-			Scanner entrada=new Scanner(System.in);
-			line=entrada.nextLine();
+			
 			//escribimos en proceso 2 la salida del proceso1
 			//guardada en String line, se convierte en bytes
 			// para ser grabada

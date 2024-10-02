@@ -30,7 +30,7 @@ public class ScrollPaneExample extends Application {
         // Configurar propiedades del ScrollPane
         scrollPane.setFitToWidth(true);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setPannable(true);
 
         // Evento para detectar desplazamiento con la rueda del ratón
