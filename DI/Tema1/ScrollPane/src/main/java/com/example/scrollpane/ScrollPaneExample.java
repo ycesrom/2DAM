@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 public class ScrollPaneExample extends Application {
 
+    @javafx.fxml.FXML
+    private ScrollPane scrollPane;
+
     @Override
     public void start(Stage primaryStage) {
         // Crear un VBox con contenido
