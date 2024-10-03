@@ -8,16 +8,7 @@
   <content>
     <VBox>
       <children>
-        <Label text="Item 1" />
-        <Label text="Item 2" />
-        <Label text="Item 3" />
-        <Label text="Item 4" />
-        <Label text="Item 5" />
-        <Label text="Item 6" />
-        <Label text="Item 7" />
-        <Label text="Item 8" />
-        <Label text="Item 9" />
-        <Label text="Item 10" />
+
       </children>
     </VBox>
   </content>
