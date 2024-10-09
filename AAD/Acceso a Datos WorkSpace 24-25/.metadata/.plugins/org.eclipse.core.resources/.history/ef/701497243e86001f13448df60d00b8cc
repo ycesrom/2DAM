@@ -1,0 +1,30 @@
+package file;
+
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
+public class AccesoDirectoFichero 
+{
+
+	public static void main(String[] args) 
+	{
+		String archivo="C:\\Users\\yerai\\Desktop\\personas.txt";
+		// TODO Auto-generated method stub
+		leerRegistro5(archivo);
+		System.out.println(archivo.getBytes());
+		
+	}
+	
+	private static void leerRegistro5(String nombreArchivo) {
+        try (RandomAccessFile archivo = new RandomAccessFile(nombreArchivo, "r")) {
+            archivo.seek(3*30 ); // El quinto registro está en la posición 4 (porque empieza en 0)
+            byte[] buffer = new byte[30];
+            archivo.read(buffer);
+            String registro = new String(buffer);
+            System.out.println("Registro 5: " + registro);
+        } catch (IOException e) {
+            System.out.println("Error al leer el registro 5: " + e.getMessage());
+        }
+    }
+
+}

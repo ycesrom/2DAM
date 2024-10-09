@@ -18,7 +18,7 @@ public class BorrarPalabraFicTexPlano {
 		eliminar(archivo, palabraAEliminar);
 		entrada.close();
 }
-	//	//Creamos el metodo buscar para la ruta del archivo y la cadena a borrar
+	//	//Creamos el metodo buscar para la ruta del archivo y la cadena a borrar  
 
 	public static void eliminar(String archivo,String palabraAEliminar){
 		try {

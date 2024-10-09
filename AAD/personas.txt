@@ -1,0 +1,2 @@
+Ana      |Garcia   |Lopez|25  Luis     |Martinez |Sanz|30   Juan     |Fernandez|Diaz|28   Maria    |Sanchez  |Perez|35  Pedro    |Hernández |Gomez|40 Laura    |Lopez      |Ruiz|22 Carlos  |Mendez    |Torres|45 Lucia    |Castro   |Nunez |31 Jose     |Alvarez  |Romero|26Carmen    |Jimenez   |Ortiz|38
+  
