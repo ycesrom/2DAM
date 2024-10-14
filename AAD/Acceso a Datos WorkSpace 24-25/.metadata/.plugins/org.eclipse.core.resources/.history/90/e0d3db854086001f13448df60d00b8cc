@@ -1,0 +1,73 @@
+package file;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.file.Files;
+import java.util.Arrays;
+
+public class AccesoDirectoFichero {
+
+    public static void main(String[] args) throws IOException {
+        // Ruta del archivo donde vamos a almacenar los registros
+        File archivo = new File("personas.dat");
+
+        // Crear el archivo con registros de 30 bytes cada uno
+        if (!archivo.exists()) {
+            crearArchivo(archivo);
+        }
+
+        // Leer y mostrar el registro número 5 (índice 4)
+        leerRegistro5(archivo);
+
+        // Agregar un nuevo registro
+        agregarNuevoRegistro(archivo, "Maria", "Lopez", "Gonzalez", 28);
+
+        // Contar los registros en el archivo
+        contarRegistros(archivo);
+    }
+
+    // Método para crear el archivo y escribir 10 registros
+    private static void crearArchivo(File archivo) throws IOException {
+        try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
+            for (int i = 0; i < 10; i++) {
+                String registro = String.format("%-10s|%-10s|%-10s|%-5d", "Nombre" + (i + 1), "Apellido" + (i + 1), "Apellido" + (i + 1), 20 + i);
+                raf.writeBytes(registro);  // Escribir 30 bytes
+            }
+        }
+        System.out.println("Archivo creado y registros iniciales añadidos.");
+    }
+
+    // Método para leer el registro 5 (índice 4)
+    private static void leerRegistro5(File archivo) throws IOException {
+        try (RandomAccessFile raf = new RandomAccessFile(archivo, "r")) {
+            raf.seek(4 * 30); // El registro 5 está en la posición 4 * 30 (120 bytes)
+            byte[] buffer = new byte[30];
+            raf.read(buffer);
+            String registro = new String(buffer).trim();
+            System.out.println("Registro 5: " + registro);
+        }
+    }
+
+    // Método para agregar un nuevo registro al final del archivo
+    private static void agregarNuevoRegistro(File archivo, String nombre, String apellido1, String apellido2, int edad) throws IOException {
+        try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
+            // Ir al final del archivo
+            raf.seek(raf.length());
+
+            // Crear el nuevo registro con exactamente 30 bytes
+            String nuevoRegistro = String.format("%-10s|%-10s|%-10s|%-5d", nombre, apellido1, apellido2, edad);
+            raf.writeBytes(nuevoRegistro);
+            System.out.println("Nuevo registro agregado: " + nuevoRegistro.trim());
+        }
+    }
+
+    // Método para contar la cantidad de registros en el archivo
+    private static void contarRegistros(File archivo) throws IOException {
+        try (RandomAccessFile raf = new RandomAccessFile(archivo, "r")) {
+            long tamañoArchivo = raf.length();
+            int totalRegistros = (int) (tamañoArchivo / 30);  // Cada registro tiene 30 bytes
+            System.out.println("Total de registros en el archivo: " + totalRegistros);
+        }
+    }
+}
