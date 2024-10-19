@@ -1,23 +1,27 @@
-.button {
-    -fx-background-radius: 10px;
-    -fx-max-height: 1000px;
-/* -fx-background-color: red; */
-}
-.button:hover {
-    -fx-background-color: #e6e6e6; /* Un gris claro para todos los botones al pasar el ratón */
-}
-.button:pressed {
-    -fx-background-color: #cccccc; /* Gris más oscuro al presionar */
+.numeric {
+    -fx-background-color: #f2f2f2; /* Fondo gris claro */
+    -fx-padding: 10px; /* Padding de 10px */
+    -fx-margin: 5px; /* Margen de 5px */
 }
 
-#operaciones
-{
-    -fx-background-color:#e5f6ef ;
-    -fx-text-alignment: center;
-    -fx-text-fill:#f2f2f2;
-    -fx-padding: 10px;
+/* Estilo para botones de operadores (÷, x, -, +) */
+.operator {
+    -fx-background-color: #98FF98; /* Fondo verde menta */
+    -fx-padding: 10px; /* Padding de 10px */
+    -fx-margin: 5px; /* Margen de 5px */
 }
-.root
-{
-    -fx-background-color: white;
+
+/* Estilo para la pantalla de la calculadora */
+.tfVisor {
+    -fx-background-color: white; /* Fondo blanco */
+    -fx-font-size: 24px; /* Tamaño de la fuente */
+}
+
+/* Efectos de hover y pressed para los botones */
+.numeric:hover, .operator:hover {
+    -fx-background-color: white; /* Cambia el color al pasar el ratón */
+}
+
+.numeric:pressed, .operator:pressed {
+    -fx-background-color: grey; /* Cambia el color al ser pulsado */
 }
