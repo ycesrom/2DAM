@@ -1,0 +1,23 @@
+.button {
+    -fx-background-radius: 10px;
+    -fx-max-height: 1000px;
+/* -fx-background-color: red; */
+}
+.button:hover {
+    -fx-background-color: #e6e6e6; /* Un gris claro para todos los botones al pasar el ratón */
+}
+.button:pressed {
+    -fx-background-color: #cccccc; /* Gris más oscuro al presionar */
+}
+
+#operaciones
+{
+    -fx-background-color:#e5f6ef ;
+    -fx-text-alignment: center;
+    -fx-text-fill:#f2f2f2;
+    -fx-padding: 10px;
+}
+.root
+{
+    -fx-background-color: white;
+}
