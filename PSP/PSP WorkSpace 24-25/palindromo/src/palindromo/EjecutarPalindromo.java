@@ -16,11 +16,11 @@ public class EjecutarPalindromo {
 		Process pb;
 		try {
 			
-			File inputFile = new File("C:\\Users\\yerai\\Desktop\\entrada.txt");
+			File inputFile = new File("C:\\Users\\2DAM\\Desktop\\entrada.txt");
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
             String palabra = reader.readLine(); // Leer la primera línea del archivo
             reader.close();
-			pb = new ProcessBuilder("java", "-cp", "C:\\Users\\yerai\\Documents\\2DAM\\PSP\\PSP WorkSpace 24-25\\palindromo\\bin",
+			pb = new ProcessBuilder("java", "-cp", "C:\\Users\\2DAM\\Documents\\2DAM\\PSP\\PSP WorkSpace 24-25\\palindromo\\bin",
 					"palindromo.Palindromo", palabra).start();
 					
 			
@@ -41,7 +41,7 @@ public class EjecutarPalindromo {
 		}
 	}
 	private void escribirError(String mensaje) {
-        File errorFile = new File("C:\\Users\\yerai\\Desktop\\errores.txt");
+        File errorFile = new File("C:\\Users\\2DAM\\Desktop\\errores.txt");
         try (FileWriter errorWriter = new FileWriter(errorFile, true)) { // Modo de añadir
             errorWriter.write(mensaje + "\n");
         } catch (IOException ioException) {
