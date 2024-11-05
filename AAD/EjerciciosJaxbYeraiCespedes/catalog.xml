@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/yerai/Documents/2DAM/AAD/EjerciciosJaxbYeraiCespedes/../../../ejercicio1.xsd" uri="xml-resources/jaxb/ejercicio1/ejercicio1.xsd"/>
+    <system systemId="file:/C:/Users/yerai/Documents/2DAM/AAD/EjerciciosJaxbYeraiCespedes/../../../ejercicio2.xsd" uri="xml-resources/jaxb/ejercicio2/ejercicio2.xsd"/>
+</catalog>
