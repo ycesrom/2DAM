@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Persona>
+    <Nombre>Yerai</Nombre>
+    <Edad>23</Edad>
+    <Direccion>
+        <Calle>Avda</Calle>
+        <Numero>227</Numero>
+        <CodigoPostal>04700</CodigoPostal>
+    </Direccion>
+        <Contacto>
+            <Email>yerai@gmail.com</Email>
+            <Telefono>+34622946110</Telefono>
+        </Contacto>
+   
+
+
+
+
+</Persona>
+

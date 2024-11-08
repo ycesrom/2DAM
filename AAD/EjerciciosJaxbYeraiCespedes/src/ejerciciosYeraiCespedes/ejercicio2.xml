@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Empresa>
+    <NombreEmpresa>Mercadona</NombreEmpresa>
+    <Empleado activo="true">
+        <ID>MC3456</ID>
+        <Nombre>Manuel</Nombre>
+        <Edad>20</Edad>
+        <Genero>Masculino</Genero>
+        <Departamento>
+            <Nombre>Recursos Humanos</Nombre>
+            <Extension>23</Extension>
+        </Departamento>
+    </Empleado>
+
+</Empresa>
