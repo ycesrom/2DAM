@@ -10,6 +10,7 @@ import generated.Tienda.Productos.Producto;
 import generated.Universidad;
 import generated.Universidad.Facultades;
 import generated.Universidad.Facultades.Facultad;
+import generated.Universidad.Facultades.Facultad.Departamentos;
 import java.io.File;
 import java.util.List;
 import javax.xml.bind.JAXB;
@@ -93,12 +94,52 @@ public class RelacionEjerciciosJAXBYeraiCespedes {
             {
                 System.out.println(facultad.getCodigoFacultad());
                 System.out.println(facultad.getNombre());
-               
-
+                Universidad.Facultades.Facultad.Departamentos departamentos = facultad.getDepartamentos();
+                List<Universidad.Facultades.Facultad.Departamentos.Departamento> listaDepartamentos = departamentos.getDepartamento();
+    
+             // Iterar sobre los departamentos
+             for (Universidad.Facultades.Facultad.Departamentos.Departamento departamento : listaDepartamentos) 
+             {
+                 System.out.println(departamento.getCodigoDepartamento());
+                 System.out.println(departamento.getNombre());
+        
+        
+                 Universidad.Facultades.Facultad.Departamentos.Departamento.Cursos cursos= departamento.getCursos();
+                 List<Departamentos.Departamento.Cursos.Curso> listaCurso = cursos.getCurso();
+             for(Departamentos.Departamento.Cursos.Curso curso:listaCurso)
+             {
+                System.out.println(curso.getCodigoCurso());
+                System.out.println(curso.getCreditos());
+                System.out.println(curso.getNombre());
+                 
+               }  
+             Universidad.Facultades.Facultad.Departamentos.Departamento.Estudiantes estudiantes = departamento.getEstudiantes(); 
+            List<Departamentos.Departamento.Estudiantes.Estudiante> listaEstudiante = estudiantes.getEstudiante();
+          
+                
+            for (Departamentos.Departamento.Estudiantes.Estudiante estudiante : listaEstudiante) 
+            {
+            System.out.println(estudiante.getCursosInscritos());
+            System.out.println(estudiante.getIdentificacion());
+            System.out.println(estudiante.getNombre());
             }
+             
+                
+                
+            Universidad.Facultades.Facultad.Departamentos.Departamento.Profesores profesores=departamento.getProfesores();
+               
+            List<Departamentos.Departamento.Profesores.Profesor> listaProfesor=profesores.getProfesor();
             
-
-
+            for(Departamentos.Departamento.Profesores.Profesor profesor:listaProfesor)
+            {
+                System.out.println(profesor.getCursos());
+                System.out.println(profesor.getIdentificacion());
+                System.out.println(profesor.getNombre());
+           
+                
+            }
+            } 
+            }
         }catch(JAXBException e)
         {e.printStackTrace();
         }

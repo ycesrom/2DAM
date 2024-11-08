@@ -17,12 +17,7 @@
                             <creditos>4</creditos>
                         </curso>
                     </cursos>
-                        
-                </departamento>
-            </departamentos>
-        </facultad>
-    </facultades>
-    
+                     
     <profesores>
         <nombre>Manuel</nombre>
         <identificacion>Manuel1234</identificacion>
@@ -30,8 +25,7 @@
             <codigoCurso>CUR1234</codigoCurso>
         </cursos>
     </profesores>
-    
-    <estudiantes>
+      <estudiantes>
         <estudiante>
             <nombre>Yerai</nombre>
             <identificacion>Yerai12345</identificacion>
@@ -41,6 +35,14 @@
             
         </estudiante>
     </estudiantes>
+                        
+                </departamento>
+            </departamentos>
+        </facultad>
+    </facultades>
+   
+    
+  
 
 
 
