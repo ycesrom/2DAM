@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<biblioteca>
+    <nombre>Municipal Vicar</nombre>
+    <codigoBiblioteca>VIC1234</codigoBiblioteca>
+    <libros>
+        <libro nombre="Accion">
+            <titulo>El Sicario</titulo>
+            <autor>Manuel</autor>
+            <ISBN>1234567890123</ISBN>
+            <cantidadDisponible>10</cantidadDisponible>
+            <precio>20</precio>
+        </libro>
+    </libros>
+
+
+</biblioteca>

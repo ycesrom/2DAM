@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tienda>
+    <nombre>Mercadona</nombre>
+    <codigoTienda>AL678</codigoTienda>
+    <productos>
+        <producto nombre="Alimentacion">
+        <modelo>Iberico</modelo>
+        <marca>Juviles</marca>
+        <cantidad>8KG</cantidad>
+        <precio>70</precio>
+        <nombre>Jamon</nombre>
+    </producto>
+    </productos>
+</tienda>
+

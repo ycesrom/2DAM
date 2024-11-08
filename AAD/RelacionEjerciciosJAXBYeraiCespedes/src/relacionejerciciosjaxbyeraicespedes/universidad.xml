@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<universidad>
+    <nombre>Universidad Almeria </nombre>
+    <codigoUniversidad>ALM12</codigoUniversidad>
+    <facultades>
+        <facultad>
+            <nombre>Informatica</nombre>
+            <codigoFacultad>FAC123</codigoFacultad>
+            <departamentos>
+                <departamento>
+                    <nombre>Informatica</nombre>
+                    <codigoDepartamento>DEP123</codigoDepartamento>
+                    <cursos>
+                        <curso>
+                            <nombre>Base de Datos</nombre>
+                            <codigoCurso>CUR1234</codigoCurso>
+                            <creditos>4</creditos>
+                        </curso>
+                    </cursos>
+                        
+                </departamento>
+            </departamentos>
+        </facultad>
+    </facultades>
+    
+    <profesores>
+        <nombre>Manuel</nombre>
+        <identificacion>Manuel1234</identificacion>
+        <cursos>
+            <codigoCurso>CUR1234</codigoCurso>
+        </cursos>
+    </profesores>
+    
+    <estudiantes>
+        <estudiante>
+            <nombre>Yerai</nombre>
+            <identificacion>Yerai12345</identificacion>
+            <cursosInscritos>
+                <codigoCurso>CUR1234</codigoCurso>
+            </cursosInscritos>
+            
+        </estudiante>
+    </estudiantes>
+
+
+
+</universidad>
+

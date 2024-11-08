@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/yerai/Documents/2DAM/AAD/RelacionEjerciciosJAXBYeraiCespedes/../tienda.xsd" uri="xml-resources/jaxb/tienda/tienda.xsd"/>
+    <system systemId="file:/C:/Users/yerai/Documents/2DAM/AAD/RelacionEjerciciosJAXBYeraiCespedes/../biblioteca.xsd" uri="xml-resources/jaxb/biblioteca/biblioteca.xsd"/>
+    <system systemId="file:/C:/Users/yerai/Documents/2DAM/AAD/RelacionEjerciciosJAXBYeraiCespedes/../universidad.xsd" uri="xml-resources/jaxb/universidad/universidad.xsd"/>
+</catalog>

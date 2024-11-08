@@ -1,0 +1,46 @@
+<!-- biblioteca.xsd -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Definición de la estructura del elemento "biblioteca" -->
+    <xs:element name="biblioteca">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="codigoBiblioteca" type="codigoBibliotecaType"/>
+                <xs:element name="libros">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="libro" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="titulo" type="xs:string"/>
+                                        <xs:element name="autor" type="xs:string"/>
+                                        <xs:element name="ISBN" type="isbnType"/>
+                                        <xs:element name="cantidadDisponible" type="xs:positiveInteger"/>
+                                        <xs:element name="precio" type="xs:decimal"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="nombre" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Restricción para el código de la biblioteca: 3 letras seguidas de 4 dígitos -->
+    <xs:simpleType name="codigoBibliotecaType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z]{3}[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Restricción para el ISBN: debe ser un número de 13 dígitos -->
+    <xs:simpleType name="isbnType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{13}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

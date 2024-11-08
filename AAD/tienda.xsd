@@ -1,0 +1,38 @@
+<!-- tienda.xsd -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Definición de la estructura del elemento "tienda" -->
+    <xs:element name="tienda">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="codigoTienda" type="codigoTiendaType"/>
+                <xs:element name="productos">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="producto" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="modelo" type="xs:string"/>
+                                        <xs:element name="marca" type="xs:string"/>
+                                        <xs:element name="cantidad" type="xs:positiveInteger"/>
+                                        <xs:element name="precio" type="xs:decimal"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="nombre" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Restricción para el código de la tienda: 2 letras seguidas de 3 dígitos -->
+    <xs:simpleType name="codigoTiendaType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z]{2}[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

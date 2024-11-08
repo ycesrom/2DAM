@@ -1,0 +1,137 @@
+<!-- universidad.xsd -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Definición del elemento "universidad" -->
+    <xs:element name="universidad">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="codigoUniversidad" type="codigoUniversidadType"/>
+                <xs:element name="facultades">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="facultad" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nombre" type="xs:string"/>
+                                        <xs:element name="codigoFacultad" type="codigoFacultadType"/>
+                                        <xs:element name="departamentos">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="departamento" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="nombre" type="xs:string"/>
+                                                                <xs:element name="codigoDepartamento" type="codigoDepartamentoType"/>
+                                                                <xs:element name="cursos">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="curso" maxOccurs="unbounded">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element name="nombre" type="xs:string"/>
+                                                                                        <xs:element name="codigoCurso" type="codigoCursoType"/>
+                                                                                        <xs:element name="creditos" type="creditosType"/>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="profesores">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="profesor" maxOccurs="unbounded">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element name="nombre" type="xs:string"/>
+                                                                                        <xs:element name="identificacion" type="identificacionType"/>
+                                                                                        <xs:element name="cursos">
+                                                                                            <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                    <xs:element name="codigoCurso" type="codigoCursoType" maxOccurs="unbounded"/>
+                                                                                                </xs:sequence>
+                                                                                            </xs:complexType>
+                                                                                        </xs:element>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="estudiantes">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="estudiante" maxOccurs="unbounded">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element name="nombre" type="xs:string"/>
+                                                                                        <xs:element name="identificacion" type="identificacionType"/>
+                                                                                        <xs:element name="cursosInscritos">
+                                                                                            <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                    <xs:element name="codigoCurso" type="codigoCursoType" maxOccurs="unbounded"/>
+                                                                                                </xs:sequence>
+                                                                                            </xs:complexType>
+                                                                                        </xs:element>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Tipos simples para restricciones -->
+    <xs:simpleType name="codigoUniversidadType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z]{3}[0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="codigoFacultadType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="FAC[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="codigoDepartamentoType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="DEP[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="codigoCursoType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="CUR[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="identificacionType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z0-9]{10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="creditosType">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
