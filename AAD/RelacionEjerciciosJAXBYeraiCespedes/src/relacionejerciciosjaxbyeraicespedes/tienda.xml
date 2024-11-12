@@ -10,6 +10,8 @@
         <cantidad>8KG</cantidad>
         <precio>70</precio>
         <nombre>Jamon</nombre>
+        <cantidad>100
+        </cantidad>
     </producto>
     </productos>
 </tienda>

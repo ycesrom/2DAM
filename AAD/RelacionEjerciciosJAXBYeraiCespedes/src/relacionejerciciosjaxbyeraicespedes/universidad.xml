@@ -19,11 +19,13 @@
                     </cursos>
                      
     <profesores>
+        <profesor>
         <nombre>Manuel</nombre>
         <identificacion>Manuel1234</identificacion>
         <cursos>
             <codigoCurso>CUR1234</codigoCurso>
         </cursos>
+        </profesor>
     </profesores>
       <estudiantes>
         <estudiante>
@@ -31,6 +33,7 @@
             <identificacion>Yerai12345</identificacion>
             <cursosInscritos>
                 <codigoCurso>CUR1234</codigoCurso>
+                <codigoCurso>CLE2345</codigoCurso>
             </cursosInscritos>
             
         </estudiante>
