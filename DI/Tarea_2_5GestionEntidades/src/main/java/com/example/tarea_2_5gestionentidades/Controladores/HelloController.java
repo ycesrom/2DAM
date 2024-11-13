@@ -1,4 +1,4 @@
-package com.example.tarea_2_5gestionentidades;
+package com.example.tarea_2_5gestionentidades.Controladores;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

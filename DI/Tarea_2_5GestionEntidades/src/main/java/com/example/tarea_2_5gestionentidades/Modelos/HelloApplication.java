@@ -1,4 +1,4 @@
-package com.example.tarea_2_5gestionentidades;
+package com.example.tarea_2_5gestionentidades.Modelos;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
