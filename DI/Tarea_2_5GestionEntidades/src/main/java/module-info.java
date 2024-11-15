@@ -5,7 +5,6 @@ module com.example.tarea_2_5gestionentidades {
 
 
     opens com.example.tarea_2_5gestionentidades to javafx.fxml;
-    exports com.example.tarea_2_5gestionentidades;
     exports com.example.tarea_2_5gestionentidades.Modelos;
     opens com.example.tarea_2_5gestionentidades.Modelos to javafx.fxml;
     exports com.example.tarea_2_5gestionentidades.Controladores;
