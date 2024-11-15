@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/2DAM/Documents/2DAM/AAD/Acceso%20a%20Datos%20WorkSpace%2024-25/jaxbYeraiCespedes/../../AD02_CONT_R35_albaran.xsd" uri="xml-resources/jaxb/albaran/AD02_CONT_R35_albaran.xsd"/>
+</catalog>

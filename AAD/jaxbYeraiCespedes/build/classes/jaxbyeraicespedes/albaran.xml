@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pedido fechaPedido="2024-10-23">
+    <facturarA pais="Espana">
+        <nombre>María González</nombre>
+        <calle>Calle Gran Vía 45</calle>
+        <ciudad>Madrid</ciudad>
+        <provincia>Madrid</provincia>
+        <codigoPostal>28013</codigoPostal>
+    </facturarA>
+    <comentario>Cliente solicita entrega rápida.</comentario>
+    <articulos>
+        <articulo codigo="001-AB">
+            <nombreProducto>Teléfono móvil</nombreProducto>
+            <cantidad>2</cantidad>
+            <precio>599.99</precio>
+            <comentario>Color negro, modelo Pro</comentario>
+            <fechaEnvio>2024-10-25</fechaEnvio>
+        </articulo>
+        <articulo codigo="002-CD">
+            <nombreProducto>Auriculares inalámbricos</nombreProducto>
+            <cantidad>1</cantidad>
+            <precio>89.99</precio>
+            <fechaEnvio>2024-10-26</fechaEnvio>
+        </articulo>
+    </articulos>
+</pedido>
+
