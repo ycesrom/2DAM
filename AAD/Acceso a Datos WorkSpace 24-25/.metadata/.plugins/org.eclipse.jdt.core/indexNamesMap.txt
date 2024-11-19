@@ -1,1 +1,3 @@
 INDEX VERSION 1.134
+file:/C:/Users/yerai/Documents/2DAM/AAD/Acceso%20a%20Datos%20WorkSpace%2024-25/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+meta_index
