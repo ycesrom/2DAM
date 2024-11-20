@@ -9,6 +9,7 @@ public class Action
     private IntegerProperty id=new SimpleIntegerProperty();
     private IntegerProperty action_id=new SimpleIntegerProperty();
     private IntegerProperty sequence=new SimpleIntegerProperty();
+    private IntegerProperty create_uid=new SimpleIntegerProperty();
     private StringProperty state=new SimpleStringProperty();
     private StringProperty name=new SimpleStringProperty();
     private ObjectProperty<Timestamp> create_date = new SimpleObjectProperty<>();
@@ -21,11 +22,12 @@ public class Action
     }
 
     // Constructor completo para crear una accion con todos sus atributos
-    public Action(Integer id, Integer action_id, Integer sequence, String state, String name, Timestamp create_date)
+    public Action(Integer id, Integer action_id, Integer sequence,Integer create_uid, String state, String name, Timestamp create_date)
     {
         this.id.set(id);
         this.action_id.set(action_id);
         this.sequence.set(sequence);
+        this.create_uid.set(create_uid);
         this.state.set(state);
         this.name.set(name);
         this.create_date.set(create_date);
@@ -49,6 +51,8 @@ public class Action
     public IntegerProperty getAction_idProperty() {return action_id; // Devuelve el valor de la accionId
     }
 
+    public Integer getCreate_uid() {return create_uid.get();}
+    public IntegerProperty getCreate_uidProperty() {return create_uid;}
     public String getState() {return state.get(); }
     public StringProperty getStateProperty() {return state; }// Devuelve el valor de el estado}
 

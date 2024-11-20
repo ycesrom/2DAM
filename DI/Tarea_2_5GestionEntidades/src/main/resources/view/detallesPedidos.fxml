@@ -11,8 +11,8 @@
 <AnchorPane prefHeight="418.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tarea_2_5gestionentidades.Controladores.HelloController">
    <children>
       <Label layoutX="32.0" layoutY="138.0" text="FECHA" />
-      <Label layoutX="28.0" layoutY="101.0" text="ESTADO" />
-      <Label layoutX="21.0" layoutY="66.0" text="ID ACCION" />
+      <Label layoutX="28.0" layoutY="101.0" text="ID PARTNER" />
+      <Label layoutX="21.0" layoutY="66.0" text="ID COMPAÑIA" />
       <TableView layoutX="32.0" layoutY="187.0" prefHeight="200.0" prefWidth="489.0">
         <columns>
           <TableColumn prefWidth="75.0" text="ID ACCION" />
@@ -21,10 +21,10 @@
             <TableColumn prefWidth="180.0" text="FECHA" />
         </columns>
       </TableView>
-      <TextField layoutX="89.0" layoutY="97.0" />
-      <TextField layoutX="89.0" layoutY="62.0" />
+      <TextField layoutX="102.0" layoutY="97.0" />
+      <TextField layoutX="102.0" layoutY="62.0" />
       <DatePicker layoutX="89.0" layoutY="134.0" />
-      <Label layoutX="16.0" layoutY="21.0" text="ACCIONES">
+      <Label layoutX="16.0" layoutY="21.0" text="USUARIOS">
          <font>
             <Font size="18.0" />
          </font>

@@ -39,16 +39,17 @@ public class ActionDAO
     // Actualiza una accion de la base de datos
     public static void updateAction(Action persona,TableView<Action> actionTableView) throws SQLException
     {
-        String sql = "UPDATE ir_actions_todo SET action_id = ?,sequence=?,state=?,name=?,create_date=? WHERE id = ?";
+        String sql = "UPDATE ir_actions_todo SET action_id = ?,sequence=?,create_uid=?,state=?,name=?,create_date=? WHERE id = ?";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             //Configura los parametros de la sentencia sql
           pstmt.setInt(1, persona.getAction_id());
           pstmt.setInt(2, persona.getSequence());
-          pstmt.setString(3, persona.getState());
-          pstmt.setString(4, persona.getName());
-          pstmt.setTimestamp(5, persona.getCreate_date());
-          pstmt.setInt(6, persona.getId());
+          pstmt.setInt(3, persona.getCreate_uid());
+          pstmt.setString(4, persona.getState());
+          pstmt.setString(5, persona.getName());
+          pstmt.setTimestamp(6, persona.getCreate_date());
+          pstmt.setInt(7, persona.getId());
             pstmt.executeUpdate(); // Ejecuta la actualizacion de los datos
         }
     }
