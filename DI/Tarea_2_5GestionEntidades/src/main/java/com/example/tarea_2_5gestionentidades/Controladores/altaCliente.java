@@ -8,19 +8,21 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.sql.*;
 import java.time.LocalDateTime;
 
 public class altaCliente
 {
     @FXML
-    private TextField fieldNombre,fieldAccion,fieldId,fieldSecuencia,fieldEstado;// Campo de texto para añadir registosr
-
+    private TextField fieldNombre,fieldEstado,fieldSecuencia,fielAccion,fieldId,fieldAccion;
 
     private Action action; // Guardará la acción a editar
 
+
     // Metodo para crear una nueva entidad en la base de datos
     public void guardarNuevaEntidad() {
+
         String nombre = fieldNombre.getText();
         String estado = fieldEstado.getText();
         Integer secuencia = Integer.parseInt(fieldSecuencia.getText());

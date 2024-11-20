@@ -47,7 +47,7 @@ public class Users
     public IntegerProperty getIdProperty(){return id;}
     public Boolean getActivo(){return activo.get();}
     public BooleanProperty getActivoProperty(){return activo;}
-    
+
     public Timestamp getCreate_date(){return create_date.get();}
     public ObjectProperty<Timestamp> getCreate_dateProperty(){return create_date;}
     public String getLogin(){return login.get();}
