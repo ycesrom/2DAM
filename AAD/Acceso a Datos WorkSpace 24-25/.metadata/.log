@@ -2192,14 +2192,30 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+<<<<<<< HEAD
+!SESSION 2024-11-22 10:10:57.155 -----------------------------------------------
+eclipse.buildId=4.33.0.20240905-0613
+java.version=23.0.1
+java.vendor=Eclipse Adoptium
+=======
 !SESSION 2024-11-22 10:38:54.036 -----------------------------------------------
 eclipse.buildId=4.33.0.20240905-0613
 java.version=23
 java.vendor=Oracle Corporation
+>>>>>>> c7dedef18f49398e0360d36c7e2684c8552b0b74
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
 Framework arguments:  -product org.eclipse.epp.package.java.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
 
+<<<<<<< HEAD
+!ENTRY ch.qos.logback.classic 1 0 2024-11-22 10:10:58.578
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-11-22 10:11:01.450
+!MESSAGE Logback config file: C:\Users\2DAM\Documents\2DAM\AAD\Acceso a Datos WorkSpace 24-25\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.ui 4 4 2024-11-22 10:11:03.548
+=======
 !ENTRY ch.qos.logback.classic 1 0 2024-11-22 10:38:55.853
 !MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
 
@@ -2207,6 +2223,7 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.e
 !MESSAGE Logback config file: C:\Users\yerai\Documents\2DAM\AAD\Acceso a Datos WorkSpace 24-25\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
 
 !ENTRY org.eclipse.ui 4 4 2024-11-22 10:39:01.482
+>>>>>>> c7dedef18f49398e0360d36c7e2684c8552b0b74
 !MESSAGE Unable to create part
 !STACK 1
 org.eclipse.ui.PartInitException: Cannot determine URI for '/ConexionBD/src/mySql/MenuBD.java'.
@@ -2321,7 +2338,10 @@ org.eclipse.ui.PartInitException: Cannot determine URI for '/ConexionBD/src/mySq
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+<<<<<<< HEAD
+=======
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1454)
+>>>>>>> c7dedef18f49398e0360d36c7e2684c8552b0b74
 Caused by: org.eclipse.core.runtime.CoreException: Cannot determine URI for '/ConexionBD/src/mySql/MenuBD.java'.
 	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.create(ResourceFileBuffer.java:239)
 	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:116)
@@ -2338,8 +2358,13 @@ Caused by: org.eclipse.core.runtime.CoreException: Cannot determine URI for '/Co
 	at org.eclipse.ui.texteditor.AbstractTextEditor.lambda$1(AbstractTextEditor.java:3171)
 	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2285)
 	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3188)
+<<<<<<< HEAD
+	... 110 more
+!SUBENTRY 1 org.eclipse.core.filebuffers 4 0 2024-11-22 10:11:03.549
+=======
 	... 111 more
 !SUBENTRY 1 org.eclipse.core.filebuffers 4 0 2024-11-22 10:39:01.483
+>>>>>>> c7dedef18f49398e0360d36c7e2684c8552b0b74
 !MESSAGE Cannot determine URI for '/ConexionBD/src/mySql/MenuBD.java'.
 !STACK 1
 org.eclipse.core.runtime.CoreException: Cannot determine URI for '/ConexionBD/src/mySql/MenuBD.java'.
@@ -2468,6 +2493,14 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/ConexionBD/sr
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+<<<<<<< HEAD
+!SUBENTRY 2 org.eclipse.core.filebuffers 4 0 2024-11-22 10:11:03.550
+!MESSAGE Cannot determine URI for '/ConexionBD/src/mySql/MenuBD.java'.
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-11-22 10:11:03.912
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\2DAM'. If this is
+=======
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1454)
 !SUBENTRY 2 org.eclipse.core.filebuffers 4 0 2024-11-22 10:39:01.483
 !MESSAGE Cannot determine URI for '/ConexionBD/src/mySql/MenuBD.java'.
@@ -2475,6 +2508,7 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/ConexionBD/sr
 !ENTRY org.eclipse.egit.ui 2 0 2024-11-22 10:39:01.967
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\yerai'. If this is
+>>>>>>> c7dedef18f49398e0360d36c7e2684c8552b0b74
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
