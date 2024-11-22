@@ -22,7 +22,7 @@ import java.util.Scanner;
 			System.out.println("Conexión establecida"); 
 			 
 
-			String sql = "CREATE TABLE IF NOT EXISTS libros (id INT AUTO_INCREMENT PRIMARY KEY,titulo VARCHAR(255) NOT NULL,autor VARCHAR(255) NOT NULL,disponibilidad BOOLEAN DEFAULT TRUE,anioPublicacion INT NOT NULL)";
+			String sql = "CREATE TABLE IF NOT EXISTS libros (id INT AUTO_INCREMENT PRIMARY KEY,titulo VARCHAR(255) NOT NULL,autor VARCHAR(255) NOT NULL,disponibilidad BOOLEAN DEFAULT TRUE, anioPublicacion INT)";
 		    PreparedStatement pstmt = con.prepareStatement(sql); 
 		    pstmt.executeUpdate(sql);
 			            // Cerrar recursos 
@@ -41,8 +41,8 @@ import java.util.Scanner;
 			Class.forName(driver); 
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/basedatos", "root",""); 
 			System.out.println("Conexión establecida"); 
-			 
-			try (Scanner entrada = new Scanner(System.in)) {
+			Scanner entrada = new Scanner(System.in);
+			
 				String titulo,autor;
 				boolean disponibilidad;
 				int anioPublicacion;
@@ -68,7 +68,7 @@ import java.util.Scanner;
 				    pstmt.setInt(4, anioPublicacion);
 				    pstmt.executeUpdate();
 				            // Cerrar recursos 
-			}
+			
 			con.close(); 
 			 
 			        } catch (Exception e) { 
@@ -81,13 +81,14 @@ import java.util.Scanner;
 		{
 			String driver="com.mysql.cj.jdbc.Driver";
 			
-			try 
-			{
+			try{
+				
+				Scanner entrada = new Scanner(System.in);
 				Class.forName(driver);
 				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/basedatos", "root","");
 				System.out.println("Conexion establecida");
 				
-				try (Scanner entrada = new Scanner(System.in)) {
+				  
 					boolean disponibilidad;
 					int id;
 					System.out.println("Introduzca la id del libro: ");
@@ -100,12 +101,14 @@ import java.util.Scanner;
 					pstmt.setBoolean(1, disponibilidad);
 					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
-				}
+				
+				
 			}catch(Exception e) 
 			{
 				System.out.println("Error: "+e);
 				
 			}
+			
 		}
 		
 		
@@ -113,13 +116,12 @@ import java.util.Scanner;
 		{
 			String driver="com.mysql.cj.jdbc.Driver";
 			
-			try 
-			{
+			try{
 				Class.forName(driver);
 				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/basedatos", "root","");
 				System.out.println("Conexion establecida");
+				Scanner entrada = new Scanner(System.in);
 				
-				try (Scanner entrada = new Scanner(System.in)) {
 					int id;
 					System.out.println("Introduzca la id del libro: ");
 					id=entrada.nextInt();
@@ -128,7 +130,7 @@ import java.util.Scanner;
 					PreparedStatement pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1,id);
 					pstmt.executeUpdate();
-				}
+				
 			}catch(Exception e) 
 			{
 				System.out.println("Error: "+e);
@@ -141,8 +143,8 @@ import java.util.Scanner;
 	   {
 		   String driver="com.mysql.cj.jdbc.Driver";
 			
-			try (Scanner entrada = new Scanner(System.in)) 
-			{
+			Scanner entrada = new Scanner(System.in); 
+			try {
 				Class.forName(driver);
 				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/basedatos", "root","");
 				System.out.println("Conexion establecida");
@@ -177,7 +179,7 @@ import java.util.Scanner;
 	{
 		int opcion=0;
 		do {
-		try (Scanner entrada = new Scanner(System.in)) {
+			Scanner entrada = new Scanner(System.in);
 			System.out.println("1.Crear la tabla libros si no existe");
 			System.out.println("2.Insertar un nuevo libro");
 			System.out.println("3.Modificar la disponiblidad de un libro");
@@ -198,7 +200,7 @@ import java.util.Scanner;
 				}
 			
 			}
-		}
+		
 		}while(opcion!=6);
 		
 		 
