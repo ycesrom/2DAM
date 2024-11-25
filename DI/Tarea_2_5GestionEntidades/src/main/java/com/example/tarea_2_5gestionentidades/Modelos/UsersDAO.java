@@ -13,18 +13,26 @@ import java.util.List;
 public class UsersDAO
 {
     @FXML
-    private TextField fieldActivo,fieldPassword,fieldLogin,fieldActionId,fieldCreateUid;
+    private static TextField fieldActivo;
+    @FXML
+    private static TextField fieldPassword;
+    @FXML
+    private static TextField fieldLogin;
+    @FXML
+    private static TextField fieldActionId;
+    @FXML
+    private static TextField fieldCreateUid;
 
-    public void altaUsuario()
+    public static void altaUsuario(Boolean activo, String password, String login, Integer actionId, Integer createUid)
     {
         Users user = new Users();
         try(Connection con=ConexionDB.getConnection())
         {
-            Boolean activo = Boolean.parseBoolean(fieldActivo.getText());
-            String password = fieldPassword.getText();
-            String login = fieldLogin.getText();
-            Integer actionId = Integer.parseInt(fieldActionId.getText());
-            Integer createUid = Integer.parseInt(fieldCreateUid.getText());
+           Boolean.parseBoolean(fieldActivo.getText());
+           fieldPassword.getText();
+           fieldLogin.getText();
+           Integer.parseInt(fieldActionId.getText());
+           Integer.parseInt(fieldCreateUid.getText());
             String sql="INSERT INTO res_users(active,password,login,actionId,createUid) VALUES (?,?,?,?,?)";
             PreparedStatement ps=con.prepareStatement(sql);
 

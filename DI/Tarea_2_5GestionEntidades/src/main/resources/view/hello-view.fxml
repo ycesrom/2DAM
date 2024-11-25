@@ -14,19 +14,19 @@
    <children>
       <TableView layoutX="60.0" layoutY="121.0" prefHeight="200.0" prefWidth="575.0">
          <columns>
-            <TableColumn prefWidth="119.0" text="ID ACCION" />
-            <TableColumn prefWidth="116.0" text="Fecha" />
-            <TableColumn prefWidth="154.0" text="Nombre" />
-            <TableColumn prefWidth="218.0" text="Estado" />
+            <TableColumn fx:id="TableIdAccion" prefWidth="119.0" text="ID ACCION" />
+            <TableColumn fx:id="TableFecha" prefWidth="116.0" text="Fecha" />
+            <TableColumn fx:id="TableNombre" prefWidth="154.0" text="Nombre" />
+            <TableColumn fx:id="TableEstado" prefWidth="218.0" text="Estado" />
          </columns>
       </TableView>
-      <Label layoutX="51.0" layoutY="14.0" text="ACCIONES">
+      <Label fx:id="labelAcciones" layoutX="51.0" layoutY="14.0" text="ACCIONES">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="51.0" layoutY="66.0" text="Nombre Accion" />
-      <TextField layoutX="142.0" layoutY="62.0" />
-      <Button fx:id="btnAñadir" layoutX="301.0" layoutY="56.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="25.0">
+      <Label fx:id="labelNombre" layoutX="51.0" layoutY="66.0" text="Nombre Accion" />
+      <TextField fx:id="fieldBuscar" layoutX="142.0" layoutY="62.0" />
+      <Button fx:id="btnBuscar" layoutX="301.0" layoutY="56.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="25.0">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -36,7 +36,7 @@
          </graphic></Button>
       <Button layoutX="404.0" layoutY="23.0" mnemonicParsing="false">
          <graphic>
-            <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnAñadir" fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../fotos/añadir.png" />
                </image>
@@ -44,7 +44,7 @@
          </graphic></Button>
       <Button layoutX="465.0" layoutY="22.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="39.0">
          <graphic>
-            <ImageView fitHeight="36.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnEditar" fitHeight="36.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../fotos/editar.png" />
                </image>
@@ -53,14 +53,14 @@
       </Button>
       <Button layoutX="522.0" layoutY="23.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="46.0">
          <graphic>
-            <ImageView fitHeight="37.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnBorrar" fitHeight="37.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../fotos/borrar.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="580.0" layoutY="19.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="36.0">
+      <Button fx:id="btnMostrar" layoutX="580.0" layoutY="19.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="36.0">
          <graphic>
             <ImageView fitHeight="47.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
