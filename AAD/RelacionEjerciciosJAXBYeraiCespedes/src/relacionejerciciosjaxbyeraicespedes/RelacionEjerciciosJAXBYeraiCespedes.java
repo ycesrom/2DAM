@@ -29,9 +29,9 @@ public class RelacionEjerciciosJAXBYeraiCespedes {
             // Crear el unmarshaller
             Unmarshaller unmarshaller=context.createUnmarshaller();
             // Leer el archivo XML
-            File file = new File("C:\\Users\\yerai\\Documents\\2DAM\\AAD\\RelacionEjerciciosJAXBYeraiCespedes\\src\\relacionejerciciosjaxbyeraicespedes\\tienda.xml");
+            File file = new File("C:\\Users\\2DAM\\Documents\\2DAM\\AAD\\RelacionEjerciciosJAXBYeraiCespedes\\src\\relacionejerciciosjaxbyeraicespedes\\tienda.xml");
             // Hacer el unmarshalling del archivo XML a un objeto Tienda
-            Tienda tienda = (Tienda) unmarshaller.unmarshal(file);
+             Tienda tienda = (Tienda) unmarshaller.unmarshal(file);
             
              // Imprimir los datos de la tienda
             System.out.println("Nombre Tienda: "+tienda.getNombre());
@@ -62,7 +62,7 @@ public class RelacionEjerciciosJAXBYeraiCespedes {
             // Crear el unmarshaller
             Unmarshaller unmarshaller=context.createUnmarshaller();
             // Leer el archivo XML
-            File file = new File("C:\\Users\\yerai\\Documents\\2DAM\\AAD\\RelacionEjerciciosJAXBYeraiCespedes\\src\\relacionejerciciosjaxbyeraicespedes\\biblioteca.xml");
+            File file = new File("C:\\Users\\2DAM\\Documents\\2DAM\\AAD\\RelacionEjerciciosJAXBYeraiCespedes\\src\\relacionejerciciosjaxbyeraicespedes\\biblioteca.xml");
             // Hacer el unmarshalling del archivo XML a un objeto Biblioteca
             Biblioteca biblioteca = (Biblioteca) unmarshaller.unmarshal(file);
                     
@@ -99,7 +99,7 @@ public class RelacionEjerciciosJAXBYeraiCespedes {
              // Crear el unmarshaller
             Unmarshaller unmarshaller=context.createUnmarshaller();
              // Leer el archivo XML
-            File file = new File("C:\\Users\\yerai\\Documents\\2DAM\\AAD\\RelacionEjerciciosJAXBYeraiCespedes\\src\\relacionejerciciosjaxbyeraicespedes\\universidad.xml");
+            File file = new File("C:\\Users\\2DAM\\Documents\\2DAM\\AAD\\RelacionEjerciciosJAXBYeraiCespedes\\src\\relacionejerciciosjaxbyeraicespedes\\universidad.xml");
              // Hacer el unmarshalling del archivo XML a un objeto Universidad
             Universidad universidad = (Universidad) unmarshaller.unmarshal(file);
             
