@@ -35,6 +35,15 @@ class MainActivity : ComponentActivity()
     }
 
     @Composable
+    fun ScaffoldYerai()
+    {
+        Scaffold(topBar ={},
+            content = {paddingValues ->
+                Column(modifier = Modifier.padding(paddingValues).fillMaxSize())
+                {  }
+            })
+    }
+    @Composable
     fun miText(modifier: Modifier)
     {
         Column(Modifier.fillMaxSize())
@@ -47,6 +56,12 @@ class MainActivity : ComponentActivity()
             Text(text = "Esto es un ejemplo", style= TextStyle(textDecoration = TextDecoration.LineThrough))
             Text(text = "Esto es un ejemplo", style=TextStyle(textDecoration = TextDecoration.Underline))
         }
+    }
+
+    @Composable
+    fun botonesYerai()
+    {
+
     }
 
 
