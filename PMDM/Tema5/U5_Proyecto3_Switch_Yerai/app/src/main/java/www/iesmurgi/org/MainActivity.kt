@@ -46,19 +46,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             U5_Proyecto3_Switch_YeraiTheme {
 
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Row(modifier = Modifier.fillMaxSize().padding(innerPadding))
-                    {
-
-
-                    }
                     myPreview()
 
                 }
             }
         }
     }
-}
+
 @Composable
 fun mySwitch(name: String,modifier: Modifier=Modifier) {
 
