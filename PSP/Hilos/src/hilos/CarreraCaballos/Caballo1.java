@@ -48,15 +48,7 @@ public class Caballo1 extends Thread
         } else {
             System.out.println(nombre + " cruzó la meta, pero no ganó.");
         }
-
        
-
-       
-        
-         
-        
-     
-            
     }
     
 }

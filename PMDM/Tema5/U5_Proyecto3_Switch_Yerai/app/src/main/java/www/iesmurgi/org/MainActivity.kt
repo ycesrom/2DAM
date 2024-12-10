@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MySwitch(modifier: Modifier = Modifier) {
 
-    // Caja para mostrar una imagen circular en la parte superior derecha
+    // Caja para mostrar una imagen circular en la parte superior derecha{
     Box(modifier = Modifier.fillMaxSize().padding(top = 100.dp).padding(end = 10.dp), contentAlignment = Alignment.TopEnd) {
         val image1 = painterResource(R.drawable.f1) // Carga de la imagen desde los recursos
         CircularImage(image1) // Muestra la imagen en forma circular
@@ -183,7 +183,8 @@ fun MySwitch(modifier: Modifier = Modifier) {
                             Icon(
                                 imageVector = Icons.Filled.Close,
                                 contentDescription = "Unckede",
-                                modifier = Modifier.size(SwitchDefaults.IconSize),
+                                modifier =
+                                .size(SwitchDefaults.IconSize),
                                 tint = Color.Red
                             )
                         }
