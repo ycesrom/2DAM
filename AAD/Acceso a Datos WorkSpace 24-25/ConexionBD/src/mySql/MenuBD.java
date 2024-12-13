@@ -11,7 +11,7 @@ import java.util.Scanner;
 		public static void main(String[] args) 
 		{ 
 			menu();
-		}
+		} 
 
 	public static void crearTabla() 
 	{
