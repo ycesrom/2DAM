@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
 
 import infoPersonas.Persona;
 
@@ -42,18 +44,52 @@ public class CrearFactura {
 		
 	}
 	
-	static void eliminarFactura() 
+	static void eliminarFactura(ArrayList<Factura> facturas, Scanner sc) 
 	{
+		int id;
+		System.out.println("Introduzca el id de la factura a eliminar");
+		id=sc.nextInt();
+		Iterator<Factura> it=facturas.iterator();
+		while(it.hasNext()) 
+		{
+			Factura aux=it.next();
+			
+			if(aux.obtenerIdFactura()==id) 
+			{
+				it.remove();
+			}else 
+			{
+				System.out.println("Id de factura no encontrado");
+			}
+		}
 		
 	}
 	
-	static void modificarFactura() 
+	static void modificarFactura(ArrayList<Factura> facturas,Scanner sc) 
 	{
+		int id;
+		System.out.println("Introduzca el id de la factura a modificar");
+		id=sc.nextInt();
+		
+		Iterator<Factura> it=facturas.iterator();
+		while(it.hasNext()) 
+		{
+			Factura aux=it.next();
+			
+			if(aux.obtenerIdFactura()==id) 
+			{
+				
+			}else 
+			{
+				System.out.println("Id de factura no encontrado");
+			}
+		}
 		
 	}
 	
 	static void menu() 
 	{
+		Scanner entrada=new Scanner(System.in);
 		int opcion=0;
 		ArrayList<Factura> facturas=new ArrayList<Factura>();
 		do{
@@ -61,13 +97,13 @@ public class CrearFactura {
 			System.out.println("2.Eliminar Factura");
 			System.out.println("3.Modificar Factura");
 			System.out.println("4.Salir");
-			
+			opcion=entrada.nextInt();
 		
 			switch(opcion) 
 			{
 			case 1->{insertarFactura(facturas);}
-			case 2->{eliminarFactura();}
-			case 3->{modificarFactura();}
+			case 2->{eliminarFactura(facturas,entrada);}
+			case 3->{modificarFactura(facturas,entrada);}
 			default->{System.out.println("Programa Finalizado");}
 			
 			}
