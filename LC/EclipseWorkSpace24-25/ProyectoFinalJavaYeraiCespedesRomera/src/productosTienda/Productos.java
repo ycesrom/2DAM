@@ -18,5 +18,35 @@ public class Productos extends Persona
 		// TODO Auto-generated constructor stub
 	}
 	
+	void establecerNombreProducto(String nombreProducto) 
+	{
+		this.nombreProducto=nombreProducto;
+	}
+	
+	protected String obtenerNombreProducto() 
+	{
+		return nombreProducto;
+	}
+	
+	void establecerCantidad(int cantidad) 
+	{
+		this.cantidad=cantidad;
+	}
+	
+	protected int obtenerCantidad() 
+	{
+		return cantidad;
+	}
+	
+	void establecerPrecio(double precio) 
+	{
+		this.precio=precio;
+	}
+	
+	protected double obtenerPrecio() 
+	{
+		return precio;
+	}
+	
 
 }

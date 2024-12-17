@@ -6,7 +6,7 @@ public class Persona extends Direccion implements Comparable<Persona>
 	private String apellidos;
 	private String dni;
 	private int edad;
-	Direccion direccion;
+	protected Direccion direccion;
 	
 	
 	public Persona(String nombre, String apellidos,String dni,int edad,String calle, int numero, int cp, String provincia) 
@@ -24,7 +24,7 @@ public class Persona extends Direccion implements Comparable<Persona>
 		return "Persona: "+ "nombre: " + nombre + ", apellidos: " + apellidos + ", Dni: " + dni + ", edad: " + edad
 		+", calle: "+calle+", numero: "+numero+", cp: "+cp+", provincia: "+provincia;
 	}
-	String obtenerNombre() 
+	protected String obtenerNombre() 
 	{
 		return nombre;
 	}
@@ -32,14 +32,14 @@ public class Persona extends Direccion implements Comparable<Persona>
 	 {
 		this.nombre = nombre;
 	}
-	 String obtenerApellidos() {
+	 protected String obtenerApellidos() {
 		return apellidos;
 	}
 	 void establecerApellidos(String apellidos) 
 	 {
 		this.apellidos = apellidos;
 	}
-	 String obtenerDni() 
+	 protected String obtenerDni() 
 	 {
 		return dni;
 	}
@@ -47,7 +47,7 @@ public class Persona extends Direccion implements Comparable<Persona>
 	 {
 		this.dni = dni;
 	}
-	 int obtenerEdad()
+	 protected int obtenerEdad()
 	 {
 		return edad;
 	}

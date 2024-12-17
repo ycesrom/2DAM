@@ -26,14 +26,14 @@ public class Direccion
 	 {
 		this.calle = calle;
 	}
-	 int obtenerNumero() {
+	 protected int obtenerNumero() {
 		return numero;
 	}
 	 void establecerNumero(int numero) 
 	 {
 		this.numero = numero;
 	}
-	 int obtenerCp() 
+	 protected int obtenerCp() 
 	 {
 		return cp;
 	}
@@ -41,7 +41,7 @@ public class Direccion
 	 {
 		this.cp = cp;
 	}
-	 String obtenerProvincia() 
+	 protected String obtenerProvincia() 
 	 {
 		return provincia;
 	}
