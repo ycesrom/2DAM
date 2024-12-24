@@ -82,6 +82,7 @@ public class CrearFactura {
 		
 	}
 	
+<<<<<<< HEAD
 	
 	static void insertarFactura(ArrayList<Factura> facturas,ArrayList<Persona> personas,ArrayList<Productos>productos) 
 	{
@@ -106,14 +107,53 @@ public class CrearFactura {
 		Scanner entrada=new Scanner(System.in);
 		System.out.println("Introduzca el id de la factura a eliminar");
 		int id=entrada.nextInt();
+=======
+	static void eliminarFactura(ArrayList<Factura> facturas, Scanner sc) 
+	{
+		int id;
+		System.out.println("Introduzca el id de la factura a eliminar");
+		id=sc.nextInt();
 		Iterator<Factura> it=facturas.iterator();
 		while(it.hasNext()) 
 		{
 			Factura aux=it.next();
+			
+			if(aux.obtenerIdFactura()==id) 
+			{
+				it.remove();
+			}else 
+			{
+				System.out.println("Id de factura no encontrado");
+			}
+		}
+		
+	}
+	
+	static void modificarFactura(ArrayList<Factura> facturas,Scanner sc) 
+	{
+		int id;
+		System.out.println("Introduzca el id de la factura a modificar");
+		id=sc.nextInt();
+		
+>>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
+		Iterator<Factura> it=facturas.iterator();
+		while(it.hasNext()) 
+		{
+			Factura aux=it.next();
+<<<<<<< HEAD
 			if(aux.obtenerIdFactura()==id) 
 			{
 				it.remove();
 				System.out.println("Factura eliminada correctamente");
+=======
+			
+			if(aux.obtenerIdFactura()==id) 
+			{
+				
+			}else 
+			{
+				System.out.println("Id de factura no encontrado");
+>>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
 			}
 		}
 		
@@ -147,7 +187,11 @@ public class CrearFactura {
 	static void menu() 
 	{
 		Scanner entrada=new Scanner(System.in);
+<<<<<<< HEAD
 		
+=======
+		int opcion=0;
+>>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
 		ArrayList<Factura> facturas=new ArrayList<Factura>();
 		ArrayList<Persona> personas=new ArrayList<Persona>();
 		ArrayList<Productos>productos=new ArrayList<Productos>();
@@ -159,16 +203,26 @@ public class CrearFactura {
 			System.out.println("1.Crear Factura");
 			System.out.println("2.Eliminar Factura");
 			System.out.println("3.Modificar Factura");
+<<<<<<< HEAD
 			System.out.println("4.Ver Factura");
 			System.out.println("5.Salir");
+=======
+			System.out.println("4.Salir");
+>>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
 			opcion=entrada.nextInt();
 		
 			switch(opcion) 
 			{
+<<<<<<< HEAD
 			case 1->{insertarFactura(facturas,personas,productos);}
 			case 2->{eliminarFactura(facturas);}
 			case 3->{modificarFactura(facturas,personas);}
 			case 4->{verFactura(facturas);}
+=======
+			case 1->{insertarFactura(facturas);}
+			case 2->{eliminarFactura(facturas,entrada);}
+			case 3->{modificarFactura(facturas,entrada);}
+>>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
 			default->{System.out.println("Programa Finalizado");}
 			
 			}
