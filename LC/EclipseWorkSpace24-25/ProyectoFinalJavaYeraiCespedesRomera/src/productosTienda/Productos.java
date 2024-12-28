@@ -17,27 +17,27 @@ public class Productos
 		// TODO Auto-generated constructor stub
 	}
 	
-	void establecerNombreProducto(String nombreProducto) 
+	public void establecerNombreProducto(String nombreProducto) 
 	{
 		this.nombreProducto=nombreProducto;
 	}
 	
-	protected String obtenerNombreProducto() 
+	public String obtenerNombreProducto() 
 	{
 		return nombreProducto;
 	}
 	
-	void establecerCantidad(int cantidad) 
+	public void establecerCantidad(int cantidad) 
 	{
 		this.cantidad=cantidad;
 	}
 	
-	protected int obtenerCantidad() 
+	public int obtenerCantidad() 
 	{
 		return cantidad;
 	}
 	
-	void establecerPrecio(double precio) 
+	public void establecerPrecio(double precio) 
 	{
 		this.precio=precio;
 	}

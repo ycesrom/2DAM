@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -11,7 +12,8 @@ import infoPersonas.Persona;
 import productosTienda.Productos;
 
 
-public class CrearFactura {
+public class CrearFactura 
+{
 
 	public static void main(String[] args) 
 	{
@@ -61,6 +63,7 @@ public class CrearFactura {
 	
 	static void insertarProductos(ArrayList<Productos>productos) 
 	{
+		try {
 		Scanner entrada=new Scanner(System.in);
 		System.out.println("Cuantos productos desea añadir");
 		int cantidadP=entrada.nextInt();
@@ -78,12 +81,14 @@ public class CrearFactura {
 		 entrada.nextLine();
 
 		}
-		
+		}catch(InputMismatchException e) 
+		{
+			System.out.println("Error "+e);
+		}
 		
 	}
 	
-<<<<<<< HEAD
-	
+
 	static void insertarFactura(ArrayList<Factura> facturas,ArrayList<Persona> personas,ArrayList<Productos>productos) 
 	{
 		Scanner entrada=new Scanner(System.in);
@@ -101,13 +106,6 @@ public class CrearFactura {
 	}
 	
 	
-	
-	static void eliminarFactura(ArrayList<Factura>facturas) 
-	{
-		Scanner entrada=new Scanner(System.in);
-		System.out.println("Introduzca el id de la factura a eliminar");
-		int id=entrada.nextInt();
-=======
 	static void eliminarFactura(ArrayList<Factura> facturas, Scanner sc) 
 	{
 		int id;
@@ -123,59 +121,142 @@ public class CrearFactura {
 				it.remove();
 			}else 
 			{
-				System.out.println("Id de factura no encontrado");
+				
 			}
 		}
 		
+		
 	}
 	
-	static void modificarFactura(ArrayList<Factura> facturas,Scanner sc) 
+	
+	static void eliminarProductos(ArrayList<Productos>productos,Scanner sc) 
 	{
-		int id;
-		System.out.println("Introduzca el id de la factura a modificar");
-		id=sc.nextInt();
+		String producto="";
+		System.out.println("Introduzca el nombre del producto a eliminar");
+		producto=sc.nextLine();
+		boolean encontrado=false;
+		Iterator<Productos> it=productos.iterator();
 		
->>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
-		Iterator<Factura> it=facturas.iterator();
 		while(it.hasNext()) 
 		{
-			Factura aux=it.next();
-<<<<<<< HEAD
-			if(aux.obtenerIdFactura()==id) 
+			Productos aux=it.next();
+			if(aux.obtenerNombreProducto().equalsIgnoreCase(producto)) 
 			{
 				it.remove();
-				System.out.println("Factura eliminada correctamente");
-=======
-			
-			if(aux.obtenerIdFactura()==id) 
-			{
-				
-			}else 
-			{
-				System.out.println("Id de factura no encontrado");
->>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
+				encontrado=true;
 			}
+		
+			
 		}
 		
+		if(encontrado==true) 
+		{
+			System.out.println("Producto eliminado");
+		}else 
+		{
+			System.out.println("Producto no encontrado");
+		}
+
 	}
 	
-	static void modificarFactura(ArrayList<Factura>facturas,ArrayList<Persona> personas) 
+	static void modificarProductos(ArrayList<Productos>productos,Scanner sc) 
+	{
+		String producto="";
+		System.out.println("Introduzca el nombre del producto a modificar");
+		producto=sc.nextLine();
+		boolean encontrado=false;
+		Iterator<Productos> it=productos.iterator();
+		
+		while(it.hasNext()) 
+		{
+			int opcion=0;
+			Productos aux=it.next();
+			if(aux.obtenerNombreProducto().equalsIgnoreCase(producto)) 
+			{
+				System.out.println("1.Cambiar nombre");
+				System.out.println("2.Cambiar cantidad");
+				System.out.println("3.Cambiar precio");
+				System.out.println("4.Cambiar todo");
+				opcion=sc.nextInt();
+				
+				sc.nextLine();
+				encontrado=true;
+				
+				switch(opcion) 
+				{
+				case 1-> {System.out.println("Introduzca el nuevo nombre");
+				String nombre=sc.nextLine();
+				aux.establecerNombreProducto(nombre);}
+				case 2->{System.out.println("Introduzca la nueva cantidad");
+						int cantidad=sc.nextInt();
+						aux.establecerCantidad(cantidad);}
+				case 3->{System.out.println("Introduzca el nuevo precio");
+						double precio=sc.nextDouble();
+						aux.establecerPrecio(precio);}
+				case 4->{System.out.println("Introduzca el nuevo nombre");
+				String nombre=sc.nextLine();
+				aux.establecerNombreProducto(nombre);
+				System.out.println("Introduzca la nueva cantidad");
+						int cantidad=sc.nextInt();
+						aux.establecerCantidad(cantidad);
+				System.out.println("Introduzca el nuevo precio");
+						double precio=sc.nextDouble();
+						aux.establecerPrecio(precio);}
+				
+				}
+			}
+			
+		}
+		
+		if(encontrado==true) 
+		{
+			System.out.println("Producto modificado");
+		}else 
+		{
+			System.out.println("Producto no encontrado");
+		}
+
+	}
+	
+	
+	static void modificarFactura(ArrayList<Factura>facturas,ArrayList<Persona> personas,ArrayList<Productos>productos) 
 	{
 		Scanner entrada=new Scanner(System.in);
-		System.out.println("Introduzca el DNI del cliente para modificar la factura:");
-	    String dni = entrada.nextLine();
-		// Buscar la persona con el DNI
-	    Persona persona = buscarPersonaPorDni(personas, dni);
-		
+		System.out.println("Introduzca el id de la factura para modificar la factura:");
+	    int id = entrada.nextInt();
+	   
+	    int opcion=0;
+	    do 
+	    {
+	    	System.out.println("1.Añadir mas productos a la factura");
+	    	System.out.println("2.Eliminar productos de la factura");
+	    	System.out.println("3.Modificar productos de la factura");
+	    	System.out.println("4.Salir");
+	    	opcion=entrada.nextInt();
+	    	entrada.nextLine();
+	  
+	    switch(opcion) 
+	    {
+	    case 1-> insertarProductos(productos);
+	    case 2->{eliminarProductos(productos,entrada);}
+	    case 3->{modificarProductos(productos,entrada);}
+	    default-> System.out.println("Modificacion finalizada");
+	   
+	    
+	    }
+		 }while(opcion<4);
 	}
 	
-	static void verFactura(ArrayList<Factura> facturas) {
+	static void verFactura(ArrayList<Factura> facturas) 
+	{
         Scanner entrada = new Scanner(System.in);
         System.out.println("Introduzca el ID de la factura que desea ver:");
         int id = entrada.nextInt();
         
-        for (Factura factura : facturas) {
-            if (factura.obtenerIdFactura() == id) {
+        for (Factura factura : facturas) 
+        {
+            if (factura.obtenerIdFactura() == id) 
+            {
                 System.out.println(factura);  // Muestra la factura usando el método toString de Factura
                 return;
             }
@@ -187,42 +268,34 @@ public class CrearFactura {
 	static void menu() 
 	{
 		Scanner entrada=new Scanner(System.in);
-<<<<<<< HEAD
-		
-=======
+
 		int opcion=0;
->>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
+
 		ArrayList<Factura> facturas=new ArrayList<Factura>();
 		ArrayList<Persona> personas=new ArrayList<Persona>();
 		ArrayList<Productos>productos=new ArrayList<Productos>();
 		cargarContactos1(personas);
-		int opcion;
+		
 		do{		
 			
 
 			System.out.println("1.Crear Factura");
 			System.out.println("2.Eliminar Factura");
 			System.out.println("3.Modificar Factura");
-<<<<<<< HEAD
 			System.out.println("4.Ver Factura");
 			System.out.println("5.Salir");
-=======
-			System.out.println("4.Salir");
->>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
+
 			opcion=entrada.nextInt();
 		
 			switch(opcion) 
 			{
-<<<<<<< HEAD
+
 			case 1->{insertarFactura(facturas,personas,productos);}
-			case 2->{eliminarFactura(facturas);}
-			case 3->{modificarFactura(facturas,personas);}
-			case 4->{verFactura(facturas);}
-=======
-			case 1->{insertarFactura(facturas);}
 			case 2->{eliminarFactura(facturas,entrada);}
-			case 3->{modificarFactura(facturas,entrada);}
->>>>>>> db5331f77193733effc2e50c8f77c0bad4bdf89e
+			case 3->{modificarFactura(facturas,personas,productos);}
+			case 4->{verFactura(facturas);}
+
+			
 			default->{System.out.println("Programa Finalizado");}
 			
 			}

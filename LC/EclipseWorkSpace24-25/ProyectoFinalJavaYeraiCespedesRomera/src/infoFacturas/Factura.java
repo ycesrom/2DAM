@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import infoPersonas.Persona;
 import productosTienda.Productos;
 
-public class Factura {
+public class Factura 
+{
     private static int contador = 1;
     private int idFactura;
     private String nombreEmpresa;
@@ -14,7 +15,8 @@ public class Factura {
     private ArrayList<Productos> productos;// Almacena un solo cliente
 
     // Constructor que recibe un cliente específico
-    public Factura(String nombreEmpresa, String cif, Persona cliente,ArrayList<Productos> productos) {
+    public Factura(String nombreEmpresa, String cif, Persona cliente,ArrayList<Productos> productos) 
+    {
         this.idFactura = contador++;
         this.nombreEmpresa = nombreEmpresa;
         this.cif = cif;
@@ -22,19 +24,23 @@ public class Factura {
         this.productos=productos;
     }
 
-    public int obtenerIdFactura() {
+    public int obtenerIdFactura() 
+    {
         return idFactura;
     }
 
-    public String obtenerNombreEmpresa() {
+    public String obtenerNombreEmpresa() 
+    {
         return nombreEmpresa;
     }
 
-    public String obtenerCif() {
+    public String obtenerCif() 
+    {
         return cif;
     }
 
-    public Persona obtenerCliente() {
+    public Persona obtenerCliente() 
+    {
         return cliente;
     }
     
@@ -44,7 +50,8 @@ public class Factura {
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "Factura ID: " + idFactura + "\n" +
                "Empresa: " + nombreEmpresa + "\n" +
                "CIF: " + cif + "\n" +
