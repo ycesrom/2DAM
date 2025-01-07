@@ -6,14 +6,17 @@ public class Productos
 	private String nombreProducto;
 	private int cantidad;
 	private double precio;
+	private double total;
+	
 
 
-	public Productos(String nombreProducto,int cantidad,double precio)
+	public Productos(String nombreProducto,int cantidad,double precio,double total)
 	{
 		
 		this.nombreProducto=nombreProducto;
 		this.cantidad=cantidad;
 		this.precio=precio;
+		this.total=total;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -42,9 +45,19 @@ public class Productos
 		this.precio=precio;
 	}
 	
-	protected double obtenerPrecio() 
+	public double obtenerPrecio() 
 	{
-		return precio;
+		return precio*cantidad;
+	}
+	
+	public void establecerTotal(double total)
+	{
+		
+	}
+	
+	public double obtenerTotal() 
+	{
+		return total;
 	}
 	
 	@Override

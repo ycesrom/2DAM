@@ -1,7 +1,9 @@
 package infoFacturas;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -77,7 +79,8 @@ public class CrearFactura
 		int cantidad=entrada.nextInt();
 		System.out.println("Introduzca el precio");
 		double precio=entrada.nextDouble();
-		productos.add(new Productos(nombreProducto,cantidad,precio));
+		double total=cantidad*precio;
+		productos.add(new Productos(nombreProducto,cantidad,precio,total));
 		 entrada.nextLine();
 
 		}
@@ -166,10 +169,11 @@ public class CrearFactura
 		producto=sc.nextLine();
 		boolean encontrado=false;
 		Iterator<Productos> it=productos.iterator();
-		
-		while(it.hasNext()) 
+		int opcion=0;
+		while(it.hasNext()&&opcion<5) 
 		{
-			int opcion=0;
+			
+			
 			Productos aux=it.next();
 			if(aux.obtenerNombreProducto().equalsIgnoreCase(producto)) 
 			{
@@ -177,6 +181,7 @@ public class CrearFactura
 				System.out.println("2.Cambiar cantidad");
 				System.out.println("3.Cambiar precio");
 				System.out.println("4.Cambiar todo");
+				System.out.println("5.Salir");
 				opcion=sc.nextInt();
 				
 				sc.nextLine();
@@ -263,6 +268,24 @@ public class CrearFactura
         }
         System.out.println("Factura no encontrada.");
     }
+	
+	static void facturaTxt(ArrayList<Factura> facturas) 
+	{
+		try(BufferedWriter archivo=new BufferedWriter(new FileWriter("C:\\Users\\yerai\\Downloads\\factura.txt")))
+		{
+			for(Factura factura:facturas) 
+			{
+				archivo.write(factura.toString());
+				archivo.newLine();
+			}
+			archivo.close();
+			
+		}catch(IOException e) 
+		{
+			
+		}
+		
+	}
 
 	
 	static void menu() 
@@ -283,7 +306,8 @@ public class CrearFactura
 			System.out.println("2.Eliminar Factura");
 			System.out.println("3.Modificar Factura");
 			System.out.println("4.Ver Factura");
-			System.out.println("5.Salir");
+			System.out.println("5.Factura terminada");
+			System.out.print("6.Salir");
 
 			opcion=entrada.nextInt();
 		
@@ -294,13 +318,14 @@ public class CrearFactura
 			case 2->{eliminarFactura(facturas,entrada);}
 			case 3->{modificarFactura(facturas,personas,productos);}
 			case 4->{verFactura(facturas);}
-
+			case 5->{facturaTxt(facturas);
+			System.out.println("Factura creada");}
 			
 			default->{System.out.println("Programa Finalizado");}
 			
 			}
 			
-		}while(opcion<5);
+		}while(opcion<6);
 	}
 	
 	

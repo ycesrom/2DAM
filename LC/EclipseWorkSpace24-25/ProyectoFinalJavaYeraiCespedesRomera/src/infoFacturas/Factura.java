@@ -13,7 +13,8 @@ public class Factura
     private String cif;
     private Persona cliente;
     private ArrayList<Productos> productos;// Almacena un solo cliente
-
+    
+    
     // Constructor que recibe un cliente específico
     public Factura(String nombreEmpresa, String cif, Persona cliente,ArrayList<Productos> productos) 
     {
@@ -22,6 +23,8 @@ public class Factura
         this.cif = cif;
         this.cliente = cliente;
         this.productos=productos;
+       
+      
     }
 
     public int obtenerIdFactura() 
@@ -48,15 +51,22 @@ public class Factura
     {
     	return productos;
     }
+    
+  
+    
 
     @Override
     public String toString() 
     {
+    	double total = 0;
+    for (Productos producto : productos) {
+        total += producto.obtenerPrecio();} 
         return "Factura ID: " + idFactura + "\n" +
                "Empresa: " + nombreEmpresa + "\n" +
                "CIF: " + cif + "\n" +
                "Cliente: " + (cliente != null ? cliente.obtenerNombre() : "Sin Cliente") + "\n"+
-               "Productos: "+obtenerProductos();
+               "Productos: "+obtenerProductos()+
+               "\n"+"Total: "+total +" Euros";
     }
 }
 
