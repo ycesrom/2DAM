@@ -5,7 +5,10 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -99,21 +102,29 @@ public class CrearFactura
 	    String dni = entrada.nextLine();
 		// Buscar la persona con el DNI
 	    Persona persona = buscarPersonaPorDni(personas, dni);
-	    
+	    if(persona==null) 
+	    {
+	    	System.out.println("Cliente no Encontrado");
+	    }else 
+	    {
 	    String nombreEmpresa="Ejido Store";
 	    String cif="B040567990";
-	    insertarProductos(productos);	   
+	    ArrayList<Productos> productosFactura=new ArrayList<>();
+	    insertarProductos(productosFactura);	   
 		
-			facturas.add(new Factura(nombreEmpresa,cif, persona,productos));
+			facturas.add(new Factura(nombreEmpresa,cif, persona,productosFactura));
+		}
 		
 	}
 	
 	
-	static void eliminarFactura(ArrayList<Factura> facturas, Scanner sc) 
+	static void eliminarFactura(ArrayList<Factura> facturas) 
 	{
 		int id;
+		Scanner sc=new Scanner(System.in);
 		System.out.println("Introduzca el id de la factura a eliminar");
 		id=sc.nextInt();
+		boolean eliminar=true;
 		Iterator<Factura> it=facturas.iterator();
 		while(it.hasNext()) 
 		{
@@ -122,10 +133,15 @@ public class CrearFactura
 			if(aux.obtenerIdFactura()==id) 
 			{
 				it.remove();
-			}else 
-			{
-				
+				eliminar=false;
 			}
+			if(eliminar=true) 
+			{
+					System.out.println("Id de factura no encontrado");
+			}
+			
+				
+			
 		}
 		
 		
@@ -231,6 +247,20 @@ public class CrearFactura
 	    int id = entrada.nextInt();
 	   
 	    int opcion=0;
+	    Factura facturaSeleccionada = null;
+	    for (Factura factura : facturas) {
+	        if (factura.obtenerIdFactura() == id) {
+	            facturaSeleccionada = factura;
+	            
+	        }
+	    }
+
+	    if (facturaSeleccionada == null) {
+	        System.out.println("Factura no encontrada.");
+	        return;
+	    }
+
+	    ArrayList<Productos> productosFactura = facturaSeleccionada.obtenerProductos();
 	    do 
 	    {
 	    	System.out.println("1.Añadir mas productos a la factura");
@@ -242,9 +272,9 @@ public class CrearFactura
 	  
 	    switch(opcion) 
 	    {
-	    case 1-> insertarProductos(productos);
-	    case 2->{eliminarProductos(productos,entrada);}
-	    case 3->{modificarProductos(productos,entrada);}
+	    case 1-> insertarProductos(productosFactura);
+	    case 2->{eliminarProductos(productosFactura,entrada);}
+	    case 3->{modificarProductos(productosFactura,entrada);}
 	    default-> System.out.println("Modificacion finalizada");
 	   
 	    
@@ -269,23 +299,48 @@ public class CrearFactura
         System.out.println("Factura no encontrada.");
     }
 	
-	static void facturaTxt(ArrayList<Factura> facturas) 
-	{
-		try(BufferedWriter archivo=new BufferedWriter(new FileWriter("C:\\Users\\yerai\\Downloads\\factura.txt")))
-		{
-			for(Factura factura:facturas) 
-			{
-				archivo.write(factura.toString());
-				archivo.newLine();
-			}
-			archivo.close();
-			
-		}catch(IOException e) 
-		{
-			
-		}
-		
+	static void facturaTxt(ArrayList<Factura> facturas,ArrayList<Productos>producto) {
+	    String filePath = "C:\\Users\\yerai\\Downloads\\factura.txt";
+	    HashSet<Integer> idsExistentes = new HashSet<>();
+	    try {
+	        // Leer IDs existentes del archivo
+	        Files.lines(Paths.get(filePath)).forEach(line -> {
+	            if (line.startsWith("Factura ID:")) {
+	                String id = line.split(":")[1].trim();
+	                idsExistentes.add(Integer.parseInt(id));
+	            }
+	        });
+
+	        try (BufferedWriter archivo = new BufferedWriter(new FileWriter(filePath, false))) {
+	            for (Factura factura : facturas) {
+	                // Solo escribimos las facturas que no están ya en el archivo
+	                if (idsExistentes.contains(factura.obtenerIdFactura())|| !idsExistentes.contains(factura.obtenerIdFactura())) {
+	                    archivo.write("Factura ID: " + factura.obtenerIdFactura());
+	                    archivo.newLine();
+	                    archivo.write("Empresa: " + factura.obtenerNombreEmpresa());
+	                    archivo.newLine();
+	                    archivo.write("CIF: " + factura.obtenerCif());
+	                    archivo.newLine();
+	                    archivo.write("Cliente: " + factura.obtenerCliente().obtenerNombre());
+	                    archivo.newLine();
+
+	                    // Guardamos los productos de la factura
+	                    archivo.write("Productos: ");
+	                    archivo.write(factura.obtenerProductos().toString());
+	                    archivo.newLine();
+	                   for(Productos productos : producto) 
+	                   {archivo.write("Total: " + productos.obtenerTotal() + " Euros");
+	                    archivo.newLine();}
+	                    
+	                    idsExistentes.add(factura.obtenerIdFactura());
+	                }
+	            }
+	        }
+	    } catch (IOException e) {
+	        System.err.println("Error al escribir en el archivo: " + e.getMessage());
+	    }
 	}
+
 
 	
 	static void menu() 
@@ -298,10 +353,10 @@ public class CrearFactura
 		ArrayList<Persona> personas=new ArrayList<Persona>();
 		ArrayList<Productos>productos=new ArrayList<Productos>();
 		cargarContactos1(personas);
-		
+	
 		do{		
 			
-
+	try {
 			System.out.println("1.Crear Factura");
 			System.out.println("2.Eliminar Factura");
 			System.out.println("3.Modificar Factura");
@@ -315,17 +370,26 @@ public class CrearFactura
 			{
 
 			case 1->{insertarFactura(facturas,personas,productos);}
-			case 2->{eliminarFactura(facturas,entrada);}
+			case 2->{eliminarFactura(facturas);}
 			case 3->{modificarFactura(facturas,personas,productos);}
 			case 4->{verFactura(facturas);}
-			case 5->{facturaTxt(facturas);
+			case 5->{facturaTxt(facturas,productos);
 			System.out.println("Factura creada");}
 			
 			default->{System.out.println("Programa Finalizado");}
 			
 			}
+			}catch(InputMismatchException e) 
+			{
+				 System.out.println("Entrada inválida. Por favor, ingresa un número entero.");
+				entrada.nextLine();
+			}
 			
 		}while(opcion<6);
+		
+		entrada.close();
+		
+		
 	}
 	
 	

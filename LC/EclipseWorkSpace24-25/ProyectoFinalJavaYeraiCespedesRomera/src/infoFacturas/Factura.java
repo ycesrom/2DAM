@@ -22,7 +22,7 @@ public class Factura
         this.nombreEmpresa = nombreEmpresa;
         this.cif = cif;
         this.cliente = cliente;
-        this.productos=productos;
+        this.productos=new ArrayList<>(productos);
        
       
     }
