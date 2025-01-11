@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_hvhUUMz1Ee-Wqq9D2JGOyw" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_hvhUUcz1Ee-Wqq9D2JGOyw" bindingContexts="_hvh_s8z1Ee-Wqq9D2JGOyw">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;MenuBD.java&quot; tooltip=&quot;ConexionMySql/src/bd/MenuBD.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ConexionMySql/src/bd/MenuBD.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Menu.java&quot; tooltip=&quot;ConexionMySql/src/bd/Menu.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ConexionMySql/src/bd/Menu.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Menu.java&quot; tooltip=&quot;Bd/src/bd/Menu.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Bd/src/bd/Menu.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;MenuBD.java&quot; tooltip=&quot;ConexionBD/src/mySql/MenuBD.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ConexionBD/src/mySql/MenuBD.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.jboss.tools.hibernate.ui.xml.editor.HibConfig3CompoundEditor&quot; name=&quot;hibernate.cfg.xml&quot; tooltip=&quot;Hibernate/hibernate.cfg.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Hibernate/hibernate.cfg.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;hibernate.cfg.xml&quot; tooltip=&quot;Hibernate/src/hibernate.cfg.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Hibernate/src/hibernate.cfg.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AccesoDirectoFichero.java&quot; tooltip=&quot;Tema1/src/file/AccesoDirectoFichero.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tema1/src/file/AccesoDirectoFichero.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ConexionCliente.java&quot; tooltip=&quot;Tema1/src/clienteServidor/ConexionCliente.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tema1/src/clienteServidor/ConexionCliente.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Servidor.java&quot; tooltip=&quot;Tema1/src/clienteServidor/Servidor.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tema1/src/clienteServidor/Servidor.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ConexionCliente.java&quot; tooltip=&quot;Tema1/ClienteServidorYeraiCespedes/src/clienteServidor/ConexionCliente.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tema1/ClienteServidorYeraiCespedes/src/clienteServidor/ConexionCliente.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;MenuBD.java&quot; tooltip=&quot;ConexionMySql/src/bd/MenuBD.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ConexionMySql/src/bd/MenuBD.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Menu.java&quot; tooltip=&quot;ConexionMySql/src/bd/Menu.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ConexionMySql/src/bd/Menu.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Menu.java&quot; tooltip=&quot;Bd/src/bd/Menu.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Bd/src/bd/Menu.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;MenuBD.java&quot; tooltip=&quot;ConexionBD/src/mySql/MenuBD.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ConexionBD/src/mySql/MenuBD.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.jboss.tools.hibernate.ui.xml.editor.HibConfig3CompoundEditor&quot; name=&quot;hibernate.cfg.xml&quot; tooltip=&quot;Hibernate/hibernate.cfg.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Hibernate/hibernate.cfg.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;hibernate.cfg.xml&quot; tooltip=&quot;Hibernate/src/hibernate.cfg.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Hibernate/src/hibernate.cfg.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AccesoDirectoFichero.java&quot; tooltip=&quot;Tema1/src/file/AccesoDirectoFichero.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tema1/src/file/AccesoDirectoFichero.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_hvhUUcz1Ee-Wqq9D2JGOyw" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_hvhUUsz1Ee-Wqq9D2JGOyw" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="1024" height="768">
     <persistedState key="coolBarVisible" value="true"/>
@@ -217,12 +217,12 @@
           <tags>persp.viewSC:org.hibernate.eclipse.console.views.DynamicSQLPreviewView</tags>
           <children xsi:type="basic:PartSashContainer" xmi:id="_KttU0c0REe-uHZmZpDC7ig" selectedElement="_KttU0s0REe-uHZmZpDC7ig" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_KttU0s0REe-uHZmZpDC7ig" containerData="2500" selectedElement="_KttU1s0REe-uHZmZpDC7ig">
-              <children xsi:type="basic:PartStack" xmi:id="_KttU080REe-uHZmZpDC7ig" elementId="left" containerData="7500" selectedElement="_KttU1c0REe-uHZmZpDC7ig">
-                <children xsi:type="advanced:Placeholder" xmi:id="_KttU1M0REe-uHZmZpDC7ig" elementId="org.hibernate.eclipse.console.views.KnownConfigurationsView" ref="_KtpqcM0REe-uHZmZpDC7ig" closeable="true">
+              <children xsi:type="basic:PartStack" xmi:id="_KttU080REe-uHZmZpDC7ig" elementId="left" toBeRendered="false" containerData="7500">
+                <children xsi:type="advanced:Placeholder" xmi:id="_KttU1M0REe-uHZmZpDC7ig" elementId="org.hibernate.eclipse.console.views.KnownConfigurationsView" toBeRendered="false" ref="_KtpqcM0REe-uHZmZpDC7ig" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:Hibernate</tags>
                 </children>
-                <children xsi:type="advanced:Placeholder" xmi:id="_KttU1c0REe-uHZmZpDC7ig" elementId="org.eclipse.jdt.ui.PackageExplorer" ref="_hvh8UMz1Ee-Wqq9D2JGOyw" closeable="true">
+                <children xsi:type="advanced:Placeholder" xmi:id="_KttU1c0REe-uHZmZpDC7ig" elementId="org.eclipse.jdt.ui.PackageExplorer" toBeRendered="false" ref="_hvh8UMz1Ee-Wqq9D2JGOyw" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:Java</tags>
                   <tags>active</tags>
@@ -236,8 +236,8 @@
                 </children>
               </children>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_KttU2M0REe-uHZmZpDC7ig" containerData="7500" selectedElement="_KttU2c0REe-uHZmZpDC7ig">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_KttU2c0REe-uHZmZpDC7ig" containerData="7500" selectedElement="_KttU280REe-uHZmZpDC7ig" horizontal="true">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_KttU2M0REe-uHZmZpDC7ig" containerData="7500" selectedElement="_KttU380REe-uHZmZpDC7ig">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_KttU2c0REe-uHZmZpDC7ig" containerData="7500" selectedElement="_KttU2s0REe-uHZmZpDC7ig" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_KttU2s0REe-uHZmZpDC7ig" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_hvh8Rsz1Ee-Wqq9D2JGOyw"/>
                 <children xsi:type="basic:PartStack" xmi:id="_KttU280REe-uHZmZpDC7ig" elementId="outlines" containerData="2500" selectedElement="_KttU3M0REe-uHZmZpDC7ig">
                   <children xsi:type="advanced:Placeholder" xmi:id="_KttU3M0REe-uHZmZpDC7ig" elementId="org.hibernate.eclipse.console.views.QueryParametersView" ref="_Ktq4kM0REe-uHZmZpDC7ig" closeable="true">
@@ -254,7 +254,7 @@
                   </children>
                 </children>
               </children>
-              <children xsi:type="basic:PartStack" xmi:id="_KttU380REe-uHZmZpDC7ig" elementId="bottom" visible="false" containerData="2500" selectedElement="_KttU4c0REe-uHZmZpDC7ig">
+              <children xsi:type="basic:PartStack" xmi:id="_KttU380REe-uHZmZpDC7ig" elementId="bottom" visible="false" containerData="2500" selectedElement="_KttU480REe-uHZmZpDC7ig">
                 <tags>Minimized</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_KttU4M0REe-uHZmZpDC7ig" elementId="org.eclipse.pde.runtime.LogView" toBeRendered="false" ref="_hvh9Q8z1Ee-Wqq9D2JGOyw" closeable="true">
                   <tags>View</tags>
@@ -564,7 +564,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hvh9Scz1Ee-Wqq9D2JGOyw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_J_RsAM3WEe-X0OfLMSC_zA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_hvjKU8z1Ee-Wqq9D2JGOyw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_5ttrkNBSEe-79vXKjx8huQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_hvjKU8z1Ee-Wqq9D2JGOyw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hvh9Vsz1Ee-Wqq9D2JGOyw" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -572,8 +572,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hvh9WMz1Ee-Wqq9D2JGOyw" elementId="org.eclipse.ui.workbench.edit">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_J_RsBs3WEe-X0OfLMSC_zA" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_hvioQ8z1Ee-Wqq9D2JGOyw"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_J_STEM3WEe-X0OfLMSC_zA" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_hviovcz1Ee-Wqq9D2JGOyw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_5tuSoNBSEe-79vXKjx8huQ" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_hvioQ8z1Ee-Wqq9D2JGOyw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_5tuSodBSEe-79vXKjx8huQ" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_hviovcz1Ee-Wqq9D2JGOyw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hvh9XMz1Ee-Wqq9D2JGOyw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -597,10 +597,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hvh9qsz1Ee-Wqq9D2JGOyw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_J_S6IM3WEe-X0OfLMSC_zA" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_hvjKDsz1Ee-Wqq9D2JGOyw"/>
-      </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_hvh9tcz1Ee-Wqq9D2JGOyw" elementId="org.eclipse.jdt.ui.CompilationUnitEditor" visible="false">
-        <tags>Draggable</tags>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_5tu5s9BSEe-79vXKjx8huQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_hvjKDsz1Ee-Wqq9D2JGOyw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hvh9tsz1Ee-Wqq9D2JGOyw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
