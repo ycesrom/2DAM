@@ -11,7 +11,7 @@ else:
 # Ejercicio 2
 
 nombre=str(input("Introduce tu nombre "))
-edad=str(input("Introduce tu edad "))
+edad=int(input("Introduce tu edad "))
 direccion=str(input("Introduce tu direccion "))
 telefono=str(input("Introduce tu telefono "))
 
@@ -22,15 +22,17 @@ print(f"{d1['nombre']} tiene {d1['edad']} años, vive en {d1['direccion']} y su 
 # Ejercicio 3
 
 fruta={'Platano':1.35,'Manzana':0.80,'Pera':0.85,'Naranja':0.70}
-nFruta=str(input("Introduzca la fruta que desee "))
+nFruta=str(input("\nIntroduzca la fruta que desee "))
 nKilos=float(input("Introduzca el numero de kilos que desee "))
 if nFruta in fruta:
     precioKilo = fruta[nFruta]
     precioTotal = precioKilo * nKilos
-    print(f"El precio de {nFruta} es: {precioTotal}")
+    print("\nFruta      Kilos      Precio ")
+    print("-" * 30)
+    print(f"{nFruta}    {nKilos}        {precioTotal: <10.2f}")
 else:
     print("La fruta no ha sido encontrada")
-print(fruta)
+print(f"\n{fruta}")
 
 # Ejercicio 4
 meses = {
@@ -39,7 +41,7 @@ meses = {
     "09": "septiembre", "10": "octubre", "11": "noviembre", "12": "diciembre"
 }
 
-fecha=input("Introduce una fecha en formato dd/mm/aaaa")
+fecha=input("\nIntroduce una fecha en formato dd/mm/aaaa ")
 dia, mes, anio = fecha.split("/")
 if mes in meses:
     print(f"{dia} de {meses[mes]} de {anio}")
@@ -49,15 +51,15 @@ if mes in meses:
 asignaturas={'Matematicas':6,'Fisica':4,'Quimica':5}
 
 for asignatura, creditos in asignaturas.items():
-    print(f"{asignatura} tiene {creditos} créditos")
+    print(f"\n{asignatura} tiene {creditos} créditos")
 total_creditos = sum(asignaturas.values())
-print(f"El total de créditos del curso es: {total_creditos}")
+print(f"\nEl total de créditos del curso es: {total_creditos}")
 
 # Ejercicio 6
 
 persona={}
 
-nombre=str(input("Introduzca su nombre "))
+nombre=str(input("\nIntroduzca su nombre "))
 persona["nombre"]=nombre
 print(persona)
 edad=int(input("Introduzca su edad "))
@@ -66,16 +68,16 @@ print(persona)
 sexo=str(input("Introduzca su sexo "))
 persona["sexo"]=sexo
 print(persona)
-telefono=str(input("Introduzca su numero de telefono"))
+telefono=str(input("Introduzca su numero de telefono "))
 persona["telefono"]=telefono
 print(persona)
-correoElectronico=str(input("Introduzca su correo electronico"))
+correoElectronico=str(input("Introduzca su correo electronico "))
 persona["correoElectronico"]=correoElectronico
 print(persona)
 
 # Ejercicio 7
 cesta={}
-num=int(input("Introduzca cuantos productos desea añadir" ))
+num=int(input("\nIntroduzca cuantos productos desea añadir " ))
 for i in range(num):
     articulo=str(input("Introduzca el articulo "))
     precio=float(input("Introduzca el precio del articulo "))
@@ -96,8 +98,17 @@ print(f"Total: {total:.2f}€")
 
 # Ejercicio 8
 
+frases={}
+frase=str(input("\nIntroduce palabras y traducciones en formato 'palabra:traducción' separadas por comas: "))
+for par in frase.split(','):
+    palabra,traduccion=par.split(':')
+    frases[palabra.strip()]=traduccion.strip()
 
-frase=str(input("Introduce palabras y traducciones en formato 'palabra:traducción' separadas por comas: "))
-palabras={"Español":"Spanish","Aleman":"German"}
-if frase in palabras:
-    print(f"La traduccion de {frase} a Ingles es {palabras[frase]}")
+fraseEspanol=str(input("Introduce una frase en español "))
+
+palabras=fraseEspanol.split()
+traduccion=[]
+for palabra in palabras:
+    traduccion.append(frases.get(palabra,palabra))
+    
+print(' '.join(traduccion))
