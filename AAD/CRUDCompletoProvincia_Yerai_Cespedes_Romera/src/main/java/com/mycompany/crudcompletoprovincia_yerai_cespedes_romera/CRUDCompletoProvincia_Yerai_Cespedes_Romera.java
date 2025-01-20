@@ -5,13 +5,17 @@
 package com.mycompany.crudcompletoprovincia_yerai_cespedes_romera;
 
 import java.util.Scanner;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author 2DAM
  */
 public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
-
+   EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+   EntityManager em=emf.createEntityManager();
     public static void main(String[] args) {
         System.out.println("Hello World!");
     }
@@ -49,31 +53,38 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
     }
     
     public static void insertarRegistrosExcel()
-    {
+    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+   EntityManager em=emf.createEntityManager();
     }
     
     public static void insertarRegistrosManual()
-    {
+    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+   EntityManager em=emf.createEntityManager();
     }
     
     public static void consultarRegistroNombre()
-    {
+    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+   EntityManager em=emf.createEntityManager();
     }
     
     public static void mostrarRegistro()
-    {
+    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+   EntityManager em=emf.createEntityManager();
     }
     
     public static void modificarNombreRegistro()
-    {
+    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+   EntityManager em=emf.createEntityManager();
     }
     
     public static void eliminarRegistro()
-    {
+    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+   EntityManager em=emf.createEntityManager();
     }
     
     public static void mostrarNumeroRegistros()
-    {
+    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+   EntityManager em=emf.createEntityManager();
     }
 }
     
