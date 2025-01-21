@@ -4,10 +4,25 @@
 
 package com.mycompany.crudcompletoprovincia_yerai_cespedes_romera;
 
+import static DAO.ProvinciaDao.actualizarProvincia;
+import static DAO.ProvinciaDao.buscarProvinciaPorNombre;
+import static DAO.ProvinciaDao.eliminarProvincia;
+import static DAO.ProvinciaDao.insertarProvincia;
+import static DAO.ProvinciaDao.mostrarProvincias;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Iterator;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 
 /**
  *
@@ -17,7 +32,8 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
    EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
    EntityManager em=emf.createEntityManager();
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Scanner entrada=new Scanner(System.in);
+        menu(entrada);
     }
     
     public static void menu(Scanner entrada)
@@ -52,40 +68,110 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
         }while(opcion<8);
     }
     
-    public static void insertarRegistrosExcel()
-    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
-   EntityManager em=emf.createEntityManager();
+    public static void insertarRegistrosExcel() {
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+    EntityManager em = emf.createEntityManager();
+
+    try (FileInputStream fis = new FileInputStream(new File("C:\\Users\\2DAM\\Downloads\\cod-prov.xlsx"))) {
+        Workbook workbook = WorkbookFactory.create(fis);
+        Sheet sheet = (Sheet) workbook.getSheetAt(0); // Leer la primera hoja del archivo Excel
+
+        em.getTransaction().begin();
+
+        // Iterar sobre las filas del archivo Excel
+        Iterator<Row> rowIterator = sheet.iterator();
+        while (rowIterator.hasNext()) {
+            Row row = rowIterator.next();
+
+            // Validar si la fila no es nula y procesar la celda
+            if (row != null) {
+                Cell cell = row.getCell(0);
+                cell=row.getCell(1);// Obtener la primera celda (nombre de la provincia)
+
+                // Validar si la celda no es nula y contiene texto
+                if (cell != null && cell.getCellType() == CellType.STRING) {
+                    String nombre = cell.getStringCellValue().trim();
+
+                    if (!nombre.isEmpty()) {
+                        // Crear y persistir la nueva provincia
+                        Provincia provincia = new Provincia();
+                        provincia.setNombre(nombre); // Método setter de la clase Provincia
+                        em.persist(provincia);
+                    }
+                }
+            }
+        }
+
+        em.getTransaction().commit();
+        System.out.println("Registros insertados desde el archivo Excel.");
+        workbook.close();
+    } catch (Exception e) {
+        System.out.println("Error al insertar registros desde Excel: " + e.getMessage());
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().rollback();
+        }
+    } finally {
+        em.close();
+        emf.close();
     }
+}
+
     
     public static void insertarRegistrosManual()
-    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
-   EntityManager em=emf.createEntityManager();
+    {
+    Scanner entrada=new Scanner(System.in);
+    insertarProvincia(entrada);
+   
     }
     
     public static void consultarRegistroNombre()
-    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
-   EntityManager em=emf.createEntityManager();
+    {
+   System.out.println("Introduzca el nombre de la provincia a buscar");
+   Scanner entrada=new Scanner(System.in);
+   String nombre=entrada.nextLine();
+   buscarProvinciaPorNombre(nombre);
     }
     
     public static void mostrarRegistro()
-    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
-   EntityManager em=emf.createEntityManager();
+    {
+    mostrarProvincias();
+    
     }
     
     public static void modificarNombreRegistro()
-    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
-   EntityManager em=emf.createEntityManager();
+    {
+   Scanner entrada=new Scanner(System.in);
+   System.out.println("Introduzca el nombre de la provincia a actualizar");
+   String nombre=entrada.nextLine();
+   actualizarProvincia(nombre);
+
     }
     
     public static void eliminarRegistro()
-    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
-   EntityManager em=emf.createEntityManager();
+    {
+   Scanner entrada=new Scanner(System.in);
+   System.out.println("Introduzca el nombre de la provincia a eliminar");
+   String nombre=entrada.nextLine();
+   eliminarProvincia(nombre);
     }
     
-    public static void mostrarNumeroRegistros()
-    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
-   EntityManager em=emf.createEntityManager();
+   public static void mostrarNumeroRegistros() {
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+    EntityManager em = emf.createEntityManager();
+
+    try {
+        // Consulta JPQL para contar los registros
+        Long count = em.createQuery("SELECT COUNT(p) FROM Provincia p", Long.class).getSingleResult();
+        System.out.println("Número total de registros: " + count);
+    } catch (Exception e) {
+        System.out.println("Error al conectar con la base de datos o ejecutar la consulta: " + e.getMessage());
+    } finally {
+        // Cerrar los recursos
+        em.close();
+        emf.close();
     }
+}
+
 }
     
     

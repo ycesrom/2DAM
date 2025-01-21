@@ -27,8 +27,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Provincia.findAll", query = "SELECT p FROM Provincia p"),
     @NamedQuery(name = "Provincia.findByCod", query = "SELECT p FROM Provincia p WHERE p.cod = :cod"),
-    @NamedQuery(name = "Provincia.findByNombre", query = "SELECT p FROM Provincia p WHERE p.nombre = :nombre"),
-    @NamedQuery(name = "Provincia.deleteByNombre", query = "DELETE p FROM Provincia p WHERE p.nombre = :nombre")})
+    @NamedQuery(name = "Provincia.findByNombre", query = "SELECT p FROM Provincia p WHERE p.nombre = :nombre")})
 public class Provincia implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -101,7 +100,7 @@ public class Provincia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.crudcompletoprovincia_yerai_cespedes_romera.Provincia[ cod=" + cod + " ]";
+        return "Cod Provincia= " + cod + " Nombre Provincia= "+nombre;
     }
     
 }
