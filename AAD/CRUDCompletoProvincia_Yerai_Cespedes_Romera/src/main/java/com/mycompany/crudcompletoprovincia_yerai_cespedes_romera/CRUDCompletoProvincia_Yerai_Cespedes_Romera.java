@@ -11,7 +11,10 @@ import static DAO.ProvinciaDao.insertarProvincia;
 import static DAO.ProvinciaDao.mostrarProvincias;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -68,38 +71,60 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
         }while(opcion<8);
     }
     
-    public static void insertarRegistrosExcel() {
+   public static void insertarRegistrosExcel() {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
     EntityManager em = emf.createEntityManager();
 
     try (FileInputStream fis = new FileInputStream(new File("C:\\Users\\2DAM\\Downloads\\cod-prov.xlsx"))) {
         Workbook workbook = WorkbookFactory.create(fis);
-        Sheet sheet = (Sheet) workbook.getSheetAt(0); // Leer la primera hoja del archivo Excel
+        Sheet sheet = workbook.getSheetAt(0); // Leer la primera hoja del archivo Excel
 
         em.getTransaction().begin();
 
-        // Iterar sobre las filas del archivo Excel
+        // Lista para almacenar las provincias
+        List<Provincia> provincias = new ArrayList<>();
+
+        // Iterar sobre las filas del archivo Excel (saltamos la cabecera si existe)
         Iterator<Row> rowIterator = sheet.iterator();
         while (rowIterator.hasNext()) {
             Row row = rowIterator.next();
 
-            // Validar si la fila no es nula y procesar la celda
+            // Validar si la fila no es nula
             if (row != null) {
-                Cell cell = row.getCell(0);
-                cell=row.getCell(1);// Obtener la primera celda (nombre de la provincia)
+                Provincia provincia = new Provincia();
 
-                // Validar si la celda no es nula y contiene texto
-                if (cell != null && cell.getCellType() == CellType.STRING) {
-                    String nombre = cell.getStringCellValue().trim();
+                // Iterar sobre las celdas de la fila
+                for (int i = 0; i < row.getLastCellNum(); i++) {
+                    Cell cell = row.getCell(i);
 
-                    if (!nombre.isEmpty()) {
-                        // Crear y persistir la nueva provincia
-                        Provincia provincia = new Provincia();
-                        provincia.setNombre(nombre); // Método setter de la clase Provincia
-                        em.persist(provincia);
+                    // Validar si la celda no es nula
+                    if (cell != null) {
+                        switch (i) {
+                            case 0: // Primera columna: código de provincia
+                                if (cell.getCellType() == CellType.NUMERIC) {
+                                    provincia.setCod((int) cell.getNumericCellValue());
+                                }
+                                break;
+                            case 1: // Segunda columna: nombre de la provincia
+                                if (cell.getCellType() == CellType.STRING) {
+                                    provincia.setNombre(cell.getStringCellValue().trim());
+                                }
+                                break;
+                        }
                     }
                 }
+
+                // Agregar la provincia a la lista
+                provincias.add(provincia);
             }
+        }
+
+        // Ordenar la lista de provincias por el código (cod)
+        provincias.sort(Comparator.comparingInt(Provincia::getCod));
+
+        // Insertar las provincias ordenadas en la base de datos
+        for (Provincia provincia : provincias) {
+            em.persist(provincia);
         }
 
         em.getTransaction().commit();
@@ -115,6 +140,7 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
         emf.close();
     }
 }
+
 
     
     public static void insertarRegistrosManual()
