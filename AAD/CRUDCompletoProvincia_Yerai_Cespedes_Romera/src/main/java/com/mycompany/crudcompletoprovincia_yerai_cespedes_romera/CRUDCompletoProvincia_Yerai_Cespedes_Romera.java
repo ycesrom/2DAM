@@ -11,6 +11,8 @@ import static DAO.ProvinciaDao.insertarProvincia;
 import static DAO.ProvinciaDao.mostrarProvincias;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -71,67 +73,70 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
         }while(opcion<8);
     }
     
-   public static void insertarRegistrosExcel() {
+  public static void insertarRegistrosExcel() {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
     EntityManager em = emf.createEntityManager();
 
-    try (FileInputStream fis = new FileInputStream(new File("C:\\Users\\2DAM\\Downloads\\cod-prov.xlsx"))) {
+    String rutaArchivo = "C:\\Users\\yerai\\Downloads\\cod-prov.xlsx";
+
+    try (FileInputStream fis = new FileInputStream(new File(rutaArchivo))) {
         Workbook workbook = WorkbookFactory.create(fis);
-        Sheet sheet = workbook.getSheetAt(0); // Leer la primera hoja del archivo Excel
+        Sheet sheet = workbook.getSheetAt(0); // Leer la primera hoja
 
         em.getTransaction().begin();
 
-        // Lista para almacenar las provincias
         List<Provincia> provincias = new ArrayList<>();
-
-        // Iterar sobre las filas del archivo Excel (saltamos la cabecera si existe)
         Iterator<Row> rowIterator = sheet.iterator();
+
         while (rowIterator.hasNext()) {
             Row row = rowIterator.next();
 
-            // Validar si la fila no es nula
-            if (row != null) {
-                Provincia provincia = new Provincia();
+            if (row == null || row.getLastCellNum() < 2) {
+                continue; // Ignorar filas vacías o incompletas
+            }
 
-                // Iterar sobre las celdas de la fila
-                for (int i = 0; i < row.getLastCellNum(); i++) {
-                    Cell cell = row.getCell(i);
+            Provincia provincia = new Provincia();
 
-                    // Validar si la celda no es nula
-                    if (cell != null) {
-                        switch (i) {
-                            case 0: // Primera columna: código de provincia
-                                if (cell.getCellType() == CellType.NUMERIC) {
-                                    provincia.setCod((int) cell.getNumericCellValue());
-                                }
-                                break;
-                            case 1: // Segunda columna: nombre de la provincia
-                                if (cell.getCellType() == CellType.STRING) {
-                                    provincia.setNombre(cell.getStringCellValue().trim());
-                                }
-                                break;
-                        }
-                    }
-                }
+            Cell cellCod = row.getCell(0); // Primera columna
+            Cell cellNombre = row.getCell(1); // Segunda columna
 
-                // Agregar la provincia a la lista
-                provincias.add(provincia);
+            if (cellCod != null && cellCod.getCellType() == CellType.NUMERIC) {
+                provincia.setCod((int) cellCod.getNumericCellValue());
+            } else {
+                continue; // Saltar filas con valores inválidos
+            }
+
+            if (cellNombre != null && cellNombre.getCellType() == CellType.STRING) {
+                provincia.setNombre(cellNombre.getStringCellValue().trim());
+            } else {
+                provincia.setNombre(""); // Valor por defecto si el nombre está vacío
+            }
+
+            provincias.add(provincia);
+        }
+
+        // Insertar las provincias directamente en el orden del Excel
+        for (Provincia provincia : provincias) {
+            if (em.find(Provincia.class, provincia.getCod()) == null) { // Evitar duplicados
+                em.persist(provincia);
+                 em.flush();
+            } else {
+                System.out.println("Provincia duplicada: " + provincia.getCod());
             }
         }
 
-        // Ordenar la lista de provincias por el código (cod)
-        provincias.sort(Comparator.comparingInt(Provincia::getCod));
-
-        // Insertar las provincias ordenadas en la base de datos
-        for (Provincia provincia : provincias) {
-            em.persist(provincia);
-        }
-
         em.getTransaction().commit();
-        System.out.println("Registros insertados desde el archivo Excel.");
+        System.out.println("Registros insertados correctamente desde el archivo Excel.");
         workbook.close();
+    } catch (FileNotFoundException fnfe) {
+        System.out.println("Archivo Excel no encontrado: " + rutaArchivo);
+        fnfe.printStackTrace();
+    } catch (IOException ioe) {
+        System.out.println("Error al leer el archivo Excel: " + ioe.getMessage());
+        ioe.printStackTrace();
     } catch (Exception e) {
         System.out.println("Error al insertar registros desde Excel: " + e.getMessage());
+        e.printStackTrace();
         if (em.getTransaction().isActive()) {
             em.getTransaction().rollback();
         }
@@ -140,6 +145,8 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
         emf.close();
     }
 }
+
+
 
 
     
