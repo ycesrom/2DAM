@@ -68,5 +68,6 @@ public class Factura
                "Productos: "+obtenerProductos()+
                "\n"+"Total: "+total +" Euros";
     }
+
 }
 

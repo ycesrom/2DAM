@@ -29,7 +29,7 @@ public class CrearFactura
 	
 	static void cargarContactos1(ArrayList<Persona> personas ) 
 	{
-		try(BufferedReader archivo =new BufferedReader(new FileReader("C:\\Users\\yerai\\Desktop\\personas.txt")))
+		try(BufferedReader archivo =new BufferedReader(new FileReader("C:\\Users\\2Dam\\Desktop\\personas.txt")))
 		{
 			String linea;
 			while((linea=archivo.readLine())!=null)
@@ -66,10 +66,10 @@ public class CrearFactura
 	    return null;  // Devuelve null si no se encuentra ninguna persona con el DNI
 	}
 	
-	static void insertarProductos(ArrayList<Productos>productos) 
+	static void insertarProductos(ArrayList<Productos>productos,Scanner entrada) 
 	{
 		try {
-		Scanner entrada=new Scanner(System.in);
+		
 		System.out.println("Cuantos productos desea añadir");
 		int cantidadP=entrada.nextInt();
 		 entrada.nextLine();
@@ -110,7 +110,7 @@ public class CrearFactura
 	    String nombreEmpresa="Ejido Store";
 	    String cif="B040567990";
 	    ArrayList<Productos> productosFactura=new ArrayList<>();
-	    insertarProductos(productosFactura);	   
+	    insertarProductos(productosFactura,entrada);	   
 		
 			facturas.add(new Factura(nombreEmpresa,cif, persona,productosFactura));
 		}
@@ -118,18 +118,18 @@ public class CrearFactura
 	}
 	
 	
-	static void eliminarFactura(ArrayList<Factura> facturas) 
+	static void eliminarFactura(ArrayList<Factura> facturas,Scanner entrada) 
 	{
 		int id;
-		Scanner sc=new Scanner(System.in);
+		
 		System.out.println("Introduzca el id de la factura a eliminar");
-		id=sc.nextInt();
-		boolean eliminar=true;
+		id=entrada.nextInt();
+		
 		Iterator<Factura> it=facturas.iterator();
 		while(it.hasNext()) 
 		{
 			Factura aux=it.next();
-			
+			boolean eliminar=true;
 			if(aux.obtenerIdFactura()==id) 
 			{
 				it.remove();
@@ -245,22 +245,20 @@ public class CrearFactura
 		Scanner entrada=new Scanner(System.in);
 		System.out.println("Introduzca el id de la factura para modificar la factura:");
 	    int id = entrada.nextInt();
-	   
+	  
 	    int opcion=0;
-	    Factura facturaSeleccionada = null;
+	     
+	    try {
+	    	Factura facturaSeleccionada = null;
 	    for (Factura factura : facturas) {
 	        if (factura.obtenerIdFactura() == id) {
 	            facturaSeleccionada = factura;
 	            
 	        }
-	    }
+	    }	  
 
-	    if (facturaSeleccionada == null) {
-	        System.out.println("Factura no encontrada.");
-	        return;
-	    }
-
-	    ArrayList<Productos> productosFactura = facturaSeleccionada.obtenerProductos();
+	    ArrayList<Productos> productosFactura = facturaSeleccionada.obtenerProductos(); 
+	   
 	    do 
 	    {
 	    	System.out.println("1.Añadir mas productos a la factura");
@@ -272,7 +270,7 @@ public class CrearFactura
 	  
 	    switch(opcion) 
 	    {
-	    case 1-> insertarProductos(productosFactura);
+	    case 1-> insertarProductos(productosFactura,entrada);
 	    case 2->{eliminarProductos(productosFactura,entrada);}
 	    case 3->{modificarProductos(productosFactura,entrada);}
 	    default-> System.out.println("Modificacion finalizada");
@@ -280,11 +278,16 @@ public class CrearFactura
 	    
 	    }
 		 }while(opcion<4);
+	    }catch(java.lang.NullPointerException e)
+		   {
+			   	System.out.println("Id de la factura no Encontrado ");
+			   
+		   }
 	}
 	
-	static void verFactura(ArrayList<Factura> facturas) 
+	static void verFactura(ArrayList<Factura> facturas,Scanner entrada) 
 	{
-        Scanner entrada = new Scanner(System.in);
+       
         System.out.println("Introduzca el ID de la factura que desea ver:");
         int id = entrada.nextInt();
         
@@ -299,9 +302,10 @@ public class CrearFactura
         System.out.println("Factura no encontrada.");
     }
 	
-	static void facturaTxt(ArrayList<Factura> facturas,ArrayList<Productos>producto) {
-	    String filePath = "C:\\Users\\yerai\\Downloads\\factura.txt";
+	static void facturaTxt(ArrayList<Factura> facturas, ArrayList<Productos> productos) {
+	    String filePath = "C:\\Users\\2dam\\Downloads\\facturas.txt";
 	    HashSet<Integer> idsExistentes = new HashSet<>();
+
 	    try {
 	        // Leer IDs existentes del archivo
 	        Files.lines(Paths.get(filePath)).forEach(line -> {
@@ -311,10 +315,10 @@ public class CrearFactura
 	            }
 	        });
 
-	        try (BufferedWriter archivo = new BufferedWriter(new FileWriter(filePath, false))) {
+	        try (BufferedWriter archivo = new BufferedWriter(new FileWriter(filePath, true))) { // Usamos 'true' para añadir al archivo
 	            for (Factura factura : facturas) {
 	                // Solo escribimos las facturas que no están ya en el archivo
-	                if (idsExistentes.contains(factura.obtenerIdFactura())|| !idsExistentes.contains(factura.obtenerIdFactura())) {
+	                if (!idsExistentes.contains(factura.obtenerIdFactura())||idsExistentes.contains(factura.obtenerIdFactura())) {
 	                    archivo.write("Factura ID: " + factura.obtenerIdFactura());
 	                    archivo.newLine();
 	                    archivo.write("Empresa: " + factura.obtenerNombreEmpresa());
@@ -328,10 +332,19 @@ public class CrearFactura
 	                    archivo.write("Productos: ");
 	                    archivo.write(factura.obtenerProductos().toString());
 	                    archivo.newLine();
-	                   for(Productos productos : producto) 
-	                   {archivo.write("Total: " + productos.obtenerTotal() + " Euros");
-	                    archivo.newLine();}
-	                    
+
+	                    // Calcular el total de la factura
+	                    double totalFactura = 0.0;
+	                    for (Productos producto : factura.obtenerProductos()) {
+	                        totalFactura += producto.obtenerTotal();
+	                    }
+
+	                    // Escribir el total de la factura
+	                    archivo.write("Total: " + totalFactura + " Euros");
+	                    archivo.newLine();
+	                    archivo.newLine(); // Separador entre facturas
+
+	                    // Añadir el ID de la factura al conjunto de IDs existentes
 	                    idsExistentes.add(factura.obtenerIdFactura());
 	                }
 	            }
@@ -340,7 +353,6 @@ public class CrearFactura
 	        System.err.println("Error al escribir en el archivo: " + e.getMessage());
 	    }
 	}
-
 
 	
 	static void menu() 
@@ -362,7 +374,7 @@ public class CrearFactura
 			System.out.println("3.Modificar Factura");
 			System.out.println("4.Ver Factura");
 			System.out.println("5.Factura terminada");
-			System.out.print("6.Salir");
+			System.out.println("6.Salir");
 
 			opcion=entrada.nextInt();
 		
@@ -370,9 +382,9 @@ public class CrearFactura
 			{
 
 			case 1->{insertarFactura(facturas,personas,productos);}
-			case 2->{eliminarFactura(facturas);}
+			case 2->{eliminarFactura(facturas,entrada);}
 			case 3->{modificarFactura(facturas,personas,productos);}
-			case 4->{verFactura(facturas);}
+			case 4->{verFactura(facturas,entrada);}
 			case 5->{facturaTxt(facturas,productos);
 			System.out.println("Factura creada");}
 			
