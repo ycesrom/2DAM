@@ -77,7 +77,7 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
     EntityManager em = emf.createEntityManager();
 
-    String rutaArchivo = "C:\\Users\\yerai\\Downloads\\cod-prov.xlsx";
+    String rutaArchivo = "C:\\Users\\2DAM\\Downloads\\cod-prov.xlsx";
 
     try (FileInputStream fis = new FileInputStream(new File(rutaArchivo))) {
         Workbook workbook = WorkbookFactory.create(fis);
