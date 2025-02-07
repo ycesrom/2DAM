@@ -315,7 +315,7 @@ public class CrearFactura
 	            }
 	        });
 
-	        try (BufferedWriter archivo = new BufferedWriter(new FileWriter(filePath, true))) { // Usamos 'true' para añadir al archivo
+	        try (BufferedWriter archivo = new BufferedWriter(new FileWriter(filePath,false))) { // Usamos false para sobrescribir las facturas con el mismo id
 	            for (Factura factura : facturas) {
 	                // Solo escribimos las facturas que no están ya en el archivo
 	                if (!idsExistentes.contains(factura.obtenerIdFactura())||idsExistentes.contains(factura.obtenerIdFactura())) {

@@ -14,6 +14,10 @@ public class Factura
     private Persona cliente;
     private ArrayList<Productos> productos;// Almacena un solo cliente
     
+    public Factura() 
+    {
+    	
+    }
     
     // Constructor que recibe un cliente específico
     public Factura(String nombreEmpresa, String cif, Persona cliente,ArrayList<Productos> productos) 
