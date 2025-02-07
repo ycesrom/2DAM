@@ -7,6 +7,10 @@ public class Direccion
 	protected int cp;
 	protected String provincia;
 	
+	public Direccion() 
+	{
+		
+	}
 	public Direccion(String calle, int numero, int cp, String provincia) 
 	{
 		this.calle=calle;

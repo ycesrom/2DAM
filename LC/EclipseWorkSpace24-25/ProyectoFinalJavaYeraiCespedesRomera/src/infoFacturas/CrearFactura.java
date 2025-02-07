@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
-
 import infoPersonas.Persona;
 import productosTienda.Productos;
 
@@ -124,25 +123,27 @@ public class CrearFactura
 		
 		System.out.println("Introduzca el id de la factura a eliminar");
 		id=entrada.nextInt();
-		
+		boolean eliminar=false;
 		Iterator<Factura> it=facturas.iterator();
 		while(it.hasNext()) 
 		{
 			Factura aux=it.next();
-			boolean eliminar=true;
+			
 			if(aux.obtenerIdFactura()==id) 
 			{
 				it.remove();
-				eliminar=false;
+				eliminar=true;
+				System.out.println("Factura con el id "+id+" Borrada correctamente");
 			}
-			if(eliminar=true) 
-			{
-					System.out.println("Id de factura no encontrado");
-			}
+			
 			
 				
 			
 		}
+		if(eliminar==false) 
+			{
+					System.out.println("Id de factura no encontrado");
+			}
 		
 		
 	}
@@ -374,7 +375,8 @@ public class CrearFactura
 			System.out.println("3.Modificar Factura");
 			System.out.println("4.Ver Factura");
 			System.out.println("5.Factura terminada");
-			System.out.println("6.Salir");
+			System.out.println("6.Recuperar Facturas");
+			System.out.println("7.Salir");
 
 			opcion=entrada.nextInt();
 		
@@ -387,6 +389,7 @@ public class CrearFactura
 			case 4->{verFactura(facturas,entrada);}
 			case 5->{facturaTxt(facturas,productos);
 			System.out.println("Factura creada");}
+			case 6->{}
 			
 			default->{System.out.println("Programa Finalizado");}
 			
@@ -397,7 +400,7 @@ public class CrearFactura
 				entrada.nextLine();
 			}
 			
-		}while(opcion<6);
+		}while(opcion<7);
 		
 		entrada.close();
 		

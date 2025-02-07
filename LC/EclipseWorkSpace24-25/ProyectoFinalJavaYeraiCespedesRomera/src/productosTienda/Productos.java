@@ -9,6 +9,10 @@ public class Productos
 	private double total;
 	
 
+	public Productos() 
+	{
+		
+	}
 
 	public Productos(String nombreProducto,int cantidad,double precio,double total)
 	{

@@ -8,6 +8,10 @@ public class Persona extends Direccion implements Comparable<Persona>
 	private int edad;
 	protected Direccion direccion;
 	
+	public Persona() 
+	{
+		
+	}
 	
 	public Persona(String nombre, String apellidos,String dni,int edad,String calle, int numero, int cp, String provincia) 
 	{

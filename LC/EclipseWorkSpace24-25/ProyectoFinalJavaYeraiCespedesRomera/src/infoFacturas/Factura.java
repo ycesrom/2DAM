@@ -59,7 +59,27 @@ public class Factura
   
     
 
-    @Override
+    public void setIdFactura(int idFactura) {
+		this.idFactura = idFactura;
+	}
+
+	public void setNombreEmpresa(String nombreEmpresa) {
+		this.nombreEmpresa = nombreEmpresa;
+	}
+
+	public void setCif(String cif) {
+		this.cif = cif;
+	}
+
+	public void setCliente(Persona cliente) {
+		this.cliente = cliente;
+	}
+
+	public void setProductos(ArrayList<Productos> productos) {
+		this.productos = productos;
+	}
+
+	@Override
     public String toString() 
     {
     	double total = 0;
