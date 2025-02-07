@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -15,10 +17,10 @@ import javax.persistence.Table;
 
 /**
  *
- * @author 2DAM
+ * @author yerai
  */
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuarios")
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
     @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
@@ -30,6 +32,7 @@ public class Usuario implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
@@ -84,7 +87,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.gestioncorrectatransaciones_yerai_cespedes.Usuario[ id=" + id + " ]";
+        return "Entidades.Usuario[ id=" + id + " ]";
     }
     
 }

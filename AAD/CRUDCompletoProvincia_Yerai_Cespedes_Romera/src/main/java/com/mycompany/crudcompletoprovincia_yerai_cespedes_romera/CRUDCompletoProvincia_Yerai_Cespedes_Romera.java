@@ -195,7 +195,7 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
     try {
         // Consulta JPQL para contar los registros
         Long count = em.createQuery("SELECT COUNT(p) FROM Provincia p", Long.class).getSingleResult();
-        System.out.println("Número total de registros: " + count);
+        System.out.println("Número total de registros: " + count); 
     } catch (Exception e) {
         System.out.println("Error al conectar con la base de datos o ejecutar la consulta: " + e.getMessage());
     } finally {

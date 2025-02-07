@@ -40,6 +40,8 @@ Persistence.createEntityManagerFactory("com.mycompany_GestionCorrectaTransacione
             usuario.setId(1);
             usuario.setNombre("Manolo"); 
             entityManager.persist(usuario); 
+            
+            
  
             // 2. Eliminar un Pedido si existe 
             Pedido pedido = entityManager.find(Pedido.class, 1); 
@@ -48,9 +50,9 @@ Persistence.createEntityManagerFactory("com.mycompany_GestionCorrectaTransacione
             } 
  
             // 3. Actualizar un Producto si existe 
-            Producto producto = entityManager.find(Producto.class, 1); 
+            Producto producto = entityManager.find(Producto.class, 2); 
             if (producto != null) { 
-                producto.setPrecio((float) 19.99); 
+                producto.setPrecio(19.99); 
                 entityManager.merge(producto); 
             } 
  

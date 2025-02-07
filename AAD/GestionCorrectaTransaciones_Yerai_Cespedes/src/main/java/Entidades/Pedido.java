@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -15,28 +17,25 @@ import javax.persistence.Table;
 
 /**
  *
- * @author 2DAM
+ * @author yerai
  */
 @Entity
-@Table(name = "pedido")
+@Table(name = "pedidos")
 @NamedQueries({
     @NamedQuery(name = "Pedido.findAll", query = "SELECT p FROM Pedido p"),
     @NamedQuery(name = "Pedido.findById", query = "SELECT p FROM Pedido p WHERE p.id = :id"),
-    @NamedQuery(name = "Pedido.findByProducto", query = "SELECT p FROM Pedido p WHERE p.producto = :producto"),
-    @NamedQuery(name = "Pedido.findByTotal", query = "SELECT p FROM Pedido p WHERE p.total = :total")})
+    @NamedQuery(name = "Pedido.findByPrecio", query = "SELECT p FROM Pedido p WHERE p.precio = :precio")})
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "producto")
-    private String producto;
-    @Basic(optional = false)
-    @Column(name = "total")
-    private float total;
+    @Column(name = "precio")
+    private float precio;
 
     public Pedido() {
     }
@@ -45,10 +44,9 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
-    public Pedido(Integer id, String producto, float total) {
+    public Pedido(Integer id, float precio) {
         this.id = id;
-        this.producto = producto;
-        this.total = total;
+        this.precio = precio;
     }
 
     public Integer getId() {
@@ -59,20 +57,12 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
-    public String getProducto() {
-        return producto;
+    public float getPrecio() {
+        return precio;
     }
 
-    public void setProducto(String producto) {
-        this.producto = producto;
-    }
-
-    public float getTotal() {
-        return total;
-    }
-
-    public void setTotal(float total) {
-        this.total = total;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
     @Override
@@ -97,7 +87,7 @@ public class Pedido implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.gestioncorrectatransaciones_yerai_cespedes.Pedido[ id=" + id + " ]";
+        return "Entidades.Pedido[ id=" + id + " ]";
     }
     
 }

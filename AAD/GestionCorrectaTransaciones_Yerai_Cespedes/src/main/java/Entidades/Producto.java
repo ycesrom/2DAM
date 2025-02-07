@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -15,28 +17,32 @@ import javax.persistence.Table;
 
 /**
  *
- * @author 2DAM
+ * @author yerai
  */
 @Entity
-@Table(name = "producto")
+@Table(name = "productos")
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
-    @NamedQuery(name = "Producto.findByPrecio", query = "SELECT p FROM Producto p WHERE p.precio = :precio"),
     @NamedQuery(name = "Producto.findById", query = "SELECT p FROM Producto p WHERE p.id = :id"),
-    @NamedQuery(name = "Producto.findByNombre", query = "SELECT p FROM Producto p WHERE p.nombre = :nombre")})
+    @NamedQuery(name = "Producto.findByNombre", query = "SELECT p FROM Producto p WHERE p.nombre = :nombre"),
+    @NamedQuery(name = "Producto.findByPrecio", query = "SELECT p FROM Producto p WHERE p.precio = :precio"),
+    @NamedQuery(name = "Producto.findByCantidad", query = "SELECT p FROM Producto p WHERE p.cantidad = :cantidad")})
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
-    @Column(name = "precio")
-    private float precio;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "precio")
+    private Double precio;
+    @Column(name = "cantidad")
+    private Integer cantidad;
 
     public Producto() {
     }
@@ -45,18 +51,9 @@ public class Producto implements Serializable {
         this.id = id;
     }
 
-    public Producto(Integer id, float precio, String nombre) {
+    public Producto(Integer id, String nombre) {
         this.id = id;
-        this.precio = precio;
         this.nombre = nombre;
-    }
-
-    public float getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(float precio) {
-        this.precio = precio;
     }
 
     public Integer getId() {
@@ -73,6 +70,22 @@ public class Producto implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     @Override
@@ -97,7 +110,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.gestioncorrectatransaciones_yerai_cespedes.Producto[ id=" + id + " ]";
+        return "Entidades.Producto[ id=" + id + " ]";
     }
     
 }

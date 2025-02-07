@@ -28,7 +28,7 @@ public class CrearFactura
 	
 	static void cargarContactos1(ArrayList<Persona> personas ) 
 	{
-		try(BufferedReader archivo =new BufferedReader(new FileReader("C:\\Users\\2Dam\\Desktop\\personas.txt")))
+		try(BufferedReader archivo =new BufferedReader(new FileReader("C:\\Users\\yerai\\Desktop\\personas.txt")))
 		{
 			String linea;
 			while((linea=archivo.readLine())!=null)
@@ -240,6 +240,107 @@ public class CrearFactura
 
 	}
 	
+
+	static ArrayList<Factura> recuperarFacturas(String filePath, ArrayList<Persona> personas) {
+	    ArrayList<Factura> facturasRecuperadas = new ArrayList<>();
+
+	    try (BufferedReader archivo = new BufferedReader(new FileReader(filePath))) {
+	        String linea;
+	        Factura facturaActual = null;
+	        ArrayList<Productos> productosFactura = new ArrayList<>();
+
+	        while ((linea = archivo.readLine()) != null) {
+	            linea = linea.trim(); // Eliminamos espacios en blanco
+
+	            if (linea.isEmpty()) {
+	                continue; // Saltamos líneas vacías
+	            }
+
+	            if (linea.startsWith("Factura ID:")) {
+	                // Guardamos la factura anterior si existe
+	                if (facturaActual != null) {
+	                    facturaActual.setProductos(productosFactura);
+	                    facturasRecuperadas.add(facturaActual);
+	                    productosFactura = new ArrayList<>(); // Reiniciar lista de productos
+	                }
+
+	                // Validación para evitar error de índice
+	                String[] partes = linea.split(":");
+	                if (partes.length < 2) {
+	                    System.err.println("Error en el formato de la factura: " + linea);
+	                    continue;
+	                }
+
+	                int idFactura = Integer.parseInt(partes[1].trim());
+
+	                // Leemos Empresa
+	                linea = archivo.readLine();
+	                if (linea == null || !linea.contains(":")) continue;
+	                String nombreEmpresa = linea.split(":")[1].trim();
+
+	                // Leemos CIF
+	                linea = archivo.readLine();
+	                if (linea == null || !linea.contains(":")) continue;
+	                String cif = linea.split(":")[1].trim();
+
+	                // Leemos Cliente
+	                linea = archivo.readLine();
+	                if (linea == null || !linea.contains(":")) continue;
+	                String nombreCliente = linea.split(":")[1].trim();
+
+	                // Buscar persona
+	                Persona cliente = null;
+	                for (Persona persona : personas) {
+	                    if (persona.obtenerNombre().equalsIgnoreCase(nombreCliente)) {
+	                        cliente = persona;
+	                        
+	                    }
+	                }
+
+	                if (cliente != null) {
+	                    facturaActual = new Factura(nombreEmpresa, cif, cliente, new ArrayList<>());
+	                } else {
+	                    System.err.println("Cliente no encontrado: " + nombreCliente);
+	                    facturaActual = null; // Evita agregar una factura sin cliente
+	                }
+	            } else if (linea.startsWith("Productos:")) {
+	                if (facturaActual == null) continue;
+
+	                String productosLinea = linea.split(":", 2)[1].trim();
+	                productosLinea = productosLinea.replace("[", "").replace("]", ""); // Quitamos corchetes
+
+	                // Parseamos productos
+	                String[] productosArray = productosLinea.split(", ");
+	                for (String productoStr : productosArray) {
+	                    String[] datosProducto = productoStr.split(" - ");
+	                    if (datosProducto.length < 3) {
+	                        System.err.println("Formato incorrecto en productos: " + productoStr);
+	                        continue;
+	                    }
+
+	                    String nombreProducto = datosProducto[0].trim();
+	                    int cantidad = Integer.parseInt(datosProducto[1].split(":")[1].trim());
+	                    double precio = Double.parseDouble(datosProducto[2].split(":")[1].trim());
+
+	                    productosFactura.add(new Productos(nombreProducto, cantidad, precio, cantidad * precio));
+	                }
+	            }
+	        }
+
+	        // Guardamos la última factura
+	        if (facturaActual != null) {
+	            facturaActual.setProductos(productosFactura);
+	            facturasRecuperadas.add(facturaActual);
+	        }
+	    } catch (IOException e) {
+	        System.err.println("Error al leer el archivo: " + e.getMessage());
+	    } catch (Exception e) {
+	        System.err.println("Error inesperado: " + e.getMessage());
+	    }
+
+	    return facturasRecuperadas;
+	}
+
 	
 	static void modificarFactura(ArrayList<Factura>facturas,ArrayList<Persona> personas,ArrayList<Productos>productos) 
 	{
@@ -304,7 +405,7 @@ public class CrearFactura
     }
 	
 	static void facturaTxt(ArrayList<Factura> facturas, ArrayList<Productos> productos) {
-	    String filePath = "C:\\Users\\2dam\\Downloads\\facturas.txt";
+	    String filePath = "C:\\Users\\yerai\\Downloads\\facturas.txt";
 	    HashSet<Integer> idsExistentes = new HashSet<>();
 
 	    try {
@@ -389,7 +490,10 @@ public class CrearFactura
 			case 4->{verFactura(facturas,entrada);}
 			case 5->{facturaTxt(facturas,productos);
 			System.out.println("Factura creada");}
-			case 6->{}
+			case 6->{ System.out.println("Recuperando facturas...");
+		    ArrayList<Factura> facturasRecuperadas = recuperarFacturas("C:\\Users\\yerai\\Downloads\\facturas.txt", personas);
+		    facturas.addAll(facturasRecuperadas);
+		    System.out.println("Facturas recuperadas: " + facturasRecuperadas.size());}
 			
 			default->{System.out.println("Programa Finalizado");}
 			
