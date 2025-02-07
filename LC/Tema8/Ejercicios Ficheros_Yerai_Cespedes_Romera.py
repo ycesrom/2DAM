@@ -1,6 +1,6 @@
 #Ejercicio 1
 
-def tablaMultiplicar():
+def tabla_multiplicar():
     while True:
         try:
             num = int(input("Introduzca un número de 1 a 10: "))
@@ -16,7 +16,7 @@ def tablaMultiplicar():
         except ValueError:
             print("Por favor, introduzca un número entero válido.")
 
-tablaMultiplicar()
+tabla_multiplicar()
 
 #Ejercicio 2
 
@@ -137,7 +137,7 @@ def get_phone(file, client):
     try: 
         f = open(file, 'r')
     except FileNotFoundError:
-        return('¡El fichero ' + file + ' no existe!\n')
+        return("¡El fichero ' + file + ' no existe!\n")
     else:
         directory = f.readlines()
         f.close()
@@ -145,7 +145,7 @@ def get_phone(file, client):
         if client in directory:
             return directory[client]
         else:
-            return('¡El cliente ' + client + ' no existe!\n')
+            return("¡El cliente " + client + " no existe!\n")
 
 
 def add_phone(file, client, telf):
@@ -161,7 +161,7 @@ def add_phone(file, client, telf):
     try: 
         f = open(file, 'a')
     except FileNotFoundError:
-        return('¡El fichero ' + file + ' no existe!\n')
+        return("¡El fichero " + file + " no existe!\n")
     else:
         f.write(client + ',' + telf + '\n')
         f.close()
@@ -348,3 +348,50 @@ resumen_cotizacion(cotizaciones, 'resumen-cotizacion.csv')
 
 
 #Ejercicio 8
+
+import csv
+
+def leer_calificaciones(fichero):
+    with open(fichero, newline='', encoding='utf-8') as f:
+        lector = csv.DictReader(f)
+        lista_alumnos = []
+        for fila in lector:
+            alumno = {
+                'Apellido': fila['Apellido'],
+                'Nombre': fila['Nombre'],
+                'Parcial1': float(fila['Parcial1']),
+                'Parcial2': float(fila['Parcial2']),
+                'Practicas': float(fila['Practicas']),
+                'Ordinario1': float(fila['Ordinario1']) if fila['Ordinario1'] else None,
+                'Ordinario2': float(fila['Ordinario2']) if fila['Ordinario2'] else None,
+                'OrdinarioPracticas': float(fila['OrdinarioPracticas']) if fila['OrdinarioPracticas'] else None,
+                'Asistencia': float(fila['Asistencia'])
+            }
+            lista_alumnos.append(alumno)
+    
+    return sorted(lista_alumnos, key=lambda x: x['Apellido'])
+
+def calcular_nota_final(lista_alumnos):
+    for alumno in lista_alumnos:
+        p1 = alumno['Ordinario1'] if alumno['Parcial1'] < 4 and alumno['Ordinario1'] is not None else alumno['Parcial1']
+        p2 = alumno['Ordinario2'] if alumno['Parcial2'] < 4 and alumno['Ordinario2'] is not None else alumno['Parcial2']
+        practicas = alumno['OrdinarioPracticas'] if alumno['Practicas'] < 4 and alumno['OrdinarioPracticas'] is not None else alumno['Practicas']
+        
+        nota_final = (p1 * 0.3) + (p2 * 0.3) + (practicas * 0.4)
+        alumno['NotaFinal'] = round(nota_final, 2)
+
+def clasificar_alumnos(lista_alumnos):
+    aprobados = []
+    suspensos = []
+    
+    for alumno in lista_alumnos:
+        if (alumno['Asistencia'] >= 75 and 
+            alumno['Parcial1'] >= 4 and 
+            alumno['Parcial2'] >= 4 and 
+            alumno['Practicas'] >= 4 and 
+            alumno['NotaFinal'] >= 5):
+            aprobados.append(alumno)
+        else:
+            suspensos.append(alumno)
+    
+    return aprobados, suspensos
