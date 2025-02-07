@@ -90,38 +90,61 @@ print(contar_palabras('https://www.gutenberg.org/files/2000/2000-0.txt'))
 
 #Ejercicio 5
 
-def pib_pais(url, pais = "ES"):
+def parsear_pib(url):
     '''
-    Función que muestra por pantalla el pib per cápita un país dado de los años disponibles en un fichero dado.
+    Función que parsea un fichero con pibs de países.
     Parámetros:
         url: Es una cadena con la url del fichero de texto que contiene el pib per cápita.
-        pais: Es una cadena con el código del país. 
     Devuelve:
-        Un diccionario con pares año:pib del país dado que hay en el fichero con la url dada.
+        Un diccionario con pares pais:pibs donde pibs es, a su vez, un diccionario con los años y los pibs del país.
     '''
     from urllib import request
     from urllib.error import URLError
     try:
         with request.urlopen(url) as f:
-            datos = f.read().decode('utf-8').split('\n') # Leer los datos y guardar cada línea en una lista
+            datos = f.read().decode('utf-8').split('\n') # Leer los datos y guardar cada línea en una lista.
     except URLError:
         return('¡La url ' + url + ' no existe!')
     else:
-        datos = [i.split('\t') for i in datos] # Dividir cada línea por el tabulador
-        datos = [list(map(str.strip, i)) for i in datos] # Eliminar espacios en blanco
-        for i in datos:
-            i[0] = i[0][-2:] # Obtener el código del país de los dos últimos caracteres del primer elemento de la lista
-        datos[0][0] = 'años'
-        # Creamos un diccionario con claves los códiogos de los países y valores la lista de sus pibs (a excepción del primer par que contiene los años).
-        datos = {i[0]:i[1:] for i in datos}
-        # Creamos y devolvemos el diccionario con los pibs del país
-        return {datos['años'][i]:datos[pais][i] for i in range(len(datos['años']))}
+        # Obtenemos los años de la primera linea del fichero.
+        años = datos.pop(0).split('\t')[1:]
+        # Creamos el diccionario prinpipal para guardar los pibs de todos los países.
+        dict_pibs = {}
+        # Bucle iterativo para recorrer las líneas del fichero.
+        for pais in datos:
+            datos_pais = pais.split('\t')
+            # Obtenemos el código del país de los dos últimos caracteres del primer campo de la linea.
+            codigo_pais = datos_pais.pop(0)[-2:]
+            # Construimos un diccionario con los años y el pib del pais.
+            dict_pais = {}
+            # Bucle iterativo para recorrer los pibs del país.
+            for i in range(len(datos_pais)):
+                dict_pais[años[i].strip()] = datos_pais[i].strip()
+            # Añadimos el diccionario con los pib del país al diccionario principal
+            dict_pibs[codigo_pais] = dict_pais
+        return dict_pibs
+
+def pib(pibs, pais = "ES"):
+    '''
+    Función que recibe un diccionario con los pibs de los países y muestra por pantalla los pibs de un país dado.
+
+    Parámetros:
+        - pibs: Es un diccionario con los pibs de los países como el que devuelve la función parsear_pibs.
+        - pais: Es una cadena con el código del país.
+
+    Salida:
+        Muestra por pantalla los pibs del país indicado.
+    '''
+
+    print("Año\tPIB")
+    for i, j in pibs[pais].items():
+        print(i, '\t', j)
 
 pais = input('Introduce el código de un país: ')
 print('Producto Interior Bruto per cápita de', pais)
-print("Año\tPIB")
-for i, j in pib_pais("https://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/sdg_08_10.tsv.gz&unzip=true", pais).items():
-    print(i, '\t', j)
+pib(parsear_pib("https://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/sdg_08_10.tsv.gz&unzip=true"), pais)
+
+
     
 #Ejercicio 6
 
@@ -234,7 +257,7 @@ def directory():
     '''
     Función que lanza la aplicación para la gestión del listín telefónico.
     '''
-    file = 'listin.txt' 
+    file = "C:\\Users\\yerai\\Downloads\\listin.txt" 
     while True:
         option = menu()
         if option == '1':
@@ -342,7 +365,7 @@ def resumen_cotizacion(cotizaciones, ruta):
 
 
 # Llamada a las funciones de prueba
-cotizaciones = preprocesado('cotizacion.csv')
+cotizaciones = preprocesado('C:\\Users\\yerai\\Downloads\\cotizacion.csv')
 print(cotizaciones)
 resumen_cotizacion(cotizaciones, 'resumen-cotizacion.csv')
 
@@ -352,24 +375,39 @@ resumen_cotizacion(cotizaciones, 'resumen-cotizacion.csv')
 import csv
 
 def leer_calificaciones(fichero):
-    with open(fichero, newline='', encoding='utf-8') as f:
-        lector = csv.DictReader(f)
+    with open(fichero, newline='', encoding='utf-8-sig') as f:
+        lector = csv.DictReader(f, delimiter=';')  # Usar delimitador correcto
+        print("Columnas en el archivo CSV:", lector.fieldnames)  # Verificar nombres de columnas
+
         lista_alumnos = []
         for fila in lector:
+            fila = {clave.strip(): valor.strip() for clave, valor in fila.items()}  # Limpiar espacios
+
+            def convertir_numerico(valor):
+                """ Convierte valores numéricos, manejando vacíos y reemplazando comas """
+                return float(valor.replace(',', '.')) if valor else None  # None para valores vacíos
+
             alumno = {
-                'Apellido': fila['Apellido'],
-                'Nombre': fila['Nombre'],
-                'Parcial1': float(fila['Parcial1']),
-                'Parcial2': float(fila['Parcial2']),
-                'Practicas': float(fila['Practicas']),
-                'Ordinario1': float(fila['Ordinario1']) if fila['Ordinario1'] else None,
-                'Ordinario2': float(fila['Ordinario2']) if fila['Ordinario2'] else None,
-                'OrdinarioPracticas': float(fila['OrdinarioPracticas']) if fila['OrdinarioPracticas'] else None,
-                'Asistencia': float(fila['Asistencia'])
+                'Apellidos': fila.get('Apellidos', 'Desconocido'),
+                'Nombre': fila.get('Nombre', 'Desconocido'),
+                'Asistencia': convertir_numerico(fila.get('Asistencia', '0').replace('%', '')),  # Eliminar '%'
+                'Parcial1': convertir_numerico(fila.get('Parcial1', '0')),
+                'Parcial2': convertir_numerico(fila.get('Parcial2', '0')),
+                'Ordinario1': convertir_numerico(fila.get('Ordinario1', '')),
+                'Ordinario2': convertir_numerico(fila.get('Ordinario2', '')),
+                'Practicas': convertir_numerico(fila.get('Practicas', '0')),
+                'OrdinarioPracticas': convertir_numerico(fila.get('OrdinarioPracticas', ''))
             }
+
             lista_alumnos.append(alumno)
-    
-    return sorted(lista_alumnos, key=lambda x: x['Apellido'])
+
+    return lista_alumnos
+
+# Prueba el código
+archivo_csv = "C:\\Users\\yerai\\Downloads\\calificaciones.csv"
+alumnos = leer_calificaciones(archivo_csv)
+for alumno in alumnos:
+    print(alumno)  # Verifica que los datos sean correctos
 
 def calcular_nota_final(lista_alumnos):
     for alumno in lista_alumnos:
