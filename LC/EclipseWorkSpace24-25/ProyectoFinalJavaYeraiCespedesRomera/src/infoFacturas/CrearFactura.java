@@ -28,7 +28,7 @@ public class CrearFactura
 	
 	static void cargarContactos1(ArrayList<Persona> personas ) 
 	{
-		try(BufferedReader archivo =new BufferedReader(new FileReader("C:\\Users\\yerai\\Desktop\\personas.txt")))
+		try(BufferedReader archivo =new BufferedReader(new FileReader("C:\\Users\\2DAM\\Desktop\\personas.txt")))
 		{
 			String linea;
 			while((linea=archivo.readLine())!=null)
@@ -491,7 +491,7 @@ public class CrearFactura
 			case 5->{facturaTxt(facturas,productos);
 			System.out.println("Factura creada");}
 			case 6->{ System.out.println("Recuperando facturas...");
-		    ArrayList<Factura> facturasRecuperadas = recuperarFacturas("C:\\Users\\yerai\\Downloads\\facturas.txt", personas);
+		    ArrayList<Factura> facturasRecuperadas = recuperarFacturas("C:\\Users\\2DAM\\Downloads\\facturas.txt", personas);
 		    facturas.addAll(facturasRecuperadas);
 		    System.out.println("Facturas recuperadas: " + facturasRecuperadas.size());}
 			
