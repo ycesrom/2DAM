@@ -22,7 +22,7 @@
 		</list>
 		<section name="ExternalProjectImportWizard.dialogBounds">
 			<item key="DIALOG_X_ORIGIN" value="706"/>
-			<item key="DIALOG_Y_ORIGIN" value="187"/>
+			<item key="DIALOG_Y_ORIGIN" value="26"/>
 			<item key="DIALOG_WIDTH" value="525"/>
 			<item key="DIALOG_HEIGHT" value="710"/>
 			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
@@ -38,11 +38,13 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\2DAM\Downloads\AD05_CONT_R15_CrearBDOO_Congreso\AD05_CONT_R15_CrearBDOO_Congreso"/>
+			<item value="C:\Users\2DAM\Downloads\AD05_CONT_R15_CrearBDOO_Congreso.zip"/>
 			<item value="C:\Users\2DAM\Documents\2DAM\AAD"/>
 		</list>
 		<section name="SmartImportWizard.dialogBounds">
-			<item key="DIALOG_X_ORIGIN" value="246"/>
-			<item key="DIALOG_Y_ORIGIN" value="8"/>
+			<item key="DIALOG_X_ORIGIN" value="483"/>
+			<item key="DIALOG_Y_ORIGIN" value="107"/>
 			<item key="DIALOG_WIDTH" value="885"/>
 			<item key="DIALOG_HEIGHT" value="629"/>
 			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
