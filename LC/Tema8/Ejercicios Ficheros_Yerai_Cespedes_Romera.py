@@ -90,60 +90,34 @@ print(contar_palabras('https://www.gutenberg.org/files/2000/2000-0.txt'))
 
 #Ejercicio 5
 
-def parsear_pib(url):
-    '''
-    Función que parsea un fichero con pibs de países.
-    Parámetros:
-        url: Es una cadena con la url del fichero de texto que contiene el pib per cápita.
-    Devuelve:
-        Un diccionario con pares pais:pibs donde pibs es, a su vez, un diccionario con los años y los pibs del país.
-    '''
-    from urllib import request
-    from urllib.error import URLError
-    try:
-        with request.urlopen(url) as f:
-            datos = f.read().decode('utf-8').split('\n') # Leer los datos y guardar cada línea en una lista.
-    except URLError:
-        return('¡La url ' + url + ' no existe!')
-    else:
-        # Obtenemos los años de la primera linea del fichero.
-        años = datos.pop(0).split('\t')[1:]
-        # Creamos el diccionario prinpipal para guardar los pibs de todos los países.
-        dict_pibs = {}
-        # Bucle iterativo para recorrer las líneas del fichero.
-        for pais in datos:
-            datos_pais = pais.split('\t')
-            # Obtenemos el código del país de los dos últimos caracteres del primer campo de la linea.
-            codigo_pais = datos_pais.pop(0)[-2:]
-            # Construimos un diccionario con los años y el pib del pais.
-            dict_pais = {}
-            # Bucle iterativo para recorrer los pibs del país.
-            for i in range(len(datos_pais)):
-                dict_pais[años[i].strip()] = datos_pais[i].strip()
-            # Añadimos el diccionario con los pib del país al diccionario principal
-            dict_pibs[codigo_pais] = dict_pais
-        return dict_pibs
-
-def pib(pibs, pais = "ES"):
+def pib(pibs, pais="ES"):
     '''
     Función que recibe un diccionario con los pibs de los países y muestra por pantalla los pibs de un país dado.
 
     Parámetros:
-        - pibs: Es un diccionario con los pibs de los países como el que devuelve la función parsear_pibs.
+        - pibs: Es un diccionario con los pibs de los países.
         - pais: Es una cadena con el código del país.
 
     Salida:
         Muestra por pantalla los pibs del país indicado.
     '''
+    if pais in pibs:
+        print("Año\tPIB")
+        for i, j in pibs[pais].items():
+            print(i, '\t', j)
+    else:
+        print("El código de país no está en la base de datos.")
 
-    print("Año\tPIB")
-    for i, j in pibs[pais].items():
-        print(i, '\t', j)
+# Diccionario de ejemplo con datos de PIB ficticios
+datos_pib = {
+    "ES": {"2020": "25000", "2021": "26000", "2022": "27000"},
+    "FR": {"2020": "32000", "2021": "33000", "2022": "34000"},
+    "DE": {"2020": "40000", "2021": "41000", "2022": "42000"}
+}
 
 pais = input('Introduce el código de un país: ')
 print('Producto Interior Bruto per cápita de', pais)
-pib(parsear_pib("https://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/sdg_08_10.tsv.gz&unzip=true"), pais)
-
+pib(datos_pib, pais)
 
     
 #Ejercicio 6
@@ -366,6 +340,7 @@ def resumen_cotizacion(cotizaciones, ruta):
 
 # Llamada a las funciones de prueba
 cotizaciones = preprocesado('C:\\Users\\yerai\\Downloads\\cotizacion.csv')
+print()
 print(cotizaciones)
 resumen_cotizacion(cotizaciones, 'resumen-cotizacion.csv')
 
@@ -377,6 +352,7 @@ import csv
 def leer_calificaciones(fichero):
     with open(fichero, newline='', encoding='utf-8-sig') as f:
         lector = csv.DictReader(f, delimiter=';')  # Usar delimitador correcto
+        print()
         print("Columnas en el archivo CSV:", lector.fieldnames)  # Verificar nombres de columnas
 
         lista_alumnos = []
@@ -388,6 +364,7 @@ def leer_calificaciones(fichero):
                 return float(valor.replace(',', '.')) if valor else None  # None para valores vacíos
 
             alumno = {
+               
                 'Apellidos': fila.get('Apellidos', 'Desconocido'),
                 'Nombre': fila.get('Nombre', 'Desconocido'),
                 'Asistencia': convertir_numerico(fila.get('Asistencia', '0').replace('%', '')),  # Eliminar '%'
