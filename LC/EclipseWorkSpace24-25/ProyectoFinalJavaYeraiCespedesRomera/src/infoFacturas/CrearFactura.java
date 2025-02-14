@@ -41,7 +41,7 @@ public class CrearFactura
 				String calle=datos[4];
 				int numero=Integer.parseInt(datos[5]);
 				int cp=Integer.parseInt(datos[6]);
-				String provincia=datos[7];
+				String provincia=datos[7]; 
 				
 				personas.add(new Persona(nombre,apellidos,dni,edad,calle,numero,cp,provincia));
 			}
@@ -405,7 +405,7 @@ public class CrearFactura
     }
 	
 	static void facturaTxt(ArrayList<Factura> facturas, ArrayList<Productos> productos) {
-	    String filePath = "C:\\Users\\yerai\\Downloads\\facturas.txt";
+	    String filePath = "C:\\Users\\2DAM\\Downloads\\facturas.txt";
 	    HashSet<Integer> idsExistentes = new HashSet<>();
 
 	    try {
@@ -495,7 +495,8 @@ public class CrearFactura
 		    facturas.addAll(facturasRecuperadas);
 		    System.out.println("Facturas recuperadas: " + facturasRecuperadas.size());}
 			
-			default->{System.out.println("Programa Finalizado");}
+			case 7->{System.out.println("Programa Finalizado");}
+			default->{System.out.println("Por favor introduzca un numero entre 1-6");}
 			
 			}
 			}catch(InputMismatchException e) 
@@ -504,7 +505,8 @@ public class CrearFactura
 				entrada.nextLine();
 			}
 			
-		}while(opcion<7);
+		}while(opcion!=7);
+		
 		
 		entrada.close();
 		

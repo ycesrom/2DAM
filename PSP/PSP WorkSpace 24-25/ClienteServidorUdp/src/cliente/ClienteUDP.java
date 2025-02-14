@@ -2,19 +2,25 @@ package cliente;
 
 import java.net.*; 
 import java.io.*; 
+import java.util.Scanner;
 
 
 public class ClienteUDP { 
 // Los argumentos proporcionan el mensaje y el nombre del servidor 
 	public static void main(String args[]) { 
 		try { 
-			DatagramSocket socketUDP = new DatagramSocket(); 
-			byte[] mensaje = args[0].getBytes(); 
-			InetAddress hostServidor = InetAddress.getByName(args[1]); 
+                    Scanner entrada=new Scanner(System.in);
+                    
+                    String serverAddress="localhost";
+                    DatagramSocket socketUDP = new DatagramSocket(); 
+                        System.out.println("Introduzca un mensaje");
+                        String nombre=entrada.nextLine(); 
+                        byte[] mensaje = nombre.getBytes(); 
+			InetAddress hostServidor = InetAddress.getByName(serverAddress); 
 			int puertoServidor = 6789; 
 			// Construimos un datagrama para enviar el mensaje al servidor 
 			DatagramPacket peticion = 
-					new DatagramPacket(mensaje, args[0].length(), hostServidor, 
+					new DatagramPacket(mensaje, mensaje.length, hostServidor, 
 							puertoServidor); 
 			// Enviamos el datagrama 
 			socketUDP.send(peticion); 
