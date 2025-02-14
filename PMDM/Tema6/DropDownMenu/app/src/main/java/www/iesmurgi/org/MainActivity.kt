@@ -7,14 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ExitToApp
 import androidx.compose.material.icons.automirrored.outlined.List
 import androidx.compose.material.icons.automirrored.outlined.Send
-import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
@@ -23,7 +23,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,48 +34,56 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.rpc.Help
-import www.iesmurgi.org.ui.theme.DropDownMenuTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent { DropdownMenuWithDetails()
-
+        setContent { GreetingPreview()
         }
     }
 }
 
 @Composable
-fun LongBasicDropdownMenu() {
+fun MenuBasicoDropdownMenu() {
     var expanded by remember { mutableStateOf(false) }
-    // Placeholder list of 100 strings for demonstration
-    val menuItemData = List(100) { "Option ${it + 1}" }
+    val androidVersions = listOf(
+        "Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread", "Honeycomb", "Ice Cream Sandwich",
+        "Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat", "Oreo", "Pie", "Android 10",
+        "Android 11", "Android 12", "Android 13", "Android 14"
+    )
 
     Box(
         modifier = Modifier
             .padding(16.dp)
     ) {
-        IconButton(onClick = { expanded = !expanded }) {
-            Icon(Icons.Default.MoreVert, contentDescription = "More options")
-        }
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false }
-        ) {
-            menuItemData.forEach { option ->
-                DropdownMenuItem(
-                    text = { Text(option) },
-                    onClick = { /* Do something... */ }
-                )
+        Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.End,
+            verticalArrangement = Arrangement.Top)
+        {
+            Spacer(modifier = Modifier.padding(20.dp))
+            Text(text = "Menú Básico", style = MaterialTheme.typography.headlineMedium)
+
+
+            IconButton(onClick = { expanded = !expanded }) {
+                Icon(Icons.Default.Menu, contentDescription = "Menú Basico")
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+               androidVersions.forEach { option ->
+                    DropdownMenuItem(
+                        text = { Text(option) },
+                        onClick = { /* Do something... */ }
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-fun DropdownMenuWithDetails() {
+fun DropdownMenuAvanzado() {
     var expanded by remember { mutableStateOf(false) }
 
         Column(
@@ -86,8 +94,9 @@ fun DropdownMenuWithDetails() {
             verticalArrangement = Arrangement.Center
 
             ) {
+            Text(text = "Menú Avanzado", style = MaterialTheme.typography.headlineMedium)
         IconButton(onClick = { expanded = !expanded }) {
-            Icon(Icons.Default.MoreVert, contentDescription = "More options")
+            Icon(Icons.Default.Menu, contentDescription = "Menú Avanzado")
         }
         DropdownMenu(
             expanded = expanded,
@@ -95,13 +104,13 @@ fun DropdownMenuWithDetails() {
         ) {
             // First section
             DropdownMenuItem(
-                text = { Text("Profile") },
-                leadingIcon = { Icon(Icons.Outlined.Person, contentDescription = null) },
+                text = { Text("Perfil") },
+                leadingIcon = { Icon(Icons.Outlined.Person, contentDescription = "Perfil") },
                 onClick = { /* Do something... */ }
             )
             DropdownMenuItem(
-                text = { Text("Settings") },
-                leadingIcon = { Icon(Icons.Outlined.Settings, contentDescription = null) },
+                text = { Text("Ajustes") },
+                leadingIcon = { Icon(Icons.Outlined.Settings, contentDescription = "Ajustes") },
                 onClick = { /* Do something... */ }
             )
 
@@ -109,9 +118,9 @@ fun DropdownMenuWithDetails() {
 
             // Second section
             DropdownMenuItem(
-                text = { Text("Send Feedback") },
-                leadingIcon = { Icon(Icons.Outlined.Info, contentDescription = null) },
-                trailingIcon = { Icon(Icons.AutoMirrored.Outlined.Send, contentDescription = null) },
+                text = { Text("Enviar Retroalimentación") },
+                leadingIcon = { Icon(Icons.Outlined.Info, contentDescription ="Retroalimentación") },
+                trailingIcon = { Icon(Icons.AutoMirrored.Outlined.Send, contentDescription = "Enviar") },
                 onClick = { /* Do something... */ }
             )
 
@@ -119,12 +128,12 @@ fun DropdownMenuWithDetails() {
 
             // Third section
             DropdownMenuItem(
-                text = { Text("About") },
+                text = { Text("Acerca de") },
                 leadingIcon = { Icon(Icons.Outlined.Info, contentDescription = null) },
                 onClick = { /* Do something... */ }
             )
             DropdownMenuItem(
-                text = { Text("Help") },
+                text = { Text("Ayuda") },
                 leadingIcon = { Icon(Icons.AutoMirrored.Outlined.List, contentDescription = null) },
                 trailingIcon = { Icon(Icons.AutoMirrored.Outlined.ExitToApp, contentDescription = null) },
                 onClick = { /* Do something... */ }
@@ -134,6 +143,9 @@ fun DropdownMenuWithDetails() {
 }
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun GreetingPreview()
+{
+    MenuBasicoDropdownMenu()
+    DropdownMenuAvanzado()
 
 }
