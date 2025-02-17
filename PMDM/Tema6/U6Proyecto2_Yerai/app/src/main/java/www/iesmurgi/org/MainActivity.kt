@@ -50,13 +50,36 @@ fun VersionesAndroid() {
     var menu2Expanded by remember { mutableStateOf(false) }
     var selectedVersion by remember { mutableStateOf<String?>(null) }
     var selectedSubVersion by remember { mutableStateOf<String?>(null) }
-    val versionAndroid = listOf("Android 1.0", "Android 2.0", "Android 3.0","Android 5.0","Android 6.0")
-    val subVersions = mapOf(
-        "Android 1.0" to listOf("10.0", "10.1"),
-        "Android 2.0" to listOf("11.0", "11.1"),
-        "Android 3.0" to listOf("12.0", "12.1", "12L"),
-        "Android 5.0" to listOf("13.0", "13.1")
+    val versionAndroid = listOf(
+        "Apple Pie", "Banana Bread", "Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread", "Honeycomb",
+        "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat", "Oreo",
+        "Pie", "Android 10", "Android 11", "Android 12", "Android 13", "Android 14"
     )
+
+    val subVersionesAndroid = mapOf(
+        "Apple Pie" to listOf("1.0"),
+        "Banana Bread" to listOf("1.1"),
+        "Cupcake" to listOf("1.5"),
+        "Donut" to listOf("1.6"),
+        "Eclair" to listOf("2.0", "2.1"),
+        "Froyo" to listOf("2.2"),
+        "Gingerbread" to listOf("2.3", "2.3.3", "2.3.4", "2.3.5", "2.3.6", "2.3.7"),
+        "Honeycomb" to listOf("3.0", "3.1", "3.2"),
+        "Ice Cream Sandwich" to listOf("4.0", "4.0.1", "4.0.2", "4.0.3", "4.0.4"),
+        "Jelly Bean" to listOf("4.1", "4.2", "4.3"),
+        "KitKat" to listOf("4.4", "4.4.1", "4.4.2", "4.4.3", "4.4.4"),
+        "Lollipop" to listOf("5.0", "5.0.1", "5.0.2", "5.1", "5.1.1"),
+        "Marshmallow" to listOf("6.0", "6.0.1"),
+        "Nougat" to listOf("7.0", "7.1", "7.1.1", "7.1.2"),
+        "Oreo" to listOf("8.0", "8.1"),
+        "Pie" to listOf("9.0"),
+        "Android 10" to listOf("10.0"),
+        "Android 11" to listOf("11.0"),
+        "Android 12" to listOf("12.0", "12L"),
+        "Android 13" to listOf("13.0"),
+        "Android 14" to listOf("14.0")
+    )
+
 
 
     Column(
@@ -65,7 +88,9 @@ fun VersionesAndroid() {
         horizontalAlignment = Alignment.End
     )
     {
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(20.dp))
+        Text(text = "Menú Anidado", style = MaterialTheme.typography.headlineMedium)
+        Spacer(modifier = Modifier.padding(6.dp))
         Box {
             IconButton(onClick = { menu1Expanded = !menu1Expanded }) {
                 Icon(Icons.Default.Menu, contentDescription = "Menú de versiones")
@@ -99,7 +124,7 @@ fun VersionesAndroid() {
                 DropdownMenu(
                     expanded = menu2Expanded,
                     onDismissRequest = { menu2Expanded = false }) {
-                    subVersions[selectedVersion]?.forEach { subVersion ->
+                    subVersionesAndroid[selectedVersion]?.forEach { subVersion ->
                         DropdownMenuItem(
                             text = { Text(subVersion) },
                             onClick = {
