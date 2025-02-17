@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Cell;
@@ -27,6 +28,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 /**
@@ -60,7 +62,7 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
             
             switch(opcion)
             {
-                case 1->{insertarRegistrosExcel();}
+                case 1->{insertarDesdeExcel();}
                 case 2->{insertarRegistrosManual();}
                 case 3->{consultarRegistroNombre();}
                 case 4->{mostrarRegistro();}
@@ -145,6 +147,49 @@ public class CRUDCompletoProvincia_Yerai_Cespedes_Romera {
         emf.close();
     }
 }
+   public static void insertarDesdeExcel()
+    {
+      Provincia provincia =new Provincia();
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_CRUDCompletoProvincia_Yerai_Cespedes_Romera_jar_1.0-SNAPSHOTPU");
+             EntityManager em = emf.createEntityManager();
+             EntityTransaction et=em.getTransaction();
+       
+        
+        String archivo="C:\\Users\\yerai\\Downloads\\cod-prov.xlsx";
+        try(FileInputStream fis=new FileInputStream(archivo); Workbook workbook=new XSSFWorkbook(fis)){
+           
+            et.begin();
+           Sheet sheet=workbook.getSheetAt(0);
+            
+            for(int i=1;i<=sheet.getLastRowNum();i++)
+            {
+                Cell cell1=sheet.getRow(i).getCell(0);
+                Cell cell2=sheet.getRow(i).getCell(1);
+                
+                int value1=(int) cell1.getNumericCellValue();
+                String value2=cell2.toString();
+                
+                provincia.setCod(value1);
+                provincia.setNombre(value2);
+                
+                em.persist(provincia);
+                em.flush();
+                em.clear();
+            }
+            
+            et.commit();
+           
+           
+        
+        }catch(Exception e)
+        {
+            if(et.isActive())
+            {
+                et.rollback();
+            }
+        e.printStackTrace();
+        }
+    }
 
 
 

@@ -1,5 +1,6 @@
 package www.iesmurgi.org
 
+import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,14 +9,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -54,54 +58,39 @@ fun DialogWithImage(
     onConfirmation: () -> Unit,
     painter: Painter,
     imageDescription: String,
-) {
-    Dialog(onDismissRequest = { onDismissRequest() }) {
-        // Draw a rectangle shape with rounded corners inside the dialog
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(375.dp)
-                .padding(16.dp),
-            shape = RoundedCornerShape(16.dp),
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Image(
-                    painter = painter,
-                    contentDescription = imageDescription,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .height(160.dp)
-                )
-                Text(
-                    text = "Esto es un dialogo Avazando",
-                    modifier = Modifier.padding(16.dp),
-                )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                ) {
-                    TextButton(
-                        onClick = { onDismissRequest() },
-                        modifier = Modifier.padding(8.dp),
-                    ) {
-                        Text("Dismiss")
-                    }
-                    TextButton(
-                        onClick = { onConfirmation() },
-                        modifier = Modifier.padding(8.dp),
-                    ) {
-                        Text("Confirm")
-                    }
-                }
-            }
-        }
-    }
+    icon: ImageVector,
+    dialogTitle: String) {
+    var open by remember { mutableStateOf(false) }
+    Column(modifier = Modifier.padding(16.dp).fillMaxSize(), verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally)
+    { Button(onClick = {open=true})
+        { Text("Mostrar Dialogo Avanzado")
+        } }
+    if(open) {
+        Dialog(onDismissRequest = { onDismissRequest() }) {
+             Card(modifier = Modifier.fillMaxWidth().height(375.dp).padding(16.dp), shape = RoundedCornerShape(16.dp)) {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally) {
+                    Icon(icon, contentDescription = "Icono")
+                    Spacer(modifier = Modifier.padding(10.dp))
+                        Text(text = dialogTitle, style = androidx.compose.ui.text.TextStyle.Default)
+                    Image(
+                        painter = painter,
+                        contentDescription = imageDescription,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier
+                            .height(160.dp))
+                    Text(modifier = Modifier.padding(12.dp), text = "Esto es un dialogo Avazando con imagenes y botones e iconos")
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,) {
+                        TextButton(onClick = { open=false }, modifier = Modifier.padding(8.dp)) {
+                            Text("Cancelar") }
+                        TextButton(onClick = { open=false },modifier = Modifier.padding(8.dp)) {
+                            Text("Aceptar") } } } } } }
 }
 @Composable
 fun AlertDialogExample(
@@ -109,64 +98,39 @@ fun AlertDialogExample(
     onConfirmation: () -> Unit,
     dialogTitle: String,
     dialogText: String,
-    icon: ImageVector,
-) {
-    AlertDialog(
-        icon = {
-            Icon(icon, contentDescription = "Example Icon")
-        },
-        title = {
-            Text(text = dialogTitle)
-        },
-        text = {
-            Text(text = dialogText)
-        },
-        onDismissRequest = {
-            onDismissRequest()
-        },
-        confirmButton = {
-            TextButton(
-                onClick = {
-                    onConfirmation()
-                }
-            ) {
-                Text("Confirm")
-            }
-        },
-        dismissButton = {
-            TextButton(
-                onClick = {
-                    onDismissRequest()
-                }
-            ) {
-                Text("Dismiss")
-            }
-        }
-    )
-}
-
-
-@Composable
-fun DialogExamples() {
-    // ...
-    val openAlertDialog = remember { mutableStateOf(false) }
-
-    // ...
-    when {
-        // ...
-        openAlertDialog.value -> {
-            AlertDialogExample(
-                onDismissRequest = { openAlertDialog.value = false },
-                onConfirmation = {
-                    openAlertDialog.value = false
-                    println("Confirmation registered") // Add logic here to handle confirmation.
-                },
-                dialogTitle = "Alert dialog example",
-                dialogText = "This is an example of an alert dialog with buttons.",
-                icon = Icons.Default.Info
-            )
-        }
-    }
+    icon: ImageVector) {
+    var open by remember { mutableStateOf(false) }
+    Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally)
+    {
+        Spacer(modifier = Modifier.padding(50.dp))
+        Button(onClick = {open=true})
+    {
+        Text("Mostrar Dialogo Básico")
+    }  }
+    if(open) {
+        AlertDialog(
+            icon = {
+                Icon(icon, contentDescription = "Icono") },
+            title = {
+                Text(text = dialogTitle) },
+            text = {
+                Text(text = dialogText) },
+            onDismissRequest = {
+                onDismissRequest() },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        open = false }
+                ) {
+                    Text("Confirmar")
+                } },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        open = false }
+                ) {
+                    Text("Cancelar")
+                } }) }
 }
 
 
@@ -177,9 +141,9 @@ fun GreetingPreview() {
 
     var onDismissRequest by remember { mutableStateOf(true) }
     var onConfirmation by remember { mutableStateOf(true) }
-    val painter = painterResource(id = R.drawable.ic_launcher_background)
-    //DialogWithImage(onDismissRequest = {onDismissRequest=false}, onConfirmation = {onConfirmation=false}, painter =painter , imageDescription = "Imagen Dialogo")
+    val painter = painterResource(id = R.drawable.descargar)
+    DialogWithImage(onDismissRequest = {onDismissRequest=false}, onConfirmation = {onConfirmation=false}, painter =painter , imageDescription = "Imagen Dialogo", icon = Icons.Default.Info ,"Ejemplo Alerta Dialogo")
 
-    AlertDialogExample(onDismissRequest = {onDismissRequest=false}, onConfirmation = {onConfirmation=false}, dialogTitle = "Alert dialog example", dialogText = "This is an example of an alert dialog with buttons.", icon = Icons.Default.Info)
+   AlertDialogExample(onDismissRequest = {onDismissRequest=false}, onConfirmation = {onConfirmation=false}, dialogTitle = "Ejemplo Alerta Dialogo", dialogText = "Esto es un ejemplo de una alerta dialogo con botones ", icon = Icons.Default.Info)
 
 }
