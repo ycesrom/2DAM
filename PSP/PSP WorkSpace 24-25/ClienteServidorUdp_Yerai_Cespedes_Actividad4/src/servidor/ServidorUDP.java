@@ -8,10 +8,11 @@ import cliente.ClienteUDP;
 
 import java.io.*; 
  
-public class ServidorUDP { 
+public class ServidorUDP extends Thread { 
  
   public static void main (String args[]) { 
  
+	
     try { 
  
       DatagramSocket socketUDP = new DatagramSocket(6789); 
@@ -39,6 +40,8 @@ public class ServidorUDP {
  
         // Enviamos la respuesta, que es un eco 
         socketUDP.send(respuesta);
+        
+        
        
       } 
     	} catch (SocketException e) { 
