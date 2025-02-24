@@ -305,3 +305,4 @@
 2025-02-14 09:04:08,443 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2DAM\Documents\2DAM\AAD\GestionCorrectaTransaciones_Yerai_Cespedes\src\test\resources
 2025-02-14 09:04:08,643 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-02-14 09:04:08,646 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2DAM\Documents\2DAM\AAD\ProyectoMaven_Yerai_Cespedes_Romera\src\test\resources
+2025-02-24 11:12:41,984 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
