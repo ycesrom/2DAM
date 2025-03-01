@@ -6,6 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/2DAM/Downloads/db4o-8.0.276.16149-all-java5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/yerai/Documents/2DAM/AAD/Acceso a Datos WorkSpace 24-25/db4o-8.0.276.16149-all-java5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mi Aplicación</string>
+    <string name="welcome_message">Bienvenido a la app</string>
+    <string name="navigate_button">Navegar</string>
+    <string name="navigate_back">Volver</string>
+    <string name="navigate">Volver a la primera pantalla</string>
+    <string name="email_profesor">Email del profesor</string>
+</resources>

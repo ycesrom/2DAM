@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="welcome_message">Welcome to the app</string>
+    <string name="navigate_button">Navigate</string>
+    <string name="navigate_back">Back</string>
+    <string name="navigate">Navigate back to the first screen</string>
+    <string name="email_profesor">Teacher email</string>
+</resources>
