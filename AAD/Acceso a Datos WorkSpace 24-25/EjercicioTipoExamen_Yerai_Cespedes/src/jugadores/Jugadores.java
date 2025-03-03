@@ -5,9 +5,9 @@ import equipos.Equipo;
 public class Jugadores 
 {
 	private int dorsal;
-	private String nombre;
-	private int edad;
-	private String posicion;
+	public String nombre;
+	public int edad;
+	public String posicion;
 	private String apodo;
 	private Equipo equipo;
 
@@ -15,8 +15,8 @@ public class Jugadores
 	{
 		this.dorsal=0;
 		this.nombre=null;
-		this.edad=edad;
-		this.posicion=posicion;
+		this.edad=0;
+		this.posicion=null;
 		this.apodo=null;
 		this.equipo=null;
 	}

@@ -1,6 +1,5 @@
 package www.iesmurgi.org.screens
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +27,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import www.iesmurgi.org.Persona
@@ -60,34 +58,25 @@ fun MiRecyclerView(navController: NavController)
         }
     }
 }
-
 @Composable
 fun ItemProfe(profe: Persona,navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
-
-    ) {
-        Row(
+            .padding(8.dp)) { Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+            verticalAlignment = Alignment.CenterVertically) {
             Image(
                 painter = painterResource(id = profe.foto),
-                contentDescription = "Profile image of ${profe.nombre}", // Provide a content description
+                contentDescription = "Profile image of ${profe.nombre}",
                 modifier = Modifier
-                    .size(32.dp) // Smaller size for the image
-                    .clip(CircleShape) // Clip to a circle
-                    .border(1.dp, Color.Gray, CircleShape) // Add a border
-            )
+                    .size(32.dp)
+                    .clip(CircleShape)
+                    .border(1.dp, Color.Gray, CircleShape) )
             Spacer(modifier = Modifier.padding(8.dp))
-
-            // Display the text information
             Column {
-
                 Text(
                     text = profe.nombre,
                     style = MaterialTheme.typography.titleMedium,
@@ -99,38 +88,16 @@ fun ItemProfe(profe: Persona,navController: NavController) {
                 )
                 Text(
                     text = profe.asignatura,
-                    style = MaterialTheme.typography.bodySmall
-                )
-            }
-        }
-
-
-
+                    style = MaterialTheme.typography.bodySmall) } }
         Button(onClick = { navController.navigate("${AppScreen.SecondScreen.route}/${profe.email}") }) {
-            Text(text = stringResource(R.string.navigate_button))
-        }
-    }
+            Text(text = stringResource(R.string.navigate_button)) } }
 }
-// Se encargara de pintar cada uno de los elementos del recyclerView.
-/*
-@Composable
-fun ItemProfe(profe:Persona)
-{
-    Card(border = BorderStroke(2.dp, Color.Green))
-    {
-        profe.toString()
-    }
-
-}
-*/
 fun getProfesores():List<Persona>{
-
     return listOf(
         Persona("Ana","tata@gmail.com","moviles", R.drawable.murgi),
         Persona("Carlos","tata@gmail.com","moviles", R.drawable.murgi),
         Persona("Fede","tata@gmail.com","moviles", R.drawable.murgi),
-        Persona("Sole","tata@gmail.com","moviles", R.drawable.murgi)
-    )
+        Persona("Sole","tata@gmail.com","moviles", R.drawable.murgi))
 }
 
 

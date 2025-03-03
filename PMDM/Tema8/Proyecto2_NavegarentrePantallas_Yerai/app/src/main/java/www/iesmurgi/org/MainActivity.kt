@@ -14,16 +14,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             GreetingPreview()
-
         }
     }
 }
-
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-
     AppNavigation()
-
 }

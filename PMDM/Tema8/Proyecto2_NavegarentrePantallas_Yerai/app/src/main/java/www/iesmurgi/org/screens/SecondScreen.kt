@@ -37,9 +37,7 @@ fun SecondBodyContent(paddingValues: PaddingValues, navController: NavController
         email?.let { Text(it) }
         Button(onClick = { navController.popBackStack()  })
         {
-            Text(text = stringResource(R.string.navigate_back))
-        }
-    }
+            Text(text = stringResource(R.string.navigate_back)) }}
 }
 
 
