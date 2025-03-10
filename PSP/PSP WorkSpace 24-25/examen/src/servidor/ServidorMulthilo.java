@@ -39,7 +39,7 @@ public class ServidorMulthilo
 		try {
 			BufferedReader leer=new BufferedReader(new InputStreamReader(cliente.getInputStream()));
 			PrintWriter salida=new PrintWriter(cliente.getOutputStream(),true);
-			
+			   
 			salida.println("Bienvenido introduzca salir para finalizar ");
 			String mensaje;
 			while((mensaje=leer.readLine()) !=null) 

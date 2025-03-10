@@ -94,10 +94,10 @@ fun ItemProfe(profe: Persona,navController: NavController) {
 }
 fun getProfesores():List<Persona>{
     return listOf(
-        Persona("Ana","tata@gmail.com","moviles", R.drawable.murgi),
-        Persona("Carlos","tata@gmail.com","moviles", R.drawable.murgi),
-        Persona("Fede","tata@gmail.com","moviles", R.drawable.murgi),
-        Persona("Sole","tata@gmail.com","moviles", R.drawable.murgi))
+        Persona("Ana","ana@gmail.com","moviles", R.drawable.murgi),
+        Persona("Carlos","carlos@gmail.com","acceso a datos", R.drawable.murgi),
+        Persona("Fede","fede@gmail.com","desarollo interfaces", R.drawable.murgi),
+        Persona("Sole","sole@gmail.com","psp", R.drawable.murgi))
 }
 
 
