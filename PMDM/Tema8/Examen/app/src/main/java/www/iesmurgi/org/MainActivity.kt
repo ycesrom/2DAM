@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import www.iesmurgi.org.Detail.DetailScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,14 +15,22 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
 
-            NavHost(navController = navController, startDestination = "list") {
+            NavHost(navController = navController, startDestination = "list" ) {
+                composable("pant") {
+                    pantalla(navController)
+                }
+                composable("login") {
+                    LoginScreen(navController)
+                }
                 composable("list") {
                     StudentListScreen(navController)
                 }
-                composable("detail/{name}/{email}") { backStackEntry ->
+                composable("detail/{name}/{email}/{contador}") { backStackEntry ->
                     val name = backStackEntry.arguments?.getString("name") ?: "Desconocido"
                     val email = backStackEntry.arguments?.getString("email") ?: "Sin correo"
-                    DetailScreen(navController, name, email)
+                    val contadorActual = backStackEntry.arguments?.getString("contador")?.toIntOrNull() ?: 0
+
+                    DetailScreen(navController, name, email,contadorActual)
                 }
             }
         }

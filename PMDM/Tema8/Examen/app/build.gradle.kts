@@ -50,7 +50,9 @@ android {
 }
 
 dependencies {
-
+    implementation ("androidx.compose.ui:ui:1.6.0") // Cambia según la última versión estable
+    implementation ("androidx.compose.material:material-icons-extended:1.4.0")  // Asegúrate de usar la versión compatible con tu proyecto
+    implementation ("androidx.compose.material:material:1.4.0")  // Dependencia para la biblioteca de Material en Compose
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -60,6 +62,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.constraintlayout.compose.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

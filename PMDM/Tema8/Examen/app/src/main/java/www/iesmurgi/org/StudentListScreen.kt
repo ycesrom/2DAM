@@ -1,6 +1,9 @@
 package www.iesmurgi.org
 
 import android.annotation.SuppressLint
+import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,52 +17,53 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.NavController
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StudentListScreen(navController: NavController) {
+    var contador by rememberSaveable { mutableStateOf(0) } // Contador Local
+
     val students = listOf(
-        Student("Juan Pérez", "juan@example.com", "Matemáticas", R.drawable.ic_launcher_background),
-        Student("Ana López", "ana@example.com", "Historia", R.drawable.ic_launcher_background),
-        Student("Carlos Gómez", "carlos@example.com", "Física", R.drawable.ic_launcher_background),
-        Student("Laura Martínez", "laura@example.com", "Biología", R.drawable.ic_launcher_background),
-        Student("Pedro Sánchez", "pedro@example.com", "Química", R.drawable.ic_launcher_background),
-        Student("Sofia García", "sofia@example.com", "Filosofía", R.drawable.ic_launcher_background),
-        Student("Miguel Rodríguez", "miguel@example.com", "Lengua", R.drawable.ic_launcher_background),
-        Student("María Fernández", "maria@example.com", "Geografía", R.drawable.ic_launcher_background),
-        Student("David Pérez", "david@example.com", "Matemáticas", R.drawable.ic_launcher_background),
-        Student("Elena Gómez", "elena@example.com", "Historia", R.drawable.ic_launcher_background),
-        Student("Antonio López", "antonio@example.com", "Física", R.drawable.ic_launcher_background),
-        Student("Isabel Martín", "isabel@example.com", "Química", R.drawable.ic_launcher_background),
-        Student("Fernando Sánchez", "fernando@example.com", "Biología", R.drawable.ic_launcher_background),
-        Student("Raquel García", "raquel@example.com", "Filosofía", R.drawable.ic_launcher_background),
-        Student("Javier Rodríguez", "javier@example.com", "Lengua", R.drawable.ic_launcher_background),
-        Student("Carmen Fernández", "carmen@example.com", "Geografía", R.drawable.ic_launcher_background),
-        Student("Luis Pérez", "luis@example.com", "Matemáticas", R.drawable.ic_launcher_background),
-        Student("Patricia Gómez", "patricia@example.com", "Historia", R.drawable.ic_launcher_background),
-        Student("Juan Carlos Martínez", "juancarlos@example.com", "Física", R.drawable.ic_launcher_background),
-        Student("Ángeles López", "angeles@example.com", "Química", R.drawable.ic_launcher_background),
-        Student("Daniel Sánchez", "daniel@example.com", "Biología", R.drawable.ic_launcher_background),
-        Student("Marta Rodríguez", "marta@example.com", "Filosofía", R.drawable.ic_launcher_background),
-        Student("Francisco García", "francisco@example.com", "Lengua", R.drawable.ic_launcher_background),
-        Student("Sara Fernández", "sara@example.com", "Geografía", R.drawable.ic_launcher_background),
-        Student("Víctor Pérez", "victor@example.com", "Matemáticas", R.drawable.ic_launcher_background),
-        Student("Julia Gómez", "julia@example.com", "Historia", R.drawable.ic_launcher_background),
-        Student("Luis Miguel Martín", "luismiguel@example.com", "Física", R.drawable.ic_launcher_background),
-        Student("Alicia López", "alicia@example.com", "Química", R.drawable.ic_launcher_background),
-        Student("Ricardo Sánchez", "ricardo@example.com", "Biología", R.drawable.ic_launcher_background),
-        Student("Paula Rodríguez", "paula@example.com", "Filosofía", R.drawable.ic_launcher_background),
-        Student("Antonio García", "antonio.garcia@example.com", "Lengua", R.drawable.ic_launcher_background),
-        Student("Pedro Fernández", "pedro.fernandez@example.com", "Geografía", R.drawable.ic_launcher_background)
+
+        Student("Ayman", "Matemáticas", "Ayman@example.com", R.drawable.aymancharchaoui),
+        Student("Bernardo", "Ciencias", "Bernardo@example.com", R.drawable.bernardorodriguezlinares),
+        Student("Ruben", "Historia", "Ruben@example.com", R.drawable.fotoruben),
+        Student("Alexandru", "Lengua", "Alex@example.com", R.drawable.alexandruanutapreda),
+        Student("Jose", "Arte", "Jose@example.com", R.drawable.img20241111222727),
+        Student("Marco", "Música", "Marco@xample.com", R.drawable.img20240923143611),
+        Student("Jose", "Educación Física", "jose@example.com", R.drawable.img20241016163828),
+        Student("Javi", "Informática", "javi@example.com", R.drawable.javiecampoylozano),
+        Student("Jorge", "Filosofía", "alumno9@example.com", R.drawable.jorgevizcainomaldonado),
+        Student("Oscar", "Química", "alumno10@example.com", R.drawable.oscarabellan),
+        Student("Walther", "Física", "alumno11@example.com", R.drawable.waltheralexandro),
+        Student("Lubo", "Biología", "alumno12@example.com", R.drawable.whatsappimage20240923143650),
+        Student("Vili", "Geografía", "alumno13@example.com", R.drawable.whatsappimage20241030132125),
+        Student("Alessia", "Economía", "alumno14@example.com", R.drawable.alessiaoliveratorres),
+        Student("Angel", "Tecnología", "alumno15@example.com", R.drawable.angelfloro),
+        Student("Angel M.", "Inglés", "alumno16@example.com", R.drawable.angelmiguelmunoz),
+        Student("Clara", "Francés", "alumno17@example.com", R.drawable.clararoldanperez),
+        Student("Moha F.", "Alemán", "alumno18@example.com", R.drawable.farismohamedamine),
+        Student("Moha A.", "Italiano", "alumno19@example.com", R.drawable.foto),
+        Student("Javier", "Japonés", "alumno20@example.com", R.drawable.javiercortes),
+        Student("Juanra", "Francés", "alumno17@example.com", R.drawable.juanramonpereztoledo),
+        Student("Lucia", "Alemán", "alumno18@example.com", R.drawable.lucia),
+        Student("Oscar B", "Italiano", "alumno19@example.com", R.drawable.oscarbono),
+        Student("Sergey", "Japonés", "alumno20@example.com", R.drawable.sergeytereshkov),
+        Student("Yerai", "Francés", "alumno17@example.com", R.drawable.yerai)
     )
 
 
-    Scaffold(
+                Scaffold(
         topBar = { TopAppBar(title = { Text("Lista de Alumnos") }) }
     ) {
 
@@ -67,7 +71,8 @@ fun StudentListScreen(navController: NavController) {
 
             items(students) { student ->
                 StudentItem(student) {
-                    navController.navigate("detail/${student.name}/${student.email}")
+                    contador++
+                    navController.navigate("detail/${student.name}/${student.email}/$contador")
                 }
             }
         }
@@ -76,6 +81,7 @@ fun StudentListScreen(navController: NavController) {
 
 @Composable
 fun StudentItem(student: Student, onClick: () -> Unit) {
+    Spacer(modifier = Modifier.padding(30.dp))
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -84,10 +90,10 @@ fun StudentItem(student: Student, onClick: () -> Unit) {
 
     ) {
         Row(modifier = Modifier.padding(8.dp)) {
-            Spacer(modifier = Modifier.padding(30.dp))
+
 
             Image(
-                painter = painterResource(id = student.imageRes),
+                painter = painterResource(id = student.foto),
                 contentDescription = "Foto de ${student.name}",
                 modifier = Modifier.size(64.dp)
             )
@@ -100,3 +106,4 @@ fun StudentItem(student: Student, onClick: () -> Unit) {
         }
     }
 }
+

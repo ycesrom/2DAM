@@ -199,6 +199,7 @@ fun BadgeBoxCarrito() {
             )
         }
 
+
         Spacer(modifier = Modifier.padding(250.dp))
         Button(onClick = { itemCount++ }) {
             Text("Comprar")
