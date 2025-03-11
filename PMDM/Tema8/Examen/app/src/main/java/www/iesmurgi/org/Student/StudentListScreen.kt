@@ -1,31 +1,32 @@
-package www.iesmurgi.org
+package www.iesmurgi.org.Student
 
 import android.annotation.SuppressLint
-import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.NavController
+import www.iesmurgi.org.R
+import www.iesmurgi.org.data.Student
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -34,7 +35,6 @@ fun StudentListScreen(navController: NavController) {
     var contador by rememberSaveable { mutableStateOf(0) } // Contador Local
 
     val students = listOf(
-
         Student("Ayman", "Matemáticas", "Ayman@example.com", R.drawable.aymancharchaoui),
         Student("Bernardo", "Ciencias", "Bernardo@example.com", R.drawable.bernardorodriguezlinares),
         Student("Ruben", "Historia", "Ruben@example.com", R.drawable.fotoruben),
@@ -62,11 +62,12 @@ fun StudentListScreen(navController: NavController) {
         Student("Yerai", "Francés", "alumno17@example.com", R.drawable.yerai)
     )
 
-
-                Scaffold(
-        topBar = { TopAppBar(title = { Text("Lista de Alumnos") }) }
-    ) {
-
+    Column {
+        Text(
+            text = stringResource(R.string.student_list_screen_title),
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(16.dp)
+        )
         LazyColumn {
 
             items(students) { student ->
@@ -81,29 +82,31 @@ fun StudentListScreen(navController: NavController) {
 
 @Composable
 fun StudentItem(student: Student, onClick: () -> Unit) {
-    Spacer(modifier = Modifier.padding(30.dp))
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { onClick() },
-
+            .clickable { onClick()
+            }
+            .border(1.dp, Color.Gray),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
-        Row(modifier = Modifier.padding(8.dp)) {
-
-
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Image(
                 painter = painterResource(id = student.foto),
-                contentDescription = "Foto de ${student.name}",
-                modifier = Modifier.size(64.dp)
+                contentDescription = "Imagen de ${student.name}",
+                modifier = Modifier.size(50.dp)
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.size(16.dp))
             Column {
-                Text(text = student.name, style = MaterialTheme.typography.bodyLarge)
-                Text(text = student.email, style = MaterialTheme.typography.bodyLarge)
-                Text(text = student.subject, style = MaterialTheme.typography.bodyLarge)
+                Text(text = student.name, fontWeight = FontWeight.Bold)
+                Text(text = student.subject)
+                Text(text = student.email)
             }
         }
     }
 }
-

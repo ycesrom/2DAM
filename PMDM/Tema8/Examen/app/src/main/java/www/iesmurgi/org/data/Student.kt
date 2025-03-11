@@ -1,4 +1,4 @@
-package www.iesmurgi.org
+package www.iesmurgi.org.data
 
 import androidx.annotation.DrawableRes
 

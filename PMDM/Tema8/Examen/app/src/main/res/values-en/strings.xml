@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Examen</string>
+    <string name="detail_screen_title">Student Detail</string>
+    <string name="student_list_screen_title">Student List</string>
+</resources>

@@ -24,10 +24,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import www.iesmurgi.org.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -44,7 +47,11 @@ fun DetailScreen(navController: NavController, name: String, email: String, cont
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Tienda Online") },
+                title = {Text(
+                    text = "Yerai",
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )},
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Volver")
