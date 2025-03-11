@@ -142,6 +142,26 @@ fun DetailScreen(navController: NavController, name: String, email: String, cont
 
             Spacer(modifier = Modifier.height(16.dp))
             Text("Contador de alumnos: $contador", fontWeight = FontWeight.Bold, fontSize = 18.sp)
+
+            Spacer(modifier = Modifier.height(16.dp))
+            var errorMessage = ""
+            // Botón de guardar
+            Button(
+
+                onClick = {
+                    if (inputName.isEmpty() || inputEmail.isEmpty()) {
+                       errorMessage="El nombre y el correo no pueden estar vacíos."
+                    } else {
+                         errorMessage = ""
+
+                        inputName=name// Limpiamos el mensaje de error
+                    inputEmail=email  // Aquí se puede guardar la información de alumno editada.
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Guardar")
+            }
         }
     }
 }

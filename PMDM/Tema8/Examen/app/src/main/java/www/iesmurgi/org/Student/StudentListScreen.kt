@@ -12,9 +12,11 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -33,6 +35,7 @@ import www.iesmurgi.org.data.Student
 @Composable
 fun StudentListScreen(navController: NavController) {
     var contador by rememberSaveable { mutableStateOf(0) } // Contador Local
+
 
     val students = listOf(
         Student("Ayman", "Matemáticas", "Ayman@example.com", R.drawable.aymancharchaoui),
@@ -62,15 +65,28 @@ fun StudentListScreen(navController: NavController) {
         Student("Yerai", "Francés", "alumno17@example.com", R.drawable.yerai)
     )
 
+
     Column {
         Text(
             text = stringResource(R.string.student_list_screen_title),
             style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(16.dp)
         )
+        var filtroTexto by remember { mutableStateOf("") }
+
+        val alumnosFiltrados =students.filter {
+            it.name.contains(filtroTexto, ignoreCase = true)
+        }
+        TextField(
+            value = filtroTexto,
+            onValueChange = { filtroTexto = it },
+            label = { Text("Buscar por nombre") },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        )
+
         LazyColumn {
 
-            items(students) { student ->
+            items(alumnosFiltrados) { student ->
                 StudentItem(student) {
                     contador++
                     navController.navigate("detail/${student.name}/${student.email}/$contador")

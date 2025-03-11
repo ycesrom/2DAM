@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.compose.bom.v20250200)
     implementation ("androidx.compose.ui:ui:1.6.0") // Cambia según la última versión estable
     implementation ("androidx.compose.material:material-icons-extended:1.4.0")  // Asegúrate de usar la versión compatible con tu proyecto
     implementation ("androidx.compose.material:material:1.4.0")  // Dependencia para la biblioteca de Material en Compose
